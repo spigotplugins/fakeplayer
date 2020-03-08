@@ -1,10 +1,12 @@
 package com.infumia.fakeplayer.api;
 
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.jetbrains.annotations.NotNull;
 
 public interface FakeCreated {
 
-    void spawn(@NotNull Location location);
+    @NotNull
+    INPC create(@NotNull String name, @NotNull World world);
 
 }

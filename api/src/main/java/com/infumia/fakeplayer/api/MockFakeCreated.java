@@ -4,7 +4,11 @@ import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 
 public final class MockFakeCreated implements FakeCreated {
+
+    @NotNull
     @Override
-    public void spawn(@NotNull final Location location) {
+    public INPC create(@NotNull final Location location) {
+        return new MockNPC();
     }
+
 }
