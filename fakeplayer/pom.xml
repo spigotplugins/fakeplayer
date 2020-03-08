@@ -73,6 +73,11 @@
             <version>1.2</version>
         </dependency>
         <dependency>
+            <groupId>io.github.portlek</groupId>
+            <artifactId>version-matched</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.WesJD.AnvilGUI</groupId>
             <artifactId>anvilgui</artifactId>
             <version>master-SNAPSHOT</version>

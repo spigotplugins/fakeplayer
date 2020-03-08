@@ -1,10 +1,17 @@
 package com.infumia.fakeplayer.handle;
 
 import com.infumia.fakeplayer.api.Fake;
+import com.infumia.fakeplayer.api.FakeCreated;
+import com.infumia.fakeplayer.api.MockFakeCreated;
+import io.github.portlek.versionmatched.VersionMatched;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 
 public final class FakeBasic implements Fake {
+
+    private static final FakeCreated FAKE_CREATED = new VersionMatched<>(
+        new MockFakeCreated()
+    ).of().instance();
 
     @NotNull
     private final String name;
@@ -31,7 +38,7 @@ public final class FakeBasic implements Fake {
 
     @Override
     public void spawn() {
-
+        FakeBasic.FAKE_CREATED.spawn(this.spawnpoint);
     }
 
 }
