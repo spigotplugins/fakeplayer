@@ -12,12 +12,11 @@ public final class FakeCreated1_15_R1 implements FakeCreated {
 
     @NotNull
     @Override
-    public INPC create(@NotNull final String name, @NotNull final World world, @NotNull final Location location) {
+    public INPC create(@NotNull final String name, @NotNull final World world) {
         return new NPC(
             Bukkit.getServer().getOfflinePlayer(name).getUniqueId(),
             name,
-            (CraftWorld) world,
-            location
+            (CraftWorld) world
         );
     }
 

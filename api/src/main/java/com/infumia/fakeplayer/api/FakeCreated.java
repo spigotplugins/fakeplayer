@@ -7,6 +7,6 @@ import org.jetbrains.annotations.NotNull;
 public interface FakeCreated {
 
     @NotNull
-    INPC create(@NotNull String name, @NotNull World world, @NotNull Location location);
+    INPC create(@NotNull String name, @NotNull World world);
 
 }
