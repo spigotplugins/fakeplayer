@@ -1,6 +1,6 @@
 package com.infumia.fakeplayer.file;
 
-import com.infumia.fakeplayer.Fake;
+import com.infumia.fakeplayer.api.Fake;
 import com.infumia.fakeplayer.handle.FakeBasic;
 import io.github.portlek.configs.BukkitManaged;
 import io.github.portlek.configs.annotations.Config;

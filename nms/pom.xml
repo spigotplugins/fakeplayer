@@ -32,4 +32,12 @@
         </repository>
     </repositories>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.infumia.fakeplayer</groupId>
+            <artifactId>api</artifactId>
+            <version>1.2</version>
+        </dependency>
+    </dependencies>
+
 </project>

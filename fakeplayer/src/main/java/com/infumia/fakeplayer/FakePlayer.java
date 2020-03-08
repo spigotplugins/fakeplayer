@@ -98,13 +98,6 @@ public final class FakePlayer extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {
-        if (FakePlayer.api != null) {
-            FakePlayer.api.disablePlugin();
-        }
-    }
-
-    @Override
     public void onEnable() {
         final BukkitCommandManager manager = new BukkitCommandManager(this);
         FakePlayer.api = new FakePlayerAPI(this);

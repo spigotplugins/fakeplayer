@@ -14,7 +14,7 @@ class EmptyNetworkManager extends NetworkManager {
         } catch (final Exception e1) {
             e1.printStackTrace();
         }
-        socketAddress = new SocketAddress() {
+        this.l = new SocketAddress() {
             private static final long serialVersionUID = 8207338859896320185L;
         };
     }

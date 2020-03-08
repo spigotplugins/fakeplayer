@@ -1,6 +1,6 @@
 package com.infumia.fakeplayer.handle;
 
-import com.infumia.fakeplayer.Fake;
+import com.infumia.fakeplayer.api.Fake;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 
