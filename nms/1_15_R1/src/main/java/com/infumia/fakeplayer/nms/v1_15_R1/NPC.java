@@ -15,7 +15,8 @@ import org.jetbrains.annotations.NotNull;
 
 public final class NPC extends EntityPlayer implements INPC {
 
-    public NPC(@NotNull final UUID uuid, @NotNull final String name, @NotNull final CraftWorld world) {
+    public NPC(@NotNull final UUID uuid, @NotNull final String name, @NotNull final CraftWorld world,
+               @NotNull final Location location) {
         super(
             ((CraftServer) Bukkit.getServer()).getServer(),
             world.getHandle(),
@@ -30,6 +31,11 @@ public final class NPC extends EntityPlayer implements INPC {
         } catch (final IOException exception) {
             exception.printStackTrace();
         }
+        this.world.addEntity(this);
+        Optional.ofNullable(this.getBukkitEntity()).ifPresent(player -> {
+            player.teleport(location);
+            player.setRemoveWhenFarAway(false);
+        });
     }
 
     @Override
@@ -39,7 +45,7 @@ public final class NPC extends EntityPlayer implements INPC {
             new PacketPlayOutNamedEntitySpawn(this)
         );
         this.server.getPlayerList().players.add(this);
-        this.world.getWorld().getHandle().addPlayerJoin((EntityPlayer)this);
+        this.world.getWorld().getHandle().addPlayerJoin(this);
         this.tp(new Location(this.world.getWorld(), this.locX(), this.locY(), this.locZ(), this.yaw, this.pitch));
     }
 

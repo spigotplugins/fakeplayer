@@ -87,7 +87,7 @@ public final class MenuFile extends BukkitManaged {
                 .closeable(true)
                 .id("list-menu")
                 .manager(FakePlayer.getAPI().inventoryManager)
-                .size(9, 9)
+                .size(6, 9)
                 .title(this.title.build())
                 .provider(new ListMenuProvider(
                     this.fake_player,

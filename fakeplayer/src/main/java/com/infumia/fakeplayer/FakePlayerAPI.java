@@ -7,6 +7,7 @@ import com.infumia.fakeplayer.file.MenuFile;
 import com.infumia.fakeplayer.util.ListenerBasic;
 import com.infumia.fakeplayer.util.UpdateChecker;
 import fr.minuskube.inv.InventoryManager;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.jetbrains.annotations.NotNull;
@@ -58,26 +59,28 @@ public final class FakePlayerAPI {
     }
 
     public void checkForUpdate(@NotNull final CommandSender sender) {
-        if (!this.configFile.check_for_update) {
-            return;
-        }
-        final UpdateChecker updater = new UpdateChecker(this.fakePlayer, 73139);
-
-        try {
-            if (updater.checkForUpdates()) {
-                sender.sendMessage(
-                    this.languageFile.generals.new_version_found
-                        .build("%version%", updater::getLatestVersion)
-                );
-            } else {
-                sender.sendMessage(
-                    this.languageFile.generals.latest_version
-                        .build("%version%", updater::getLatestVersion)
-                );
+        Bukkit.getScheduler().runTaskAsynchronously(this.fakePlayer, () -> {
+            if (!this.configFile.check_for_update) {
+                return;
             }
-        } catch (final Exception exception) {
-            this.fakePlayer.getLogger().warning("Update checker failed, could not connect to the API.");
-        }
+            final UpdateChecker updater = new UpdateChecker(this.fakePlayer, 73139);
+
+            try {
+                if (updater.checkForUpdates()) {
+                    sender.sendMessage(
+                        this.languageFile.generals.new_version_found
+                            .build("%version%", updater::getLatestVersion)
+                    );
+                } else {
+                    sender.sendMessage(
+                        this.languageFile.generals.latest_version
+                            .build("%version%", updater::getLatestVersion)
+                    );
+                }
+            } catch (final Exception exception) {
+                this.fakePlayer.getLogger().warning("Update checker failed, could not connect to the API.");
+            }
+        });
     }
 
 }
