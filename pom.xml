@@ -4,11 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.infumia</groupId>
-    <artifactId>FakePlayer</artifactId>
-    <version>1.0</version>
-    <packaging>jar</packaging>
-    <name>FakePlayer</name>
+    <groupId>com.infumia.fakeplayer</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.2</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>nms</module>
+        <module>api</module>
+        <module>fakeplayer</module>
+    </modules>
 
     <developers>
         <developer>
@@ -42,51 +46,8 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.1</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <minimizeJar>true</minimizeJar>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <relocations>
-                                <relocation>
-                                    <pattern>co.aikar.commands</pattern>
-                                    <shadedPattern>com.infumia.fakeplayer.commands</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>io.github.portlek.configs</pattern>
-                                    <!--TODO Change the package name as you want-->
-                                    <shadedPattern>com.infumia.fakeplayer.file</shadedPattern>
-                                </relocation>
-                            </relocations>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>papermc-repo</id>
-            <url>https://papermc.io/repo/repository/maven-public/</url>
-        </repository>
-        <repository>
-            <id>jcenter</id>
-            <url>https://jcenter.bintray.com</url>
-        </repository>
-        <repository>
-            <id>aikar</id>
-            <url>https://repo.aikar.co/content/groups/aikar/</url>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>
@@ -95,32 +56,6 @@
             <version>19.0.0</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>co.aikar</groupId>
-            <artifactId>acf-bukkit</artifactId>
-            <version>0.5.0-SNAPSHOT</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>annotations</artifactId>
-                    <groupId>org.jetbrains</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>io.github.portlek</groupId>
-            <artifactId>configs-bukkit</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.15.2-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>plugin-annotations</artifactId>
-            <version>1.2.2-SNAPSHOT</version>
-        </dependency>
     </dependencies>
+
 </project>
