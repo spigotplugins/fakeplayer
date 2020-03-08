@@ -7,4 +7,10 @@ public interface INPC {
 
     void spawn(@NotNull Location location);
 
+    void deSpawn();
+
+    void tp(@NotNull Location location);
+
+    void update();
+
 }

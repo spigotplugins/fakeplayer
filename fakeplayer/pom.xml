@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>fakeplayer</artifactId>
+    <artifactId>FakePlayer</artifactId>
 
     <build>
         <plugins>
@@ -24,6 +24,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <outputFile>C:/Users/portl/Desktop/server/plugins/${project.name}.jar</outputFile>
                             <minimizeJar>true</minimizeJar>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <relocations>

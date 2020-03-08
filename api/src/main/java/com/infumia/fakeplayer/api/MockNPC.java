@@ -7,4 +7,17 @@ public final class MockNPC implements INPC {
     @Override
     public void spawn(@NotNull final Location location) {
     }
+
+    @Override
+    public void deSpawn() {
+    }
+
+    @Override
+    public void tp(@NotNull final Location location) {
+    }
+
+    @Override
+    public void update() {
+    }
+
 }
