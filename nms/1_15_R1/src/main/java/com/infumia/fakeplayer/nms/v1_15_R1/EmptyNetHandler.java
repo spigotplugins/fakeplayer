@@ -2,7 +2,7 @@ package com.infumia.fakeplayer.nms.v1_15_R1;
 
 import net.minecraft.server.v1_15_R1.*;
 
-class EmptyNetHandler extends PlayerConnection {
+final class EmptyNetHandler extends PlayerConnection {
 
     EmptyNetHandler(final MinecraftServer minecraftServer, final NetworkManager networkManager,
                     final EntityPlayer entityPlayer) {

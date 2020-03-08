@@ -47,9 +47,14 @@ public final class FakeBasic implements Fake {
     @Override
     public void spawn() {
         Optional.ofNullable(this.spawnpoint.getWorld()).ifPresent(world -> {
-            this.npc = FakeBasic.FAKE_CREATED.create(this.name, world, );
+            this.npc = FakeBasic.FAKE_CREATED.create(this.name, world, this.spawnpoint);
             this.npc.spawn(this.spawnpoint);
         });
+    }
+
+    @Override
+    public void deSpawn() {
+        Optional.ofNullable(this.npc).ifPresent(INPC::deSpawn);
     }
 
 }

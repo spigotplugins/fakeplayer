@@ -3,13 +3,11 @@ package com.infumia.fakeplayer.nms.v1_15_R1;
 import io.netty.channel.*;
 import java.net.SocketAddress;
 
-public class EmptyChannel extends AbstractChannel {
+public final class EmptyChannel extends AbstractChannel {
+    private final ChannelConfig config = new DefaultChannelConfig(this);
 
-    private final ChannelConfig config;
-
-    EmptyChannel(final Channel parent) {
+    public EmptyChannel(final Channel parent) {
         super(parent);
-        this.config = new DefaultChannelConfig(this);
     }
 
     @Override

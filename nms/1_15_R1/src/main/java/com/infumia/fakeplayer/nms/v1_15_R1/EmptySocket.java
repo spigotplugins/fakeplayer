@@ -6,13 +6,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-class EmptySocket extends Socket {
+public final class EmptySocket extends Socket {
 
-    private static final byte[] EMPTY;
-
-    static {
-        EMPTY = new byte[50];
-    }
+    private static final byte[] EMPTY = new byte[50];
 
     @Override
     public InputStream getInputStream() {

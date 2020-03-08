@@ -31,49 +31,51 @@ public final class NPC extends EntityPlayer implements INPC {
         } catch (final IOException exception) {
             exception.printStackTrace();
         }
-        this.world.addEntity(this);
-        Optional.ofNullable(this.getBukkitEntity()).ifPresent(player -> {
-            player.teleport(location);
-            player.setRemoveWhenFarAway(false);
-        });
+        this.playerInteractManager.setGameMode(EnumGamemode.CREATIVE);
+        Util.addEntityToWorld(this);
+        Optional.ofNullable(this.getBukkitEntity()).ifPresent(player ->
+            player.setSleepingIgnored(true)
+        );
+        Util.addOrRemoveFromPlayerList(this, false);
     }
 
     @Override
     public void spawn(@NotNull final Location location) {
-        NPCProtocol.sendPacket(
-            new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER, this),
+        Util.addOrRemoveFromPlayerList(this, false);
+        Util.sendTabListAdd(this);
+        Util.sendPacket(
             new PacketPlayOutNamedEntitySpawn(this)
         );
-        this.server.getPlayerList().players.add(this);
-        this.world.getWorld().getHandle().addPlayerJoin(this);
-        this.tp(new Location(this.world.getWorld(), this.locX(), this.locY(), this.locZ(), this.yaw, this.pitch));
+        this.tp(location);
+        Util.sendPositionUpdate(this);
     }
 
     @Override
     public void deSpawn() {
-        NPCProtocol.sendPacket(
+        Util.sendPacket(
             new PacketPlayOutEntityDestroy(this.getId()),
             new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.REMOVE_PLAYER, this)
         );
-        this.server.getPlayerList().players.remove(this);
-        this.world.getWorld().getHandle().removePlayer(this);
+        Util.removeFromWorld(this);
+        Util.removeFromServerPlayerList(this);
     }
 
     @Override
     public void tp(@NotNull final Location location) {
-        this.setPositionRotation(
-            location.getX(),
-            location.getY(),
-            location.getZ(),
-            location.getYaw(),
-            location.getPitch()
-        );
-        this.update();
+        Optional.ofNullable(this.getBukkitEntity()).ifPresent(craftPlayer -> craftPlayer.teleport(location));
     }
 
     @Override
     public void update() {
-        NPCProtocol.sendPacket(new PacketPlayOutNamedEntitySpawn(this));
+        Util.sendPacket(new PacketPlayOutNamedEntitySpawn(this));
+    }
+
+    @Override
+    public void die(final DamageSource damagesource) {
+        if (!this.dead) {
+            super.die(damagesource);
+            ((WorldServer) this.world).removeEntity(this);
+        }
     }
 
 }

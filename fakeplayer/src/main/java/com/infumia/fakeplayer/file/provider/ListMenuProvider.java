@@ -2,6 +2,7 @@ package com.infumia.fakeplayer.file.provider;
 
 import com.infumia.fakeplayer.FakePlayer;
 import com.infumia.fakeplayer.util.FileElement;
+import com.infumia.fakeplayer.util.Placeholder;
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
@@ -43,18 +44,20 @@ public final class ListMenuProvider implements InventoryProvider {
     public void init(@NotNull final Player player, @NotNull final InventoryContents contents) {
         final List<ClickableItem> items = new ArrayList<>();
         FakePlayer.getAPI().fakesFile.fakeplayers.values().forEach(fake ->
-            items.add(this.fakePlayer.clickableItem(event -> {
-                event.setCancelled(true);
-                final ClickType type = event.getClick();
-                if (type.isRightClick()) {
-                    FakePlayer.getAPI().fakesFile.fakeplayers.remove(fake.getName());
-                    FakePlayer.getAPI().menuFile.fakePlayers.inventory()
-                        .open((Player) event.getWhoClicked());
-                } else if (type.isLeftClick()) {
-                    event.getWhoClicked().teleport(fake.getSpawnPoint());
-                    event.getWhoClicked().closeInventory();
-                }
-            }))
+            items.add(this.fakePlayer
+                .replace(true, true, new Placeholder("%player_name%", fake.getName()))
+                .clickableItem(event -> {
+                    event.setCancelled(true);
+                    final ClickType type = event.getClick();
+                    if (type.isRightClick()) {
+                        FakePlayer.getAPI().fakesFile.remove(fake.getName());
+                        FakePlayer.getAPI().menuFile.fakePlayers.inventory()
+                            .open((Player) event.getWhoClicked());
+                    } else if (type.isLeftClick()) {
+                        event.getWhoClicked().teleport(fake.getSpawnPoint());
+                        event.getWhoClicked().closeInventory();
+                    }
+                }))
         );
         final Pagination pagination = contents.pagination();
         pagination.setItems(items.toArray(ListMenuProvider.CLICKABLE_ITEMS));

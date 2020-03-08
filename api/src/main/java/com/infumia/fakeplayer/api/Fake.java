@@ -13,4 +13,6 @@ public interface Fake {
 
     void spawn();
 
+    void deSpawn();
+
 }

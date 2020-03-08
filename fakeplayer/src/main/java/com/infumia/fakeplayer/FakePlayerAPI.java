@@ -1,5 +1,6 @@
 package com.infumia.fakeplayer;
 
+import com.infumia.fakeplayer.api.Fake;
 import com.infumia.fakeplayer.file.ConfigFile;
 import com.infumia.fakeplayer.file.FakesFile;
 import com.infumia.fakeplayer.file.LanguageFile;
@@ -42,6 +43,7 @@ public final class FakePlayerAPI {
     }
 
     public void reloadPlugin(final boolean first) {
+        this.disablePlugin();
         this.languageFile.load();
         this.configFile.load();
         this.fakesFile.load();
@@ -53,9 +55,20 @@ public final class FakePlayerAPI {
                 event -> event.getPlayer().hasPermission("fakeplayer.version"),
                 event -> this.checkForUpdate(event.getPlayer())
             ).register(this.fakePlayer);
+            new ListenerBasic<>(
+                PlayerJoinEvent.class,
+                event -> this.fakesFile.fakeplayers.values().forEach(npc -> {
+                    npc.deSpawn();
+                    npc.spawn();
+                })
+            ).register(this.fakePlayer);
         }
 
         this.checkForUpdate(this.fakePlayer.getServer().getConsoleSender());
+    }
+
+    public void disablePlugin() {
+        this.fakesFile.fakeplayers.values().forEach(Fake::deSpawn);
     }
 
     public void checkForUpdate(@NotNull final CommandSender sender) {

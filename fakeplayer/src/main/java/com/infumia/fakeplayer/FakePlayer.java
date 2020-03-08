@@ -2,6 +2,7 @@ package com.infumia.fakeplayer;
 
 import co.aikar.commands.BukkitCommandManager;
 import com.infumia.fakeplayer.commands.FakePlayerCommand;
+import java.util.Optional;
 import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.annotation.permission.ChildPermission;
@@ -95,6 +96,11 @@ public final class FakePlayer extends JavaPlugin {
     @Override
     public void onLoad() {
         FakePlayer.instance = this;
+    }
+
+    @Override
+    public void onDisable() {
+        Optional.ofNullable(FakePlayer.api).ifPresent(FakePlayerAPI::disablePlugin);
     }
 
     @Override
