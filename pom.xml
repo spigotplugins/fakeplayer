@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--TODO Change the package name as you want-->
+    <groupId>com.infumia</groupId>
+    <!--TODO Change the artifactId as you want-->
+    <artifactId>ExamplePlugin</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <!--TODO Change the name as you want-->
+    <name>ExamplePlugin</name>
+
+    <developers>
+        <!--TODO Change the developer as you want-->
+        <developer>
+            <id>portlek</id>
+            <name>Hasan Demirtaş</name>
+            <url>https://github.com/portlek</url>
+            <organization>Infumia</organization>
+            <organizationUrl>https://infumia.com.tr</organizationUrl>
+            <roles>
+                <role>LeadDeveloper</role>
+                <role>Architect</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <!--TODO Change the description as you want-->
+    <description>Example plugin for Bukkit servers</description>
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <defaultGoal>clean package</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <minimizeJar>true</minimizeJar>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <relocations>
+                                <relocation>
+                                    <pattern>co.aikar.commands</pattern>
+                                    <!--TODO Change the package name as you want-->
+                                    <shadedPattern>com.infumia.exampleplugin.commands</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>io.github.portlek.configs</pattern>
+                                    <!--TODO Change the package name as you want-->
+                                    <shadedPattern>com.infumia.exampleplugin.file</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>papermc-repo</id>
+            <url>https://papermc.io/repo/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>jcenter</id>
+            <url>https://jcenter.bintray.com</url>
+        </repository>
+        <repository>
+            <id>aikar</id>
+            <url>https://repo.aikar.co/content/groups/aikar/</url>
+        </repository>
+        <!--Hook Repositories-->
+        <repository>
+            <id>vault-repo</id>
+            <url>http://nexus.hc.to/content/repositories/pub_releases</url>
+        </repository>
+        <repository>
+            <id>placeholderapi</id>
+            <url>http://repo.extendedclip.com/content/repositories/placeholderapi/</url>
+        </repository>
+        <repository>
+            <id>pex-repo</id>
+            <url>http://pex-repo.aoeu.xyz</url>
+        </repository>
+        <repository>
+            <id>CodeMC</id>
+            <url>https://repo.codemc.org/repository/maven-public</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.portlek</groupId>
+            <artifactId>Database</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>19.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>co.aikar</groupId>
+            <artifactId>acf-bukkit</artifactId>
+            <version>0.5.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>annotations</artifactId>
+                    <groupId>org.jetbrains</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.github.portlek</groupId>
+            <artifactId>configs-bukkit</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.cryptomorin</groupId>
+            <artifactId>XSeries</artifactId>
+            <version>5.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>1.15.2-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>plugin-annotations</artifactId>
+            <version>1.2.2-SNAPSHOT</version>
+        </dependency>
+        <!--Hook Dependencies-->
+        <dependency>
+            <groupId>me.clip</groupId>
+            <artifactId>placeholderapi</artifactId>
+            <version>2.10.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.anjocaido</groupId>
+            <artifactId>groupmanagerx</artifactId>
+            <version>2.2-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.luckperms</groupId>
+            <artifactId>api</artifactId>
+            <version>5.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>me.lucko.luckperms</groupId>
+            <artifactId>luckperms-api</artifactId>
+            <version>4.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.tehkode</groupId>
+            <artifactId>PermissionsEx</artifactId>
+            <version>1.23.5-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.milkbowl.vault</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.7</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>bukkit</artifactId>
+                    <groupId>org.bukkit</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+</project>
