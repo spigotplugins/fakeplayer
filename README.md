@@ -1,2 +1,2 @@
-# ExamplePluginTemplate
- Example plugin template for Bukkit plugins.
+# FakePlayer
+ FakePlayer plugin template for Bukkit plugins.

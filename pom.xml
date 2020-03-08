@@ -4,18 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--TODO Change the package name as you want-->
     <groupId>com.infumia</groupId>
-    <!--TODO Change the artifactId as you want-->
-    <artifactId>ExamplePlugin</artifactId>
+    <artifactId>FakePlayer</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-
-    <!--TODO Change the name as you want-->
-    <name>ExamplePlugin</name>
+    <name>FakePlayer</name>
 
     <developers>
-        <!--TODO Change the developer as you want-->
         <developer>
             <id>portlek</id>
             <name>Hasan Demirtaş</name>
@@ -29,8 +24,7 @@
         </developer>
     </developers>
 
-    <!--TODO Change the description as you want-->
-    <description>Example plugin for Bukkit servers</description>
+    <description>FakePlayer plugin for Bukkit servers</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -64,13 +58,12 @@
                             <relocations>
                                 <relocation>
                                     <pattern>co.aikar.commands</pattern>
-                                    <!--TODO Change the package name as you want-->
-                                    <shadedPattern>com.infumia.exampleplugin.commands</shadedPattern>
+                                    <shadedPattern>com.infumia.fakeplayer.commands</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>io.github.portlek.configs</pattern>
                                     <!--TODO Change the package name as you want-->
-                                    <shadedPattern>com.infumia.exampleplugin.file</shadedPattern>
+                                    <shadedPattern>com.infumia.fakeplayer.file</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
@@ -93,31 +86,9 @@
             <id>aikar</id>
             <url>https://repo.aikar.co/content/groups/aikar/</url>
         </repository>
-        <!--Hook Repositories-->
-        <repository>
-            <id>vault-repo</id>
-            <url>http://nexus.hc.to/content/repositories/pub_releases</url>
-        </repository>
-        <repository>
-            <id>placeholderapi</id>
-            <url>http://repo.extendedclip.com/content/repositories/placeholderapi/</url>
-        </repository>
-        <repository>
-            <id>pex-repo</id>
-            <url>http://pex-repo.aoeu.xyz</url>
-        </repository>
-        <repository>
-            <id>CodeMC</id>
-            <url>https://repo.codemc.org/repository/maven-public</url>
-        </repository>
     </repositories>
 
     <dependencies>
-        <dependency>
-            <groupId>io.github.portlek</groupId>
-            <artifactId>Database</artifactId>
-            <version>1.0</version>
-        </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
@@ -141,11 +112,6 @@
             <version>1.0</version>
         </dependency>
         <dependency>
-            <groupId>com.github.cryptomorin</groupId>
-            <artifactId>XSeries</artifactId>
-            <version>5.3.1</version>
-        </dependency>
-        <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
             <version>1.15.2-R0.1-SNAPSHOT</version>
@@ -155,49 +121,6 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>plugin-annotations</artifactId>
             <version>1.2.2-SNAPSHOT</version>
-        </dependency>
-        <!--Hook Dependencies-->
-        <dependency>
-            <groupId>me.clip</groupId>
-            <artifactId>placeholderapi</artifactId>
-            <version>2.10.4</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.anjocaido</groupId>
-            <artifactId>groupmanagerx</artifactId>
-            <version>2.2-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.luckperms</groupId>
-            <artifactId>api</artifactId>
-            <version>5.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>me.lucko.luckperms</groupId>
-            <artifactId>luckperms-api</artifactId>
-            <version>4.4</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>ru.tehkode</groupId>
-            <artifactId>PermissionsEx</artifactId>
-            <version>1.23.5-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.milkbowl.vault</groupId>
-            <artifactId>VaultAPI</artifactId>
-            <version>1.7</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>bukkit</artifactId>
-                    <groupId>org.bukkit</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 </project>
