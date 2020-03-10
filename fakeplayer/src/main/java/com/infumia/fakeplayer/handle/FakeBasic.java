@@ -1,10 +1,12 @@
 package com.infumia.fakeplayer.handle;
 
+import com.infumia.fakeplayer.FakePlayer;
 import com.infumia.fakeplayer.api.Fake;
 import com.infumia.fakeplayer.api.FakeCreated;
 import com.infumia.fakeplayer.api.INPC;
 import com.infumia.fakeplayer.api.MockFakeCreated;
 import com.infumia.fakeplayer.nms.v1_15_R1.FakeCreated1_15_R1;
+import io.github.portlek.configs.util.MapEntry;
 import io.github.portlek.versionmatched.VersionMatched;
 import java.util.Optional;
 import org.bukkit.Location;
@@ -47,7 +49,11 @@ public final class FakeBasic implements Fake {
     @Override
     public void spawn() {
         Optional.ofNullable(this.spawnpoint.getWorld()).ifPresent(world -> {
-            this.npc = FakeBasic.FAKE_CREATED.create(this.name, world);
+            this.npc = FakeBasic.FAKE_CREATED.create(
+                this.name,
+                FakePlayer.getAPI().configFile.tab_name
+                    .build(MapEntry.of("%player_name%", this::getName)),
+                world);
             this.npc.spawn(this.spawnpoint);
         });
     }

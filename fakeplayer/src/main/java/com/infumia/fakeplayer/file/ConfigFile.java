@@ -22,6 +22,11 @@ public final class ConfigFile extends BukkitManaged {
     @Value
     public boolean check_for_update = true;
 
+    @Value
+    public Replaceable<String> tab_name = Replaceable.of("&e[Player] &a%player_name%")
+        .map(ColorUtil::colored)
+        .replaces("%player_name%");
+
     @Override
     public void load() {
         super.load();

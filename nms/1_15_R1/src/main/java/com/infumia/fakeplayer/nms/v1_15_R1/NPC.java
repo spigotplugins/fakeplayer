@@ -4,19 +4,21 @@ import com.infumia.fakeplayer.api.INPC;
 import com.mojang.authlib.GameProfile;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Optional;
 import java.util.UUID;
 import net.minecraft.server.v1_15_R1.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_15_R1.CraftServer;
 import org.bukkit.craftbukkit.v1_15_R1.CraftWorld;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public final class NPC extends EntityPlayer implements INPC {
 
-    public NPC(@NotNull final UUID uuid, @NotNull final String name, @NotNull final CraftWorld world) {
+    public NPC(@NotNull final UUID uuid, @NotNull final String name, @NotNull final String tabname,
+               @NotNull final CraftWorld world) {
         super(
             ((CraftServer) Bukkit.getServer()).getServer(),
             world.getHandle(),
@@ -31,12 +33,11 @@ public final class NPC extends EntityPlayer implements INPC {
         } catch (final IOException exception) {
             exception.printStackTrace();
         }
-//        this.listName = CraftChatMessage.fromStringOrNull(ChatColor.translateAlternateColorCodes('&', name));
-        this.playerInteractManager.setGameMode(EnumGamemode.CREATIVE);
         Util.addEntityToWorld(this);
-        Optional.ofNullable(this.getBukkitEntity()).ifPresent(player -> {
-            player.setSleepingIgnored(true);
-        });
+        final Player player = this.getBukkitEntity();
+        player.setGameMode(GameMode.CREATIVE);
+        player.setPlayerListName(tabname);
+        player.setSleepingIgnored(true);
         Util.addOrRemoveFromPlayerList(this, false);
     }
 
@@ -63,7 +64,7 @@ public final class NPC extends EntityPlayer implements INPC {
 
     @Override
     public void tp(@NotNull final Location location) {
-        Optional.ofNullable(this.getBukkitEntity()).ifPresent(craftPlayer -> craftPlayer.teleport(location));
+        this.getBukkitEntity().teleport(location);
     }
 
     @Override
