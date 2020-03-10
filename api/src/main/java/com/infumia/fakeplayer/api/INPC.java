@@ -9,8 +9,6 @@ public interface INPC {
 
     void deSpawn();
 
-    void tp(@NotNull Location location);
-
-    void update();
+    void toggleVisible();
 
 }

@@ -44,7 +44,8 @@ public final class MenuFile extends BukkitManaged {
                 .name("&a%player_name%")
                 .lore("",
                     "&7Right Click to delete this fake player.",
-                    "&7Left Click to teleport this fake player.")
+                    "&7Left Click to teleport this fake player.",
+                    "&7Middle Click to toggle visible this fake player.")
                 .build(),
             0, 0
         );

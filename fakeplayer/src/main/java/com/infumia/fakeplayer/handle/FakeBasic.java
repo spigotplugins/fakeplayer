@@ -49,11 +49,13 @@ public final class FakeBasic implements Fake {
     @Override
     public void spawn() {
         Optional.ofNullable(this.spawnpoint.getWorld()).ifPresent(world -> {
-            this.npc = FakeBasic.FAKE_CREATED.create(
-                this.name,
-                FakePlayer.getAPI().configFile.tab_name
-                    .build(MapEntry.of("%player_name%", this::getName)),
-                world);
+            if (!Optional.ofNullable(this.npc).isPresent()) {
+                this.npc = FakeBasic.FAKE_CREATED.create(
+                    this.name,
+                    FakePlayer.getAPI().configFile.tab_name
+                        .build(MapEntry.of("%player_name%", this::getName)),
+                    world);
+            }
             this.npc.spawn(this.spawnpoint);
         });
     }
@@ -61,6 +63,11 @@ public final class FakeBasic implements Fake {
     @Override
     public void deSpawn() {
         Optional.ofNullable(this.npc).ifPresent(INPC::deSpawn);
+    }
+
+    @Override
+    public void toggleVisible() {
+        Optional.ofNullable(this.npc).ifPresent(INPC::toggleVisible);
     }
 
 }

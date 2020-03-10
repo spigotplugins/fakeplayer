@@ -47,6 +47,7 @@ public final class FakePlayerAPI {
         this.languageFile.load();
         this.configFile.load();
         this.fakesFile.load();
+        this.menuFile.load();
 
         if (first) {
             this.inventoryManager.init();

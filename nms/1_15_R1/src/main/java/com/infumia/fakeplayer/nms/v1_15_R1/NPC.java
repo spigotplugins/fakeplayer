@@ -17,6 +17,8 @@ import org.jetbrains.annotations.NotNull;
 
 public final class NPC extends EntityPlayer implements INPC {
 
+    private boolean visible = true;
+
     public NPC(@NotNull final UUID uuid, @NotNull final String name, @NotNull final String tabname,
                @NotNull final CraftWorld world) {
         super(
@@ -48,8 +50,10 @@ public final class NPC extends EntityPlayer implements INPC {
         Util.sendPacket(
             new PacketPlayOutNamedEntitySpawn(this)
         );
-        this.tp(location);
+        this.getBukkitEntity().teleport(location);
         Util.sendPositionUpdate(this);
+        this.toggleVisible();
+        this.toggleVisible();
     }
 
     @Override
@@ -63,13 +67,13 @@ public final class NPC extends EntityPlayer implements INPC {
     }
 
     @Override
-    public void tp(@NotNull final Location location) {
-        this.getBukkitEntity().teleport(location);
-    }
-
-    @Override
-    public void update() {
-        Util.sendPacket(new PacketPlayOutNamedEntitySpawn(this));
+    public void toggleVisible() {
+        if (this.visible) {
+            Util.sendPacket(new PacketPlayOutEntityDestroy(this.getId()));
+        } else {
+            Util.sendPacket(new PacketPlayOutNamedEntitySpawn(this));
+        }
+        this.visible = !this.visible;
     }
 
     @Override

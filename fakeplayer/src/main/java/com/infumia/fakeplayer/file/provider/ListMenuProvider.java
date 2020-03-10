@@ -56,6 +56,8 @@ public final class ListMenuProvider implements InventoryProvider {
                     } else if (type.isLeftClick()) {
                         event.getWhoClicked().teleport(fake.getSpawnPoint());
                         event.getWhoClicked().closeInventory();
+                    } else if (type == ClickType.MIDDLE) {
+                        fake.toggleVisible();
                     }
                 }))
         );

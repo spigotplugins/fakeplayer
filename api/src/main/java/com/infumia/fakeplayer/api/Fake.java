@@ -15,4 +15,6 @@ public interface Fake {
 
     void deSpawn();
 
+    void toggleVisible();
+
 }
