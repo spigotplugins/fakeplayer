@@ -1,2 +1,2 @@
 # FakePlayer
- FakePlayer plugin template for Bukkit plugins.
+ FakePlayer for Bukkit plugins.
