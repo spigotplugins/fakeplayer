@@ -78,8 +78,8 @@ final class Util {
 
     static void setHeadYaw(@NotNull final EntityPlayer player, final float yaw) {
         final float clamp = Util.clampYaw(yaw);
-        player.aK = clamp;
-        player.aJ = clamp;
+        player.aI = clamp;
+        player.aH = clamp;
     }
 
     static float clampYaw(final float yaw) {
