@@ -10,7 +10,7 @@ class EmptyNetworkManager extends NetworkManager {
     EmptyNetworkManager(final EnumProtocolDirection flag) {
         super(flag);
         try {
-            this.getClass().getField("  i").set(this, new EmptyChannel(null));
+            this.channel = new EmptyChannel(null);
         } catch (final Exception e1) {
             e1.printStackTrace();
         }

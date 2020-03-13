@@ -121,11 +121,6 @@
             <version>1.2.2-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.infumia.fakeplayer</groupId>
-            <artifactId>api</artifactId>
-            <version>1.2</version>
-        </dependency>
-        <dependency>
             <groupId>com.infumia.fakeplayer.nms</groupId>
             <artifactId>1_8_R1</artifactId>
             <version>1.2</version>
