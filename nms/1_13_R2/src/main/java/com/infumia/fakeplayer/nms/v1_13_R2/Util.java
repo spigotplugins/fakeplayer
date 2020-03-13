@@ -1,12 +1,9 @@
 package com.infumia.fakeplayer.nms.v1_13_R2;
 
-import java.lang.reflect.Field;
 import java.net.SocketAddress;
 import java.util.Arrays;
-import java.util.List;
 import net.minecraft.server.v1_13_R2.*;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_13_R2.CraftServer;
 import org.bukkit.craftbukkit.v1_13_R2.entity.CraftPlayer;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.jetbrains.annotations.NotNull;
@@ -33,13 +30,15 @@ final class Util {
         }
         if (remove) {
             player.world.players.remove(player);
+            player.server.getPlayerList().players.add(player);
         } else if (!player.world.players.contains(player)) {
             player.world.players.add(player);
+            player.server.getPlayerList().players.add(player);
         }
     }
 
     static void removeFromServerPlayerList(@NotNull final EntityPlayer player) {
-        ((CraftServer) Bukkit.getServer()).getHandle().players.remove(player);
+        player.server.getPlayerList().players.remove(player);
     }
 
     static void removeFromWorld(@NotNull final EntityPlayer player) {

@@ -3,7 +3,6 @@ package com.infumia.fakeplayer.nms.v1_15_R1;
 import com.infumia.fakeplayer.api.FakeCreated;
 import com.infumia.fakeplayer.api.INPC;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.craftbukkit.v1_15_R1.CraftWorld;
 import org.jetbrains.annotations.NotNull;

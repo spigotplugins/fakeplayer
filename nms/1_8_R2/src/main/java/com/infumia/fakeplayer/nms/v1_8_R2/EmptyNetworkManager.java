@@ -1,6 +1,5 @@
 package com.infumia.fakeplayer.nms.v1_8_R2;
 
-import java.net.SocketAddress;
 import net.minecraft.server.v1_8_R2.EnumProtocolDirection;
 import net.minecraft.server.v1_8_R2.NetworkManager;
 import net.minecraft.server.v1_8_R2.Packet;

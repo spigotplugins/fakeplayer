@@ -4,7 +4,6 @@ import java.net.SocketAddress;
 import java.util.Arrays;
 import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.jetbrains.annotations.NotNull;
@@ -31,13 +30,15 @@ final class Util {
         }
         if (remove) {
             player.world.players.remove(player);
+            player.server.getPlayerList().players.add(player);
         } else if (!player.world.players.contains(player)) {
             player.world.players.add(player);
+            player.server.getPlayerList().players.add(player);
         }
     }
 
     static void removeFromServerPlayerList(@NotNull final EntityPlayer player) {
-        ((CraftServer) Bukkit.getServer()).getHandle().players.remove(player);
+        player.server.getPlayerList().players.remove(player);
     }
 
     static void removeFromWorld(@NotNull final EntityPlayer player) {
