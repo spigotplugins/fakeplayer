@@ -56,13 +56,15 @@ final class Util {
         }
         if (remove) {
             player.world.getPlayers().remove(player);
+            player.server.getPlayerList().players.remove(player);
         } else if (!player.world.getPlayers().contains(player)) {
             ((List) player.world.getPlayers()).add(player);
+            player.server.getPlayerList().players.add(player);
         }
     }
 
     static void removeFromServerPlayerList(@NotNull final EntityPlayer player) {
-        ((CraftServer) Bukkit.getServer()).getHandle().players.remove(player);
+        player.server.getPlayerList().players.remove(player);
     }
 
     static void removeFromWorld(@NotNull final EntityPlayer player) {

@@ -30,7 +30,7 @@ final class Util {
         }
         if (remove) {
             player.world.players.remove(player);
-            player.server.getPlayerList().players.add(player);
+            player.server.getPlayerList().players.remove(player);
         } else if (!player.world.players.contains(player)) {
             player.world.players.add(player);
             player.server.getPlayerList().players.add(player);
