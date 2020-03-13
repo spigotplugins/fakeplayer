@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 @Plugin(
     name = "FakePlayer",
-    version = "1.2"
+    version = "1.3"
 )
 @Description("FakePlayer plugin for Bukkit servers")
 @ApiVersion(ApiVersion.Target.v1_13)
