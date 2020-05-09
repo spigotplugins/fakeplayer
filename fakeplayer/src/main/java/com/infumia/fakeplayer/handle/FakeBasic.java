@@ -75,7 +75,7 @@ public final class FakeBasic implements Fake {
                 this.npc = FakeBasic.FAKE_CREATED.create(
                     this.name,
                     FakePlayer.getAPI().configFile.tab_name
-                        .build(MapEntry.of("%player_name%", this::getName)),
+                        .build(MapEntry.from("%player_name%", this::getName)),
                     world);
             }
             this.npc.spawn(this.spawnpoint);

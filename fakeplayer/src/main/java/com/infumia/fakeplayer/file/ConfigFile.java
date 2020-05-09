@@ -28,8 +28,7 @@ public final class ConfigFile extends BukkitManaged {
         .replaces("%player_name%");
 
     @Override
-    public void load() {
-        super.load();
+    public void onLoad() {
         this.setAutoSave(true);
     }
 

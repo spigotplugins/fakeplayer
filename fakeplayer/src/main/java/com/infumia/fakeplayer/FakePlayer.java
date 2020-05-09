@@ -2,7 +2,6 @@ package com.infumia.fakeplayer;
 
 import co.aikar.commands.BukkitCommandManager;
 import com.infumia.fakeplayer.commands.FakePlayerCommand;
-import java.util.Optional;
 import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.annotation.permission.ChildPermission;
@@ -14,6 +13,8 @@ import org.bukkit.plugin.java.annotation.plugin.Plugin;
 import org.bukkit.plugin.java.annotation.plugin.author.Author;
 import org.bukkit.plugin.java.annotation.plugin.author.Authors;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Optional;
 
 @Plugin(
     name = "FakePlayer",
@@ -109,12 +110,8 @@ public final class FakePlayer extends JavaPlugin {
         FakePlayer.api = new FakePlayerAPI(this);
         this.getServer().getScheduler().runTask(this, () ->
             this.getServer().getScheduler().runTaskAsynchronously(this, () ->
-                FakePlayer.api.reloadPlugin(true)
-            )
-        );
-        manager.registerCommand(
-            new FakePlayerCommand(FakePlayer.api)
-        );
+                FakePlayer.api.reloadPlugin(true)));
+        manager.registerCommand(new FakePlayerCommand());
     }
 
 }

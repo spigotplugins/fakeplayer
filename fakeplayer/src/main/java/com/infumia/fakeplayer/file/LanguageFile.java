@@ -1,20 +1,25 @@
 package com.infumia.fakeplayer.file;
 
 import io.github.portlek.configs.BukkitLinkedManaged;
+import io.github.portlek.configs.BukkitSection;
 import io.github.portlek.configs.annotations.*;
 import io.github.portlek.configs.util.ColorUtil;
 import io.github.portlek.configs.util.MapEntry;
 import io.github.portlek.configs.util.Replaceable;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
-import org.jetbrains.annotations.NotNull;
 
-@LinkedConfig(configs = @Config(
-    name = "en",
-    location = "%basedir%/FakePlayer/languages"
+@LinkedConfig(files = @LinkedFile(
+    key = "en",
+    config = @Config(
+        name = "en",
+        location = "%basedir%/FakePlayer/languages"
+    )
 ))
 public final class LanguageFile extends BukkitLinkedManaged {
 
@@ -41,7 +46,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
     );
 
     public LanguageFile(@NotNull final ConfigFile configFile) {
-        super(configFile.plugin_language, MapEntry.of("config", configFile));
+        super(() -> configFile.plugin_language, MapEntry.from("config", configFile));
     }
 
     @NotNull
@@ -54,7 +59,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
     }
 
     @Section(path = "errors")
-    public final class Errors {
+    public final class Errors extends BukkitSection {
 
         @Value
         public Replaceable<String> there_is_already = LanguageFile.this.match(s ->
@@ -69,7 +74,27 @@ public final class LanguageFile extends BukkitLinkedManaged {
     }
 
     @Section(path = "general")
-    public final class General {
+    public final class General extends BukkitSection {
+
+        @Value
+        public Replaceable<String> join_message = LanguageFile.this.match(s ->
+            Optional.of(
+                Replaceable.of("%prefix% &a%player_name% just joined the server!")
+                    .map(ColorUtil::colored)
+                    .replaces("%player_name%")
+                    .replace(LanguageFile.this.getPrefix())
+            )
+        );
+
+        @Value
+        public Replaceable<String> quit_message = LanguageFile.this.match(s ->
+            Optional.of(
+                Replaceable.of("%prefix% &a%player_name% just quit the server!")
+                    .map(ColorUtil::colored)
+                    .replaces("%player_name%")
+                    .replace(LanguageFile.this.getPrefix())
+            )
+        );
 
         @Value
         public Replaceable<String> reload_complete = LanguageFile.this.match(s ->

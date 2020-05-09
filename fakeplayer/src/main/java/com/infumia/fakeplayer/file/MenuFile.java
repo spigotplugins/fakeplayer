@@ -4,15 +4,15 @@ import com.cryptomorin.xseries.XMaterial;
 import com.infumia.fakeplayer.FakePlayer;
 import com.infumia.fakeplayer.file.provider.ListMenuProvider;
 import com.infumia.fakeplayer.util.FileElement;
-import fr.minuskube.inv.SmartInventory;
+import io.github.portlek.bukkititembuilder.ItemStackBuilder;
 import io.github.portlek.configs.BukkitManaged;
 import io.github.portlek.configs.annotations.Config;
 import io.github.portlek.configs.annotations.Instance;
 import io.github.portlek.configs.annotations.Section;
 import io.github.portlek.configs.annotations.Value;
-import io.github.portlek.configs.util.BukkitItemBuilder;
 import io.github.portlek.configs.util.ColorUtil;
 import io.github.portlek.configs.util.Replaceable;
+import io.github.portlek.smartinventory.Page;
 import org.jetbrains.annotations.NotNull;
 
 @Config(
@@ -25,9 +25,8 @@ public final class MenuFile extends BukkitManaged {
     public final MenuFile.FakePlayers fakePlayers = new MenuFile.FakePlayers();
 
     @Override
-    public void load() {
+    public void onCreate() {
         this.addCustomValue(FileElement.class, new FileElement.Provider());
-        super.load();
     }
 
     @Section(path = "fake-players")
@@ -40,7 +39,7 @@ public final class MenuFile extends BukkitManaged {
         @Value
         public FileElement fake_player = new FileElement(
             "fake-player",
-            BukkitItemBuilder.of(XMaterial.PLAYER_HEAD)
+            ItemStackBuilder.from(XMaterial.PLAYER_HEAD)
                 .name("&a%player_name%")
                 .lore("",
                     "&7Right Click to delete this fake player.",
@@ -53,7 +52,7 @@ public final class MenuFile extends BukkitManaged {
         @Value
         public FileElement add = new FileElement(
             "add",
-            BukkitItemBuilder.of(XMaterial.APPLE)
+            ItemStackBuilder.from(XMaterial.APPLE)
                 .name("&aAdd Fake Player")
                 .lore("", "&7Click and add fake player to your location.")
                 .build(),
@@ -63,7 +62,7 @@ public final class MenuFile extends BukkitManaged {
         @Value
         public FileElement next = new FileElement(
             "next",
-            BukkitItemBuilder.of(XMaterial.ARROW)
+            ItemStackBuilder.from(XMaterial.ARROW)
                 .name("&aNext")
                 .lore("",
                     "&7Click and see the next page.")
@@ -74,7 +73,7 @@ public final class MenuFile extends BukkitManaged {
         @Value
         public FileElement previous = new FileElement(
             "previous",
-            BukkitItemBuilder.of(XMaterial.ARROW)
+            ItemStackBuilder.from(XMaterial.ARROW)
                 .name("&aPrevious")
                 .lore("",
                     "&7Click and see the previous page.")
@@ -83,19 +82,16 @@ public final class MenuFile extends BukkitManaged {
         );
 
         @NotNull
-        public SmartInventory inventory() {
-            return SmartInventory.builder()
-                .closeable(true)
-                .id("list-menu")
-                .manager(FakePlayer.getAPI().inventoryManager)
-                .size(6, 9)
-                .title(this.title.build())
-                .provider(new ListMenuProvider(
+        public Page inventory() {
+            return Page.build(
+                FakePlayer.getAPI().inventory,
+                new ListMenuProvider(
                     this.fake_player,
                     this.add,
                     this.next,
-                    this.previous))
-                .build();
+                    this.previous
+                )).row(6)
+                .title(this.title.build());
         }
 
     }

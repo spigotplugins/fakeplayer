@@ -7,7 +7,8 @@ import com.infumia.fakeplayer.file.LanguageFile;
 import com.infumia.fakeplayer.file.MenuFile;
 import com.infumia.fakeplayer.util.ListenerBasic;
 import com.infumia.fakeplayer.util.UpdateChecker;
-import fr.minuskube.inv.InventoryManager;
+import io.github.portlek.smartinventory.SmartInventory;
+import io.github.portlek.smartinventory.manager.BasicSmartInventory;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -16,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 public final class FakePlayerAPI {
 
     @NotNull
-    public final InventoryManager inventoryManager;
+    public final SmartInventory inventory;
 
     @NotNull
     public final FakePlayer fakePlayer;
@@ -34,7 +35,7 @@ public final class FakePlayerAPI {
     public final MenuFile menuFile;
 
     public FakePlayerAPI(@NotNull final FakePlayer fakePlayer) {
-        this.inventoryManager = new InventoryManager(fakePlayer);
+        this.inventory = new BasicSmartInventory(fakePlayer);
         this.fakePlayer = fakePlayer;
         this.configFile = new ConfigFile();
         this.languageFile = new LanguageFile(this.configFile);
@@ -50,7 +51,7 @@ public final class FakePlayerAPI {
         this.menuFile.load();
 
         if (first) {
-            this.inventoryManager.init();
+            this.inventory.init();
             new ListenerBasic<>(
                 PlayerJoinEvent.class,
                 event -> event.getPlayer().hasPermission("fakeplayer.version"),

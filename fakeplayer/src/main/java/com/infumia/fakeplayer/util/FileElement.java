@@ -1,21 +1,22 @@
 package com.infumia.fakeplayer.util;
 
-import fr.minuskube.inv.ClickableItem;
-import fr.minuskube.inv.content.InventoryContents;
-import io.github.portlek.configs.BukkitManaged;
-import io.github.portlek.configs.Managed;
-import io.github.portlek.configs.Provided;
+import io.github.portlek.configs.BkktSection;
+import io.github.portlek.configs.CfgSection;
+import io.github.portlek.configs.util.Provided;
+import io.github.portlek.smartinventory.Icon;
+import io.github.portlek.smartinventory.InventoryContents;
+import io.github.portlek.smartinventory.event.abs.ClickEvent;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
-import org.bukkit.Material;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.jetbrains.annotations.NotNull;
 
 public final class FileElement {
 
@@ -43,13 +44,13 @@ public final class FileElement {
         this.column = fileElement.column;
     }
 
-    public void insert(@NotNull final InventoryContents contents, @NotNull final Consumer<InventoryClickEvent> consumer) {
+    public void insert(@NotNull final InventoryContents contents, @NotNull final Consumer<ClickEvent> consumer) {
         contents.set(this.row, this.column, this.clickableItem(consumer));
     }
 
     @NotNull
-    public ClickableItem clickableItem(@NotNull final Consumer<InventoryClickEvent> consumer) {
-        return ClickableItem.of(this.itemStack, consumer);
+    public Icon clickableItem(@NotNull final Consumer<ClickEvent> consumer) {
+        return Icon.from(this.itemStack).whenclick(consumer);
     }
 
     public void fill(@NotNull final InventoryContents contents) {
@@ -57,7 +58,7 @@ public final class FileElement {
         });
     }
 
-    public void fill(@NotNull final InventoryContents contents, @NotNull final Consumer<InventoryClickEvent> consumer) {
+    public void fill(@NotNull final InventoryContents contents, @NotNull final Consumer<ClickEvent> consumer) {
         contents.fill(this.clickableItem(consumer));
     }
 
@@ -121,29 +122,22 @@ public final class FileElement {
 
     public static class Provider implements Provided<FileElement> {
         @Override
-        public void set(@NotNull final Object o, @NotNull final Managed managed, @NotNull final String s) {
-            final FileElement fileElement = (FileElement) o;
-            final BukkitManaged bukkitManaged = (BukkitManaged) managed;
-
-            bukkitManaged.set(s + ".row", fileElement.row);
-            bukkitManaged.set(s + ".column", fileElement.column);
-            bukkitManaged.setItemStack(s, fileElement.itemStack);
+        public void set(@NotNull final FileElement fileElement, @NotNull final CfgSection section, @NotNull final String s) {
+            section.set(s + ".row", fileElement.row);
+            section.set(s + ".column", fileElement.column);
+            ((BkktSection) section).setItemStack(s, fileElement.itemStack);
         }
 
         @NotNull
         @Override
-        public Optional<FileElement> get(@NotNull final Managed managed, @NotNull final String s) {
-            if (!s.contains("element") || !managed.getSection(s).isPresent()) {
-                return Optional.empty();
-            }
-            final BukkitManaged bukkitManaged = (BukkitManaged) managed;
-            final Optional<ItemStack> optional = bukkitManaged.getItemStack(s);
+        public Optional<FileElement> get(@NotNull final CfgSection section, @NotNull final String s) {
+            final Optional<ItemStack> optional = ((BkktSection) section).getItemStack(s);
             return optional.map(stack ->
                 new FileElement(
                     s,
                     stack,
-                    bukkitManaged.getInt(s + ".row"),
-                    bukkitManaged.getInt(s + ".column")
+                    section.getInt(s + ".row"),
+                    section.getInt(s + ".column")
                 )
             );
         }
