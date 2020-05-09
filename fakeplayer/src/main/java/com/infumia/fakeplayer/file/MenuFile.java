@@ -6,6 +6,7 @@ import com.infumia.fakeplayer.file.provider.ListMenuProvider;
 import com.infumia.fakeplayer.util.FileElement;
 import io.github.portlek.bukkititembuilder.ItemStackBuilder;
 import io.github.portlek.configs.BukkitManaged;
+import io.github.portlek.configs.BukkitSection;
 import io.github.portlek.configs.annotations.Config;
 import io.github.portlek.configs.annotations.Instance;
 import io.github.portlek.configs.annotations.Section;
@@ -30,7 +31,7 @@ public final class MenuFile extends BukkitManaged {
     }
 
     @Section(path = "fake-players")
-    public static final class FakePlayers {
+    public static final class FakePlayers extends BukkitSection {
 
         @Value
         public Replaceable<String> title = Replaceable.of("&eFake Players")
