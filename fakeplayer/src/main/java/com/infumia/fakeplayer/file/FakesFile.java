@@ -32,15 +32,18 @@ public final class FakesFile extends BukkitManaged {
     public final Map<String, Fake> fakeplayers = new HashMap<>();
 
     @Override
-    public void load() {
+    public void onCreate() {
         this.fakeplayers.clear();
-        super.load();
+    }
+
+    @Override
+    public void onLoad() {
         this.setAutoSave(true);
         fakes.getKeys(false).forEach(s -> {
             final Fake fake = new FakeBasic(
                 s,
                 new LocationOf(
-                    this.getOrSet("fakes." + s, "")
+                    fakes.getOrSet(s, "")
                 ).value()
             );
             Bukkit.getScheduler().runTask(FakePlayer.getInstance(), fake::spawn);
@@ -55,7 +58,7 @@ public final class FakesFile extends BukkitManaged {
                     FakePlayer.getAPI().languageFile.generals.quit_message
                         .build("%player_name%", () -> name)));
             fake.deSpawn();
-            this.set("fakes." + name, null);
+            fakes.set(name, null);
         });
     }
 
@@ -67,7 +70,7 @@ public final class FakesFile extends BukkitManaged {
                     .build("%player_name%", () -> name)));
         fake.spawn();
         this.fakeplayers.put(name, fake);
-        this.set("fakes." + name, new StringOf(location).asKey());
+        fakes.set(name, new StringOf(location).asKey());
     }
 
     @Section(path = "fakes")
