@@ -1,0 +1,4 @@
+language: java
+install: true
+script:
+  - mvn package -Dmaven.javadoc.skip=true -Dsource.skip=true -Dgpg.skip=true -B -ntp
