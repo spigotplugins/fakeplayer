@@ -57,34 +57,27 @@ public final class ListMenuProvider implements InventoryProvided {
                     } else if (type == ClickType.MIDDLE) {
                         fake.toggleVisible();
                     }
-                }))
-        );
+                })));
         final Pagination pagination = contents.pagination();
         pagination.setItems(items.toArray(ListMenuProvider.CLICKABLE_ITEMS));
         pagination.setItemsPerPage(36);
         pagination.addToIterator(contents.newIterator(SlotIterator.Type.HORIZONTAL, 0, 0));
         this.next.insert(contents, event ->
-            contents.page().open(player, pagination.next().getPage())
-        );
+            contents.page().open(player, pagination.next().getPage()));
         this.previous.insert(contents, event ->
-            contents.page().open(player, pagination.previous().getPage())
-        );
+            contents.page().open(player, pagination.previous().getPage()));
         this.add.insert(contents, event -> {
             event.cancel();
             new AnvilGUI.Builder()
                 .onComplete((clicker, s) -> {
                     if (FakePlayer.getAPI().fakesFile.fakeplayers.containsKey(s)) {
-                        clicker.sendMessage(
-                            FakePlayer.getAPI().languageFile.errors.there_is_already
-                                .build(MapEntry.from("%name%", () -> s))
-                        );
+                        clicker.sendMessage(FakePlayer.getAPI().languageFile.errors.there_is_already
+                            .build(MapEntry.from("%name%", () -> s)));
                         return AnvilGUI.Response.close();
                     }
                     FakePlayer.getAPI().fakesFile.addFakes(s, clicker.getLocation());
-                    clicker.sendMessage(
-                        FakePlayer.getAPI().languageFile.generals.fake_player_added
-                            .build(MapEntry.from("%name%", () -> s))
-                    );
+                    clicker.sendMessage(FakePlayer.getAPI().languageFile.generals.fake_player_added
+                        .build(MapEntry.from("%name%", () -> s)));
                     return AnvilGUI.Response.close();
                 })
                 .text("Type...")
