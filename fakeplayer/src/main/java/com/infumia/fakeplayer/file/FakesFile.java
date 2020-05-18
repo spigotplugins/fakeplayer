@@ -39,16 +39,16 @@ public final class FakesFile extends BukkitManaged {
     @Override
     public void onLoad() {
         this.setAutoSave(true);
-        fakes.getKeys(false).forEach(s -> {
-            final Fake fake = new FakeBasic(
-                s,
-                new LocationOf(
-                    fakes.getOrSet(s, "")
-                ).value()
-            );
-            Bukkit.getScheduler().runTask(FakePlayer.getInstance(), fake::spawn);
-            this.fakeplayers.put(s, fake);
-        });
+        fakes.getKeys(false).stream()
+            .map(name ->
+                new FakeBasic(
+                    name,
+                    new LocationOf(fakes.getOrSet(name, "")).value()
+                ))
+            .forEach(fake -> {
+                Bukkit.getScheduler().runTask(FakePlayer.getInstance(), fake::spawn);
+                this.fakeplayers.put(fake.getName(), fake);
+            });
     }
 
     public void remove(@NotNull final String name) {
