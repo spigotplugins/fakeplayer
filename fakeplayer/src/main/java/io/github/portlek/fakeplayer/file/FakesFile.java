@@ -1,14 +1,14 @@
 package io.github.portlek.fakeplayer.file;
 
-import io.github.portlek.fakeplayer.FakePlayer;
-import io.github.portlek.fakeplayer.api.Fake;
-import io.github.portlek.fakeplayer.handle.FakeBasic;
 import io.github.portlek.configs.annotations.Config;
 import io.github.portlek.configs.annotations.Instance;
 import io.github.portlek.configs.annotations.Section;
 import io.github.portlek.configs.bukkit.BukkitManaged;
 import io.github.portlek.configs.bukkit.BukkitSection;
 import io.github.portlek.configs.files.FileType;
+import io.github.portlek.fakeplayer.FakePlayer;
+import io.github.portlek.fakeplayer.api.Fake;
+import io.github.portlek.fakeplayer.handle.FakeBasic;
 import io.github.portlek.location.LocationOf;
 import io.github.portlek.location.StringOf;
 import org.bukkit.Bukkit;
@@ -46,7 +46,7 @@ public final class FakesFile extends BukkitManaged {
                     new LocationOf(fakes.getOrSetString(name, "")).value()
                 ))
             .forEach(fake -> {
-                Bukkit.getScheduler().runTask(FakePlayer.getInstance(), fake::spawn);
+                Bukkit.getScheduler().runTaskAsynchronously(FakePlayer.getInstance(), fake::spawn);
                 this.fakeplayers.put(fake.getName(), fake);
             });
     }
