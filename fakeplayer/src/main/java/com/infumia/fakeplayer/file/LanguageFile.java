@@ -9,7 +9,6 @@ import io.github.portlek.configs.util.Replaceable;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -30,16 +29,21 @@ public final class LanguageFile extends BukkitLinkedManaged {
     public LanguageFile.General generals = new LanguageFile.General();
 
     @Property
-    public Replaceable<List<String>> help_messages = this.match(s ->
+    public Replaceable<String> help_messages = this.match(s ->
         Optional.of(
             Replaceable.from(
-                "&a====== %prefix% &a======",
-                "&7/fakeplayer &r> &eShows help message.",
-                "&7/fakeplayer help &r> &eShows help message.",
-                "&7/fakeplayer reload &r> &eReloads the plugin.",
-                "&7/fakeplayer version &r> &eChecks for update.",
-                "&7/fakeplayer menu &r> &eShows the main menu."
-            )
+                new StringBuilder()
+                    .append("&a====== %prefix% &a======")
+                    .append('\n')
+                    .append("&7/fakeplayer &r> &eShows help message.")
+                    .append('\n')
+                    .append("&7/fakeplayer help &r> &eShows help message.")
+                    .append('\n')
+                    .append("&7/fakeplayer reload &r> &eReloads the plugin.")
+                    .append('\n')
+                    .append("&7/fakeplayer version &r> &eChecks for update.")
+                    .append('\n')
+                    .append("&7/fakeplayer menu &r> &eShows the main menu."))
                 .map(ColorUtil::colored)
                 .replace(this.getPrefix())
         )

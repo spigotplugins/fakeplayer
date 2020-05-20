@@ -6,7 +6,6 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Default;
 import co.aikar.commands.annotation.Subcommand;
 import com.infumia.fakeplayer.FakePlayer;
-import io.github.portlek.configs.util.ListToString;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -16,21 +15,13 @@ public final class FakePlayerCommand extends BaseCommand {
     @Default
     @CommandPermission("fakeplayer.command.main")
     public static void defaultCommand(final CommandSender sender) {
-        sender.sendMessage(
-            (String) FakePlayer.getAPI().languageFile.help_messages.buildMap(list ->
-                new ListToString(list).value()
-            )
-        );
+        sender.sendMessage(FakePlayer.getAPI().languageFile.help_messages.build());
     }
 
     @Subcommand("help")
     @CommandPermission("fakeplayer.command.help")
     public static void helpCommand(final CommandSender sender) {
-        sender.sendMessage(
-            (String) FakePlayer.getAPI().languageFile.help_messages.buildMap(list ->
-                new ListToString(list).value()
-            )
-        );
+        sender.sendMessage(FakePlayer.getAPI().languageFile.help_messages.build());
     }
 
     @Subcommand("reload")
