@@ -1,9 +1,9 @@
 package io.github.portlek.fakeplayer.file.provider;
 
+import io.github.portlek.configs.util.MapEntry;
 import io.github.portlek.fakeplayer.FakePlayer;
 import io.github.portlek.fakeplayer.util.FileElement;
 import io.github.portlek.fakeplayer.util.Placeholder;
-import io.github.portlek.configs.util.MapEntry;
 import io.github.portlek.smartinventory.*;
 import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.entity.Player;

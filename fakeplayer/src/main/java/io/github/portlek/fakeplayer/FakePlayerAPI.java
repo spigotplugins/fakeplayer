@@ -49,7 +49,6 @@ public final class FakePlayerAPI {
         this.configFile.load();
         this.fakesFile.load();
         this.menuFile.load();
-
         if (first) {
             this.inventory.init();
             new ListenerBasic<>(

@@ -1,9 +1,6 @@
 package io.github.portlek.fakeplayer.file;
 
 import com.cryptomorin.xseries.XMaterial;
-import io.github.portlek.fakeplayer.FakePlayer;
-import io.github.portlek.fakeplayer.file.provider.ListMenuProvider;
-import io.github.portlek.fakeplayer.util.FileElement;
 import io.github.portlek.bukkititembuilder.ItemStackBuilder;
 import io.github.portlek.configs.annotations.Config;
 import io.github.portlek.configs.annotations.Instance;
@@ -13,6 +10,9 @@ import io.github.portlek.configs.bukkit.BukkitManaged;
 import io.github.portlek.configs.bukkit.BukkitSection;
 import io.github.portlek.configs.bukkit.util.ColorUtil;
 import io.github.portlek.configs.util.Replaceable;
+import io.github.portlek.fakeplayer.FakePlayer;
+import io.github.portlek.fakeplayer.file.provider.ListMenuProvider;
+import io.github.portlek.fakeplayer.util.FileElement;
 import io.github.portlek.smartinventory.Page;
 import org.jetbrains.annotations.NotNull;
 

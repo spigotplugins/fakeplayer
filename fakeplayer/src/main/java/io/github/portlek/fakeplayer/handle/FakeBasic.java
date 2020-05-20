@@ -1,5 +1,6 @@
 package io.github.portlek.fakeplayer.handle;
 
+import io.github.portlek.configs.util.MapEntry;
 import io.github.portlek.fakeplayer.FakePlayer;
 import io.github.portlek.fakeplayer.api.Fake;
 import io.github.portlek.fakeplayer.api.FakeCreated;
@@ -17,7 +18,6 @@ import io.github.portlek.fakeplayer.nms.v1_8_R2.FakeCreated1_8_R2;
 import io.github.portlek.fakeplayer.nms.v1_8_R3.FakeCreated1_8_R3;
 import io.github.portlek.fakeplayer.nms.v1_9_R1.FakeCreated1_9_R1;
 import io.github.portlek.fakeplayer.nms.v1_9_R2.FakeCreated1_9_R2;
-import io.github.portlek.configs.util.MapEntry;
 import io.github.portlek.versionmatched.VersionMatched;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
