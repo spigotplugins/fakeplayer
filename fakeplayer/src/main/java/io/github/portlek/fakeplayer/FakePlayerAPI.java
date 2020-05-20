@@ -66,7 +66,6 @@ public final class FakePlayerAPI {
                     }))
             ).register(this.fakePlayer);
         }
-
         this.checkForUpdate(this.fakePlayer.getServer().getConsoleSender());
     }
 
