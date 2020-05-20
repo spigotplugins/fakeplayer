@@ -9,11 +9,14 @@ import io.github.portlek.configs.annotations.Section;
 import io.github.portlek.configs.bukkit.BukkitManaged;
 import io.github.portlek.configs.bukkit.BukkitSection;
 import io.github.portlek.configs.bukkit.util.ColorUtil;
+import io.github.portlek.configs.util.MapEntry;
 import io.github.portlek.configs.util.Replaceable;
 import io.github.portlek.fakeplayer.FakePlayer;
 import io.github.portlek.fakeplayer.file.provider.ListMenuProvider;
 import io.github.portlek.fakeplayer.util.FileElement;
 import io.github.portlek.smartinventory.Page;
+import net.wesjd.anvilgui.AnvilGUI;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 @Config(
@@ -34,9 +37,10 @@ public final class MenuFile extends BukkitManaged {
     public static final class FakePlayers extends BukkitSection {
 
         @Property
+        public String type_fake_player = "Type fake player name...";
+        @Property
         public Replaceable<String> title = Replaceable.from("&eFake Players")
             .map(ColorUtil::colored);
-
         @Property
         public FileElement fake_player = new FileElement(
             ItemStackBuilder.from(XMaterial.PLAYER_HEAD)
@@ -48,7 +52,6 @@ public final class MenuFile extends BukkitManaged {
                 .build(),
             0, 0
         );
-
         @Property
         public FileElement add = new FileElement(
             ItemStackBuilder.from(XMaterial.APPLE)
@@ -57,7 +60,6 @@ public final class MenuFile extends BukkitManaged {
                 .build(),
             4, 4
         );
-
         @Property
         public FileElement next = new FileElement(
             ItemStackBuilder.from(XMaterial.ARROW)
@@ -67,7 +69,6 @@ public final class MenuFile extends BukkitManaged {
                 .build(),
             5, 5
         );
-
         @Property
         public FileElement previous = new FileElement(
             ItemStackBuilder.from(XMaterial.ARROW)
@@ -77,6 +78,24 @@ public final class MenuFile extends BukkitManaged {
                 .build(),
             5, 3
         );
+
+        public void openAnvil(@NotNull Player player) {
+            new AnvilGUI.Builder()
+                .onComplete((clicker, s) -> {
+                    if (FakePlayer.getAPI().fakesFile.fakeplayers.containsKey(s)) {
+                        clicker.sendMessage(FakePlayer.getAPI().languageFile.errors.there_is_already
+                            .build(MapEntry.from("%name%", () -> s)));
+                        return AnvilGUI.Response.close();
+                    }
+                    FakePlayer.getAPI().fakesFile.addFakes(s, clicker.getLocation());
+                    clicker.sendMessage(FakePlayer.getAPI().languageFile.generals.fake_player_added
+                        .build(MapEntry.from("%name%", () -> s)));
+                    return AnvilGUI.Response.close();
+                })
+                .text(this.type_fake_player)
+                .plugin(FakePlayer.getInstance())
+                .open(player);
+        }
 
         @NotNull
         public Page inventory() {

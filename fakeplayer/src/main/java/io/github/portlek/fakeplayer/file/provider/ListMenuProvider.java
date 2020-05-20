@@ -1,11 +1,9 @@
 package io.github.portlek.fakeplayer.file.provider;
 
-import io.github.portlek.configs.util.MapEntry;
 import io.github.portlek.fakeplayer.FakePlayer;
 import io.github.portlek.fakeplayer.util.FileElement;
 import io.github.portlek.fakeplayer.util.Placeholder;
 import io.github.portlek.smartinventory.*;
-import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.jetbrains.annotations.NotNull;
@@ -68,21 +66,7 @@ public final class ListMenuProvider implements InventoryProvided {
             contents.page().open(player, pagination.previous().getPage()));
         this.add.insert(contents, event -> {
             event.cancel();
-            new AnvilGUI.Builder()
-                .onComplete((clicker, s) -> {
-                    if (FakePlayer.getAPI().fakesFile.fakeplayers.containsKey(s)) {
-                        clicker.sendMessage(FakePlayer.getAPI().languageFile.errors.there_is_already
-                            .build(MapEntry.from("%name%", () -> s)));
-                        return AnvilGUI.Response.close();
-                    }
-                    FakePlayer.getAPI().fakesFile.addFakes(s, clicker.getLocation());
-                    clicker.sendMessage(FakePlayer.getAPI().languageFile.generals.fake_player_added
-                        .build(MapEntry.from("%name%", () -> s)));
-                    return AnvilGUI.Response.close();
-                })
-                .text("Type...")
-                .plugin(FakePlayer.getInstance())
-                .open(player);
+            FakePlayer.getAPI().menuFile.fakePlayers.openAnvil(event.contents().player());
         });
     }
 
