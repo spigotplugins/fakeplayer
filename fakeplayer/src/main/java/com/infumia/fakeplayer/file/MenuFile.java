@@ -5,13 +5,13 @@ import com.infumia.fakeplayer.FakePlayer;
 import com.infumia.fakeplayer.file.provider.ListMenuProvider;
 import com.infumia.fakeplayer.util.FileElement;
 import io.github.portlek.bukkititembuilder.ItemStackBuilder;
-import io.github.portlek.configs.BukkitManaged;
-import io.github.portlek.configs.BukkitSection;
 import io.github.portlek.configs.annotations.Config;
 import io.github.portlek.configs.annotations.Instance;
+import io.github.portlek.configs.annotations.Property;
 import io.github.portlek.configs.annotations.Section;
-import io.github.portlek.configs.annotations.Value;
-import io.github.portlek.configs.util.ColorUtil;
+import io.github.portlek.configs.bukkit.BukkitManaged;
+import io.github.portlek.configs.bukkit.BukkitSection;
+import io.github.portlek.configs.bukkit.util.ColorUtil;
 import io.github.portlek.configs.util.Replaceable;
 import io.github.portlek.smartinventory.Page;
 import org.jetbrains.annotations.NotNull;
@@ -33,13 +33,12 @@ public final class MenuFile extends BukkitManaged {
     @Section(path = "fake-players")
     public static final class FakePlayers extends BukkitSection {
 
-        @Value
-        public Replaceable<String> title = Replaceable.of("&eFake Players")
+        @Property
+        public Replaceable<String> title = Replaceable.from("&eFake Players")
             .map(ColorUtil::colored);
 
-        @Value
+        @Property
         public FileElement fake_player = new FileElement(
-            "fake-player",
             ItemStackBuilder.from(XMaterial.PLAYER_HEAD)
                 .name("&a%player_name%")
                 .lore("",
@@ -50,9 +49,8 @@ public final class MenuFile extends BukkitManaged {
             0, 0
         );
 
-        @Value
+        @Property
         public FileElement add = new FileElement(
-            "add",
             ItemStackBuilder.from(XMaterial.APPLE)
                 .name("&aAdd Fake Player")
                 .lore("", "&7Click and add fake player to your location.")
@@ -60,9 +58,8 @@ public final class MenuFile extends BukkitManaged {
             4, 4
         );
 
-        @Value
+        @Property
         public FileElement next = new FileElement(
-            "next",
             ItemStackBuilder.from(XMaterial.ARROW)
                 .name("&aNext")
                 .lore("",
@@ -71,9 +68,8 @@ public final class MenuFile extends BukkitManaged {
             5, 5
         );
 
-        @Value
+        @Property
         public FileElement previous = new FileElement(
-            "previous",
             ItemStackBuilder.from(XMaterial.ARROW)
                 .name("&aPrevious")
                 .lore("",

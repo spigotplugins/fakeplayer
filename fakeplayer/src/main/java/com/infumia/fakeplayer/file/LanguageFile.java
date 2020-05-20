@@ -1,9 +1,9 @@
 package com.infumia.fakeplayer.file;
 
-import io.github.portlek.configs.BukkitLinkedManaged;
-import io.github.portlek.configs.BukkitSection;
 import io.github.portlek.configs.annotations.*;
-import io.github.portlek.configs.util.ColorUtil;
+import io.github.portlek.configs.bukkit.BukkitLinkedManaged;
+import io.github.portlek.configs.bukkit.BukkitSection;
+import io.github.portlek.configs.bukkit.util.ColorUtil;
 import io.github.portlek.configs.util.MapEntry;
 import io.github.portlek.configs.util.Replaceable;
 import org.jetbrains.annotations.NotNull;
@@ -29,10 +29,10 @@ public final class LanguageFile extends BukkitLinkedManaged {
     @Instance
     public LanguageFile.General generals = new LanguageFile.General();
 
-    @Value
+    @Property
     public Replaceable<List<String>> help_messages = this.match(s ->
         Optional.of(
-            Replaceable.of(
+            Replaceable.from(
                 "&a====== %prefix% &a======",
                 "&7/fakeplayer &r> &eShows help message.",
                 "&7/fakeplayer help &r> &eShows help message.",
@@ -61,10 +61,10 @@ public final class LanguageFile extends BukkitLinkedManaged {
     @Section(path = "errors")
     public final class Errors extends BukkitSection {
 
-        @Value
+        @Property
         public Replaceable<String> there_is_already = LanguageFile.this.match(s ->
             Optional.of(
-                Replaceable.of("%prefix% &cThere is already fake player such that name (%name%).")
+                Replaceable.from("%prefix% &cThere is already fake player such that name (%name%).")
                     .map(ColorUtil::colored)
                     .replaces("%name%")
                     .replace(LanguageFile.this.getPrefix())
@@ -76,60 +76,60 @@ public final class LanguageFile extends BukkitLinkedManaged {
     @Section(path = "general")
     public final class General extends BukkitSection {
 
-        @Value
+        @Property
         public Replaceable<String> join_message = LanguageFile.this.match(s ->
             Optional.of(
-                Replaceable.of("%prefix% &a%player_name% just joined the server!")
+                Replaceable.from("%prefix% &a%player_name% just joined the server!")
                     .map(ColorUtil::colored)
                     .replaces("%player_name%")
                     .replace(LanguageFile.this.getPrefix())
             )
         );
 
-        @Value
+        @Property
         public Replaceable<String> quit_message = LanguageFile.this.match(s ->
             Optional.of(
-                Replaceable.of("%prefix% &a%player_name% just quit the server!")
+                Replaceable.from("%prefix% &a%player_name% just quit the server!")
                     .map(ColorUtil::colored)
                     .replaces("%player_name%")
                     .replace(LanguageFile.this.getPrefix())
             )
         );
 
-        @Value
+        @Property
         public Replaceable<String> reload_complete = LanguageFile.this.match(s ->
             Optional.of(
-                Replaceable.of("%prefix% &aReload complete! &7Took (%ms%ms)")
+                Replaceable.from("%prefix% &aReload complete! &7Took (%ms%ms)")
                     .map(ColorUtil::colored)
                     .replace(LanguageFile.this.getPrefix())
                     .replaces("%ms%")
             )
         );
 
-        @Value
+        @Property
         public Replaceable<String> new_version_found = LanguageFile.this.match(s ->
             Optional.of(
-                Replaceable.of("%prefix% &eNew version found (v%version%)")
+                Replaceable.from("%prefix% &eNew version found (v%version%)")
                     .map(ColorUtil::colored)
                     .replaces("%version%")
                     .replace(LanguageFile.this.getPrefix())
             )
         );
 
-        @Value
+        @Property
         public Replaceable<String> latest_version = LanguageFile.this.match(s ->
             Optional.of(
-                Replaceable.of("%prefix% &aYou're using the latest version (v%version%)")
+                Replaceable.from("%prefix% &aYou're using the latest version (v%version%)")
                     .map(ColorUtil::colored)
                     .replaces("%version%")
                     .replace(LanguageFile.this.getPrefix())
             )
         );
 
-        @Value
+        @Property
         public Replaceable<String> fake_player_added = LanguageFile.this.match(s ->
             Optional.of(
-                Replaceable.of("%prefix% &aFake player added (%name%)")
+                Replaceable.from("%prefix% &aFake player added (%name%)")
                     .map(ColorUtil::colored)
                     .replaces("%name%")
                     .replace(LanguageFile.this.getPrefix())

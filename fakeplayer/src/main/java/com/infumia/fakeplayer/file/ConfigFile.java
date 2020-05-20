@@ -1,9 +1,9 @@
 package com.infumia.fakeplayer.file;
 
-import io.github.portlek.configs.BukkitManaged;
 import io.github.portlek.configs.annotations.Config;
-import io.github.portlek.configs.annotations.Value;
-import io.github.portlek.configs.util.ColorUtil;
+import io.github.portlek.configs.annotations.Property;
+import io.github.portlek.configs.bukkit.BukkitManaged;
+import io.github.portlek.configs.bukkit.util.ColorUtil;
 import io.github.portlek.configs.util.Replaceable;
 
 @Config(
@@ -12,18 +12,18 @@ import io.github.portlek.configs.util.Replaceable;
 )
 public final class ConfigFile extends BukkitManaged {
 
-    @Value
-    public Replaceable<String> plugin_prefix = Replaceable.of("&6[&eFakePlayer&6]")
+    @Property
+    public Replaceable<String> plugin_prefix = Replaceable.from("&6[&eFakePlayer&6]")
         .map(ColorUtil::colored);
 
-    @Value
+    @Property
     public String plugin_language = "en";
 
-    @Value
+    @Property
     public boolean check_for_update = true;
 
-    @Value
-    public Replaceable<String> tab_name = Replaceable.of("&e[Player] &a%player_name%")
+    @Property
+    public Replaceable<String> tab_name = Replaceable.from("&e[Player] &a%player_name%")
         .map(ColorUtil::colored)
         .replaces("%player_name%");
 

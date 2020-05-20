@@ -3,12 +3,12 @@ package com.infumia.fakeplayer.file;
 import com.infumia.fakeplayer.FakePlayer;
 import com.infumia.fakeplayer.api.Fake;
 import com.infumia.fakeplayer.handle.FakeBasic;
-import io.github.portlek.configs.BukkitManaged;
-import io.github.portlek.configs.BukkitSection;
 import io.github.portlek.configs.annotations.Config;
 import io.github.portlek.configs.annotations.Instance;
 import io.github.portlek.configs.annotations.Section;
-import io.github.portlek.configs.util.FileType;
+import io.github.portlek.configs.bukkit.BukkitManaged;
+import io.github.portlek.configs.bukkit.BukkitSection;
+import io.github.portlek.configs.files.FileType;
 import io.github.portlek.location.LocationOf;
 import io.github.portlek.location.StringOf;
 import org.bukkit.Bukkit;
@@ -43,7 +43,7 @@ public final class FakesFile extends BukkitManaged {
             .map(name ->
                 new FakeBasic(
                     name,
-                    new LocationOf(fakes.getOrSet(name, "")).value()
+                    new LocationOf(fakes.getOrSetString(name, "")).value()
                 ))
             .forEach(fake -> {
                 Bukkit.getScheduler().runTask(FakePlayer.getInstance(), fake::spawn);
