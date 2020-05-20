@@ -58,11 +58,11 @@ public final class FakePlayerAPI {
             ).register(this.fakePlayer);
             new ListenerBasic<>(
                 PlayerJoinEvent.class,
-                event -> Bukkit.getScheduler().runTaskAsynchronously(this.fakePlayer, () ->
+                event ->
                     this.fakesFile.fakeplayers.values().forEach(npc -> {
                         npc.deSpawn();
                         npc.spawn();
-                    }))
+                    })
             ).register(this.fakePlayer);
         }
         this.checkForUpdate(this.fakePlayer.getServer().getConsoleSender());
