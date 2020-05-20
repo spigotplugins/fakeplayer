@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>nms</artifactId>
-        <groupId>com.infumia.fakeplayer</groupId>
+        <groupId>io.github.portlek.fakeplayer</groupId>
         <version>1.5</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.infumia.fakeplayer.nms</groupId>
+    <groupId>io.github.portlek.fakeplayer.nms</groupId>
     <artifactId>1_14_R1</artifactId>
 
     <dependencies>

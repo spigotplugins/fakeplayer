@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>parent</artifactId>
-        <groupId>com.infumia.fakeplayer</groupId>
+        <groupId>io.github.portlek.fakeplayer</groupId>
         <version>1.5</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -30,11 +30,11 @@
                             <relocations>
                                 <relocation>
                                     <pattern>co.aikar.commands</pattern>
-                                    <shadedPattern>com.infumia.fakeplayer.commands</shadedPattern>
+                                    <shadedPattern>io.github.portlek.fakeplayer.commands</shadedPattern>
                                 </relocation>
                                 <relocation>
                                     <pattern>io.github.portlek.configs</pattern>
-                                    <shadedPattern>com.infumia.fakeplayer.file</shadedPattern>
+                                    <shadedPattern>io.github.portlek.fakeplayer.file</shadedPattern>
                                 </relocation>
                             </relocations>
                         </configuration>
@@ -75,7 +75,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.infumia.fakeplayer</groupId>
+            <groupId>io.github.portlek.fakeplayer</groupId>
             <artifactId>api</artifactId>
             <version>1.5</version>
         </dependency>
@@ -122,62 +122,62 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.infumia.fakeplayer.nms</groupId>
+            <groupId>io.github.portlek.fakeplayer.nms</groupId>
             <artifactId>1_8_R1</artifactId>
             <version>1.5</version>
         </dependency>
         <dependency>
-            <groupId>com.infumia.fakeplayer.nms</groupId>
+            <groupId>io.github.portlek.fakeplayer.nms</groupId>
             <artifactId>1_8_R2</artifactId>
             <version>1.5</version>
         </dependency>
         <dependency>
-            <groupId>com.infumia.fakeplayer.nms</groupId>
+            <groupId>io.github.portlek.fakeplayer.nms</groupId>
             <artifactId>1_8_R3</artifactId>
             <version>1.5</version>
         </dependency>
         <dependency>
-            <groupId>com.infumia.fakeplayer.nms</groupId>
+            <groupId>io.github.portlek.fakeplayer.nms</groupId>
             <artifactId>1_9_R1</artifactId>
             <version>1.5</version>
         </dependency>
         <dependency>
-            <groupId>com.infumia.fakeplayer.nms</groupId>
+            <groupId>io.github.portlek.fakeplayer.nms</groupId>
             <artifactId>1_9_R2</artifactId>
             <version>1.5</version>
         </dependency>
         <dependency>
-            <groupId>com.infumia.fakeplayer.nms</groupId>
+            <groupId>io.github.portlek.fakeplayer.nms</groupId>
             <artifactId>1_10_R1</artifactId>
             <version>1.5</version>
         </dependency>
         <dependency>
-            <groupId>com.infumia.fakeplayer.nms</groupId>
+            <groupId>io.github.portlek.fakeplayer.nms</groupId>
             <artifactId>1_11_R1</artifactId>
             <version>1.5</version>
         </dependency>
         <dependency>
-            <groupId>com.infumia.fakeplayer.nms</groupId>
+            <groupId>io.github.portlek.fakeplayer.nms</groupId>
             <artifactId>1_12_R1</artifactId>
             <version>1.5</version>
         </dependency>
         <dependency>
-            <groupId>com.infumia.fakeplayer.nms</groupId>
+            <groupId>io.github.portlek.fakeplayer.nms</groupId>
             <artifactId>1_13_R1</artifactId>
             <version>1.5</version>
         </dependency>
         <dependency>
-            <groupId>com.infumia.fakeplayer.nms</groupId>
+            <groupId>io.github.portlek.fakeplayer.nms</groupId>
             <artifactId>1_13_R2</artifactId>
             <version>1.5</version>
         </dependency>
         <dependency>
-            <groupId>com.infumia.fakeplayer.nms</groupId>
+            <groupId>io.github.portlek.fakeplayer.nms</groupId>
             <artifactId>1_14_R1</artifactId>
             <version>1.5</version>
         </dependency>
         <dependency>
-            <groupId>com.infumia.fakeplayer.nms</groupId>
+            <groupId>io.github.portlek.fakeplayer.nms</groupId>
             <artifactId>1_15_R1</artifactId>
             <version>1.5</version>
         </dependency>

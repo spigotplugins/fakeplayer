@@ -1,4 +1,4 @@
-main: com.infumia.fakeplayer.FakePlayer
+main: io.github.portlek.fakeplayer.FakePlayer
 name: ${project.name}
 version: ${project.version}
 description: ${project.description}
