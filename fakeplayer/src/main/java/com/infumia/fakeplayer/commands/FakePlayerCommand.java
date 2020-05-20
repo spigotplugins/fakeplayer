@@ -9,7 +9,7 @@ import com.infumia.fakeplayer.FakePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandAlias("fakeplayer")
+@CommandAlias("fakeplayer|fp")
 public final class FakePlayerCommand extends BaseCommand {
 
     @Default

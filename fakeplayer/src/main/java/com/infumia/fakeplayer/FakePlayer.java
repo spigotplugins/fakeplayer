@@ -16,60 +16,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-@Plugin(
-    name = "FakePlayer",
-    version = "1.3"
-)
-@Description("FakePlayer plugin for Bukkit servers")
-@ApiVersion(ApiVersion.Target.v1_13)
-@Authors(@Author("portlek"))
-@Permissions({
-    @Permission(
-        name = "fakeplayer.*",
-        desc = "Allows you to access to the all plugin.",
-        defaultValue = PermissionDefault.OP,
-        children = {
-            @ChildPermission(name = "fakeplayer.version"),
-            @ChildPermission(name = "fakeplayer.command.*")
-        }
-    ),
-    @Permission(
-        name = "fakeplayercommand.*",
-        desc = "It allows you to use to all commands of the plugin.",
-        defaultValue = PermissionDefault.OP,
-        children = {
-            @ChildPermission(name = "fakeplayer.command.main"),
-            @ChildPermission(name = "fakeplayer.command.help"),
-            @ChildPermission(name = "fakeplayer.command.reload"),
-            @ChildPermission(name = "fakeplayer.command.version")
-        }
-    ),
-    @Permission(
-        name = "fakeplayer.version",
-        desc = "It allows you to notify if there is new update for the plugin on join.",
-        defaultValue = PermissionDefault.OP
-    ),
-    @Permission(
-        name = "fakeplayer.command.main",
-        desc = "It allows you to use to /fakeplayer command.",
-        defaultValue = PermissionDefault.TRUE
-    ),
-    @Permission(
-        name = "fakeplayer.command.help",
-        desc = "It allows you to use to /fakeplayer help command.",
-        defaultValue = PermissionDefault.TRUE
-    ),
-    @Permission(
-        name = "fakeplayer.command.reload",
-        desc = "It allows you to use to /fakeplayer reload command.",
-        defaultValue = PermissionDefault.OP
-    ),
-    @Permission(
-        name = "fakeplayer.command.version",
-        desc = "It allows you to use to /fakeplayer version command.",
-        defaultValue = PermissionDefault.OP
-    )
-})
 public final class FakePlayer extends JavaPlugin {
 
     private static FakePlayerAPI api;
