@@ -10,24 +10,24 @@ public final class Placeholder {
     @NotNull
     private final String replace;
 
-    public Placeholder(@NotNull String regex, @NotNull String replace) {
+    public Placeholder(@NotNull final String regex, @NotNull final String replace) {
         this.regex = regex;
         this.replace = replace;
     }
 
     @NotNull
     public String getRegex() {
-        return regex;
+        return this.regex;
     }
 
     @NotNull
     public String getReplace() {
-        return replace;
+        return this.replace;
     }
 
     @NotNull
-    public String replace(@NotNull String text) {
-        return text.replace(regex, replace);
+    public String replace(@NotNull final String text) {
+        return text.replace(this.regex, this.replace);
     }
 
 }

@@ -2,10 +2,9 @@ package io.github.portlek.fakeplayer;
 
 import co.aikar.commands.BukkitCommandManager;
 import io.github.portlek.fakeplayer.commands.FakePlayerCommand;
+import java.util.Optional;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Optional;
 
 public final class FakePlayer extends JavaPlugin {
 

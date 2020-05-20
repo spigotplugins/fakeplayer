@@ -4,12 +4,11 @@ import io.github.portlek.fakeplayer.FakePlayer;
 import io.github.portlek.fakeplayer.util.FileElement;
 import io.github.portlek.fakeplayer.util.Placeholder;
 import io.github.portlek.smartinventory.*;
+import java.util.ArrayList;
+import java.util.List;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public final class ListMenuProvider implements InventoryProvided {
 

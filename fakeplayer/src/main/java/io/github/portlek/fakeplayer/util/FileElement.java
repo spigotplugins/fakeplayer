@@ -6,17 +6,16 @@ import io.github.portlek.configs.structure.managed.section.CfgSection;
 import io.github.portlek.smartinventory.Icon;
 import io.github.portlek.smartinventory.InventoryContents;
 import io.github.portlek.smartinventory.event.abs.ClickEvent;
-import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.NotNull;
 
 public final class FileElement {
 
@@ -111,6 +110,7 @@ public final class FileElement {
     }
 
     public static class Provider implements Provided<FileElement> {
+
         @Override
         public void set(@NotNull final FileElement fileElement, @NotNull final CfgSection section, @NotNull final String s) {
             section.set("row", fileElement.row);

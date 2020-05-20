@@ -11,13 +11,12 @@ import io.github.portlek.fakeplayer.api.Fake;
 import io.github.portlek.fakeplayer.handle.FakeBasic;
 import io.github.portlek.location.LocationOf;
 import io.github.portlek.location.StringOf;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.jetbrains.annotations.NotNull;
 
 @Config(
     name = "fakes",
@@ -39,11 +38,11 @@ public final class FakesFile extends BukkitManaged {
     @Override
     public void onLoad() {
         this.setAutoSave(true);
-        fakes.getKeys(false).stream()
+        this.fakes.getKeys(false).stream()
             .map(name ->
                 new FakeBasic(
                     name,
-                    new LocationOf(fakes.getOrSetString(name, "")).value()
+                    new LocationOf(this.fakes.getOrSetString(name, "")).value()
                 ))
             .forEach(fake -> {
                 fake.spawn();
@@ -58,7 +57,7 @@ public final class FakesFile extends BukkitManaged {
                     FakePlayer.getAPI().languageFile.generals.quit_message
                         .build("%player_name%", () -> name)));
             fake.deSpawn();
-            fakes.set(name, null);
+            this.fakes.set(name, null);
         });
     }
 
@@ -70,7 +69,7 @@ public final class FakesFile extends BukkitManaged {
                     .build("%player_name%", () -> name)));
         fake.spawn();
         this.fakeplayers.put(name, fake);
-        fakes.set(name, new StringOf(location).asKey());
+        this.fakes.set(name, new StringOf(location).asKey());
     }
 
     @Section(path = "fakes")

@@ -38,9 +38,11 @@ public final class MenuFile extends BukkitManaged {
 
         @Property
         public String type_fake_player = "Type fake player name...";
+
         @Property
         public Replaceable<String> title = Replaceable.from("&eFake Players")
             .map(ColorUtil::colored);
+
         @Property
         public FileElement fake_player = new FileElement(
             ItemStackBuilder.from(XMaterial.PLAYER_HEAD)
@@ -52,6 +54,7 @@ public final class MenuFile extends BukkitManaged {
                 .build(),
             0, 0
         );
+
         @Property
         public FileElement add = new FileElement(
             ItemStackBuilder.from(XMaterial.APPLE)
@@ -60,6 +63,7 @@ public final class MenuFile extends BukkitManaged {
                 .build(),
             4, 4
         );
+
         @Property
         public FileElement next = new FileElement(
             ItemStackBuilder.from(XMaterial.ARROW)
@@ -69,6 +73,7 @@ public final class MenuFile extends BukkitManaged {
                 .build(),
             5, 5
         );
+
         @Property
         public FileElement previous = new FileElement(
             ItemStackBuilder.from(XMaterial.ARROW)
@@ -79,7 +84,7 @@ public final class MenuFile extends BukkitManaged {
             5, 3
         );
 
-        public void openAnvil(@NotNull Player player) {
+        public void openAnvil(@NotNull final Player player) {
             new AnvilGUI.Builder()
                 .onComplete((clicker, s) -> {
                     if (FakePlayer.getAPI().fakesFile.fakeplayers.containsKey(s)) {
