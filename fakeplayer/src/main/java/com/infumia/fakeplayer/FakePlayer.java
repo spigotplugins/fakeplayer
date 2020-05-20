@@ -2,16 +2,7 @@ package com.infumia.fakeplayer;
 
 import co.aikar.commands.BukkitCommandManager;
 import com.infumia.fakeplayer.commands.FakePlayerCommand;
-import org.bukkit.permissions.PermissionDefault;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.plugin.java.annotation.permission.ChildPermission;
-import org.bukkit.plugin.java.annotation.permission.Permission;
-import org.bukkit.plugin.java.annotation.permission.Permissions;
-import org.bukkit.plugin.java.annotation.plugin.ApiVersion;
-import org.bukkit.plugin.java.annotation.plugin.Description;
-import org.bukkit.plugin.java.annotation.plugin.Plugin;
-import org.bukkit.plugin.java.annotation.plugin.author.Author;
-import org.bukkit.plugin.java.annotation.plugin.author.Authors;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;

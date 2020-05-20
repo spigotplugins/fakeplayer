@@ -19,10 +19,11 @@ import com.infumia.fakeplayer.nms.v1_9_R1.FakeCreated1_9_R1;
 import com.infumia.fakeplayer.nms.v1_9_R2.FakeCreated1_9_R2;
 import io.github.portlek.configs.util.MapEntry;
 import io.github.portlek.versionmatched.VersionMatched;
-import java.util.Optional;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public final class FakeBasic implements Fake {
 

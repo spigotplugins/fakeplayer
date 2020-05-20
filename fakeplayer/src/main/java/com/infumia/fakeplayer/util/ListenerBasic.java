@@ -1,13 +1,14 @@
 package com.infumia.fakeplayer.util;
 
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public final class ListenerBasic<T extends Event> {
 
