@@ -53,12 +53,14 @@ public final class LanguageFile extends BukkitLinkedManaged {
     }
 
     @NotNull
-    public Map<String, Supplier<String>> getPrefix() {
-        final Map<String, Supplier<String>> map = new HashMap<>();
-        this.pull("config").ifPresent(o ->
-            map.put("%prefix%", () -> ((ConfigFile) o).plugin_prefix.build())
-        );
-        return map;
+    public Map.Entry<String, Supplier<String>> getPrefix() {
+        return MapEntry.from("%prefix%", () -> this.getConfig().plugin_prefix.build());
+    }
+
+    @NotNull
+    private ConfigFile getConfig() {
+        return (ConfigFile) this.pull("config").orElseThrow(() ->
+            new IllegalStateException("Config couldn't put into the objects!"));
     }
 
     @Section(path = "errors")
