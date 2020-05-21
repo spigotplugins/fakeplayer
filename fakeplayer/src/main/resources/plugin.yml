@@ -28,8 +28,7 @@ permissions:
       fakeplayer.command.version: true
       fakeplayer.command.menu: true
   fakeplayer.version:
-    description: It allows you to notify if there is new update for the plugin on
-      join.
+    description: It allows you to notify if there is new update for the plugin on join.
   fakeplayer.command.main:
     description: It allows you to use to /fakeplayer command.
     default: 'true'
