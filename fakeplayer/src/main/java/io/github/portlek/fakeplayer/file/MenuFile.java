@@ -16,6 +16,7 @@ import io.github.portlek.fakeplayer.FakePlayer;
 import io.github.portlek.fakeplayer.file.provider.ListMenuProvider;
 import io.github.portlek.fakeplayer.util.FileElement;
 import io.github.portlek.smartinventory.Page;
+import java.util.Collections;
 import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -30,7 +31,8 @@ public final class MenuFile extends BukkitManaged {
     public final MenuFile.FakePlayers fakePlayers = new MenuFile.FakePlayers();
 
     @Override
-    public void onCreate() {
+    public void onLoad() {
+        this.setAutoSave(true);
     }
 
     @Section("fake-players")
@@ -88,7 +90,7 @@ public final class MenuFile extends BukkitManaged {
                 .onComplete((clicker, s) -> {
                     if (FakePlayer.getAPI().fakesFile.fakeplayers.containsKey(s)) {
                         clicker.sendMessage(FakePlayer.getAPI().languageFile.errors.there_is_already
-                            .build(MapEntry.from("%name%", () -> s)));
+                            .build(Collections.singleton(MapEntry.from("%name%", () -> s))));
                         return AnvilGUI.Response.close();
                     }
                     if (s.trim().length() > 16) {
@@ -96,7 +98,7 @@ public final class MenuFile extends BukkitManaged {
                     }
                     FakePlayer.getAPI().fakesFile.addFakes(s.trim(), clicker.getLocation());
                     clicker.sendMessage(FakePlayer.getAPI().languageFile.generals.fake_player_added
-                        .build(MapEntry.from("%name%", () -> s)));
+                        .build(Collections.singleton(MapEntry.from("%name%", () -> s))));
                     return AnvilGUI.Response.close();
                 })
                 .text(this.type_fake_player)
