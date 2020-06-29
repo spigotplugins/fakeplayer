@@ -44,9 +44,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
                     .append('\n')
                     .append("&7/fakeplayer menu &r> &eShows the main menu."))
                 .map(ColorUtil::colored)
-                .replace(this.getPrefix())
-        )
-    );
+                .replace(this.getPrefix())));
 
     public LanguageFile(@NotNull final ConfigFile configFile) {
         super(() -> configFile.plugin_language, MapEntry.from("config", configFile));
@@ -72,9 +70,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
                 Replaceable.from("%prefix% &cThere is already fake player such that name (%name%).")
                     .map(ColorUtil::colored)
                     .replaces("%name%")
-                    .replace(LanguageFile.this.getPrefix())
-            )
-        );
+                    .replace(LanguageFile.this.getPrefix())));
 
     }
 
@@ -87,9 +83,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
                 Replaceable.from("%prefix% &a%player_name% just joined the server!")
                     .map(ColorUtil::colored)
                     .replaces("%player_name%")
-                    .replace(LanguageFile.this.getPrefix())
-            )
-        );
+                    .replace(LanguageFile.this.getPrefix())));
 
         @Property
         public ReplaceableString quit_message = LanguageFile.this.match(s ->
@@ -97,9 +91,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
                 Replaceable.from("%prefix% &a%player_name% just quit the server!")
                     .map(ColorUtil::colored)
                     .replaces("%player_name%")
-                    .replace(LanguageFile.this.getPrefix())
-            )
-        );
+                    .replace(LanguageFile.this.getPrefix())));
 
         @Property
         public ReplaceableString reload_complete = LanguageFile.this.match(s ->
@@ -107,9 +99,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
                 Replaceable.from("%prefix% &aReload complete! &7Took (%ms%ms)")
                     .map(ColorUtil::colored)
                     .replace(LanguageFile.this.getPrefix())
-                    .replaces("%ms%")
-            )
-        );
+                    .replaces("%ms%")));
 
         @Property
         public ReplaceableString new_version_found = LanguageFile.this.match(s ->
@@ -117,9 +107,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
                 Replaceable.from("%prefix% &eNew version found (v%version%)")
                     .map(ColorUtil::colored)
                     .replaces("%version%")
-                    .replace(LanguageFile.this.getPrefix())
-            )
-        );
+                    .replace(LanguageFile.this.getPrefix())));
 
         @Property
         public ReplaceableString latest_version = LanguageFile.this.match(s ->
@@ -127,9 +115,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
                 Replaceable.from("%prefix% &aYou're using the latest version (v%version%)")
                     .map(ColorUtil::colored)
                     .replaces("%version%")
-                    .replace(LanguageFile.this.getPrefix())
-            )
-        );
+                    .replace(LanguageFile.this.getPrefix())));
 
         @Property
         public ReplaceableString fake_player_added = LanguageFile.this.match(s ->
@@ -137,9 +123,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
                 Replaceable.from("%prefix% &aFake player added (%name%)")
                     .map(ColorUtil::colored)
                     .replaces("%name%")
-                    .replace(LanguageFile.this.getPrefix())
-            )
-        );
+                    .replace(LanguageFile.this.getPrefix())));
 
     }
 

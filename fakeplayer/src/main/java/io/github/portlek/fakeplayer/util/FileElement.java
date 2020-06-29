@@ -28,6 +28,10 @@ public final class FileElement {
     @NotNull
     private final SlotPos position;
 
+    public FileElement(@NotNull final ItemStack itemStack, final int row, final int column) {
+        this(itemStack, SlotPos.of(row, column));
+    }
+
     public FileElement(@NotNull final FileElement fileElement) {
         this.itemStack = fileElement.itemStack;
         this.position = fileElement.position;
