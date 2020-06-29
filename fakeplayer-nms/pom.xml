@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>fakeplayer-parent</artifactId>
+        <groupId>io.github.portlek.fakeplayer</groupId>
+        <version>1.6</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>fakeplayer-nms</artifactId>
+    <name>fakeplayer-nms</name>
+    <packaging>pom</packaging>
+    <modules>
+        <module>1_8_R1</module>
+        <module>1_8_R2</module>
+        <module>1_8_R3</module>
+        <module>1_9_R1</module>
+        <module>1_9_R2</module>
+        <module>1_10_R1</module>
+        <module>1_11_R1</module>
+        <module>1_12_R1</module>
+        <module>1_13_R1</module>
+        <module>1_13_R2</module>
+        <module>1_14_R1</module>
+        <module>1_15_R1</module>
+        <module>1_16_R1</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>nms-repo</id>
+            <url>https://repo.codemc.org/repository/nms/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.portlek.fakeplayer</groupId>
+            <artifactId>api</artifactId>
+            <version>1.6</version>
+        </dependency>
+    </dependencies>
+
+</project>

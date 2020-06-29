@@ -3,14 +3,14 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>parent</artifactId>
+        <artifactId>fakeplayer-parent</artifactId>
         <groupId>io.github.portlek.fakeplayer</groupId>
         <version>1.6</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>FakePlayer</artifactId>
-    <name>FakePlayer</name>
+    <artifactId>fakeplayer</artifactId>
+    <name>fakeplayer</name>
 
     <build>
         <plugins>
@@ -76,7 +76,7 @@
     <dependencies>
         <dependency>
             <groupId>io.github.portlek.fakeplayer</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>fakeplayer-api</artifactId>
             <version>1.6</version>
         </dependency>
         <dependency>

@@ -4,18 +4,21 @@ import io.github.portlek.configs.annotations.*;
 import io.github.portlek.configs.bukkit.BukkitLinkedManaged;
 import io.github.portlek.configs.bukkit.BukkitSection;
 import io.github.portlek.configs.bukkit.util.ColorUtil;
+import io.github.portlek.configs.replaceable.Replaceable;
+import io.github.portlek.configs.replaceable.ReplaceableString;
 import io.github.portlek.configs.util.MapEntry;
-import io.github.portlek.configs.util.Replaceable;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
+
 import org.jetbrains.annotations.NotNull;
 
-@LinkedConfig(files = @LinkedFile(
+@LinkedConfig(value = @LinkedFile(
     key = "en",
     config = @Config(
-        name = "en",
+        value = "en",
         location = "%basedir%/FakePlayer/languages"
     )
 ))
@@ -28,7 +31,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
     public LanguageFile.General generals = new LanguageFile.General();
 
     @Property
-    public Replaceable<String> help_messages = this.match(s ->
+    public ReplaceableString help_messages = this.match(s ->
         Optional.of(
             Replaceable.from(
                 new StringBuilder()
