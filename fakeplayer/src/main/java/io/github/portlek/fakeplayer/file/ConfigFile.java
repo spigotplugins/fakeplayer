@@ -4,16 +4,17 @@ import io.github.portlek.configs.annotations.Config;
 import io.github.portlek.configs.annotations.Property;
 import io.github.portlek.configs.bukkit.BukkitManaged;
 import io.github.portlek.configs.bukkit.util.ColorUtil;
-import io.github.portlek.configs.util.Replaceable;
+import io.github.portlek.configs.replaceable.Replaceable;
+import io.github.portlek.configs.replaceable.ReplaceableString;
 
 @Config(
-    name = "config",
+    value = "config",
     location = "%basedir%/FakePlayer"
 )
 public final class ConfigFile extends BukkitManaged {
 
     @Property
-    public Replaceable<String> plugin_prefix = Replaceable.from("&6[&eFakePlayer&6]")
+    public ReplaceableString plugin_prefix = Replaceable.from("&6[&eFakePlayer&6]")
         .map(ColorUtil::colored);
 
     @Property
@@ -23,7 +24,7 @@ public final class ConfigFile extends BukkitManaged {
     public boolean check_for_update = true;
 
     @Property
-    public Replaceable<String> tab_name = Replaceable.from("&e[Player] &a%player_name%")
+    public ReplaceableString tab_name = Replaceable.from("&e[Player] &a%player_name%")
         .map(ColorUtil::colored)
         .replaces("%player_name%");
 

@@ -5,7 +5,6 @@ import io.github.portlek.fakeplayer.FakePlayer;
 import io.github.portlek.fakeplayer.api.Fake;
 import io.github.portlek.fakeplayer.api.FakeCreated;
 import io.github.portlek.fakeplayer.api.INPC;
-import io.github.portlek.fakeplayer.api.MockFakeCreated;
 import io.github.portlek.fakeplayer.nms.v1_10_R1.FakeCreated1_10_R1;
 import io.github.portlek.fakeplayer.nms.v1_11_R1.FakeCreated1_11_R1;
 import io.github.portlek.fakeplayer.nms.v1_12_R1.FakeCreated1_12_R1;
@@ -13,6 +12,7 @@ import io.github.portlek.fakeplayer.nms.v1_13_R1.FakeCreated1_13_R1;
 import io.github.portlek.fakeplayer.nms.v1_13_R2.FakeCreated1_13_R2;
 import io.github.portlek.fakeplayer.nms.v1_14_R1.FakeCreated1_14_R1;
 import io.github.portlek.fakeplayer.nms.v1_15_R1.FakeCreated1_15_R1;
+import io.github.portlek.fakeplayer.nms.v1_16_R1.FakeCreated1_16_R1;
 import io.github.portlek.fakeplayer.nms.v1_8_R1.FakeCreated1_8_R1;
 import io.github.portlek.fakeplayer.nms.v1_8_R2.FakeCreated1_8_R2;
 import io.github.portlek.fakeplayer.nms.v1_8_R3.FakeCreated1_8_R3;
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 public final class FakeBasic implements Fake {
 
     private static final FakeCreated FAKE_CREATED = new VersionMatched<>(
-        new MockFakeCreated(),
+        FakeCreated1_16_R1.class,
         FakeCreated1_15_R1.class,
         FakeCreated1_14_R1.class,
         FakeCreated1_13_R2.class,
@@ -39,8 +39,11 @@ public final class FakeBasic implements Fake {
         FakeCreated1_9_R1.class,
         FakeCreated1_8_R3.class,
         FakeCreated1_8_R2.class,
-        FakeCreated1_8_R1.class
-    ).of().instance();
+        FakeCreated1_8_R1.class)
+        .of()
+        .create()
+        .orElseThrow(() ->
+            new RuntimeException("Somethings were wrong!"));
 
     @NotNull
     private final String name;

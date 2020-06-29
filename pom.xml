@@ -5,12 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.portlek.fakeplayer</groupId>
-    <artifactId>parent</artifactId>
-    <version>1.5</version>
+    <artifactId>fakeplayer-parent</artifactId>
+    <version>1.6</version>
     <packaging>pom</packaging>
+    <description>FakePlayer plugin for Bukkit servers</description>
+
     <modules>
-        <module>nms</module>
-        <module>api</module>
+        <module>fakeplayer-nms</module>
+        <module>fakeplayer-api</module>
         <module>fakeplayer</module>
     </modules>
 
@@ -26,7 +28,6 @@
         </developer>
     </developers>
 
-    <description>FakePlayer plugin for Bukkit servers</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -52,6 +53,12 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>

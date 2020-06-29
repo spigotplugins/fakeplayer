@@ -1,5 +1,6 @@
 package io.github.portlek.fakeplayer.file;
 
+import io.github.portlek.bukkitlocation.LocationUtil;
 import io.github.portlek.configs.annotations.Config;
 import io.github.portlek.configs.annotations.Instance;
 import io.github.portlek.configs.annotations.Section;
@@ -9,8 +10,6 @@ import io.github.portlek.configs.files.FileType;
 import io.github.portlek.fakeplayer.FakePlayer;
 import io.github.portlek.fakeplayer.api.Fake;
 import io.github.portlek.fakeplayer.handle.FakeBasic;
-import io.github.portlek.location.LocationOf;
-import io.github.portlek.location.StringOf;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -19,7 +18,7 @@ import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 
 @Config(
-    name = "fakes",
+    value = "fakes",
     location = "%basedir%/FakePlayer",
     type = FileType.JSON
 )
@@ -42,7 +41,9 @@ public final class FakesFile extends BukkitManaged {
             .map(name ->
                 new FakeBasic(
                     name,
-                    new LocationOf(this.fakes.getOrSetString(name, "")).value()
+                    LocationUtil.fromKey(this.fakes.getOrSetString(name, ""))
+                        .orElseThrow(() ->
+                            new RuntimeException("Location couldn't parse!"))
                 ))
             .forEach(fake -> {
                 fake.spawn();
@@ -50,6 +51,7 @@ public final class FakesFile extends BukkitManaged {
             });
     }
 
+    @Override
     public void remove(@NotNull final String name) {
         Optional.ofNullable(this.fakeplayers.remove(name)).ifPresent(fake -> {
             Bukkit.getOnlinePlayers().forEach(player ->
@@ -69,10 +71,10 @@ public final class FakesFile extends BukkitManaged {
                     .build("%player_name%", () -> name)));
         fake.spawn();
         this.fakeplayers.put(name, fake);
-        this.fakes.set(name, new StringOf(location).asKey());
+        this.fakes.set(name, LocationUtil.toKey(location));
     }
 
-    @Section(path = "fakes")
+    @Section("fakes")
     public static final class Fakes extends BukkitSection {
 
     }

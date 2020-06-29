@@ -31,9 +31,7 @@ public final class FakePlayerCommand extends BaseCommand {
         FakePlayer.getAPI().reloadPlugin(false);
         sender.sendMessage(
             FakePlayer.getAPI().languageFile.generals.reload_complete.build(
-                "%ms%", () -> String.valueOf(System.currentTimeMillis() - millis)
-            )
-        );
+                "%ms%", () -> String.valueOf(System.currentTimeMillis() - millis)));
     }
 
     @Subcommand("version")

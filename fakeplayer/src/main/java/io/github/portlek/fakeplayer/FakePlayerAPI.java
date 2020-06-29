@@ -1,10 +1,12 @@
 package io.github.portlek.fakeplayer;
 
+import io.github.portlek.configs.structure.section.CfgSection;
 import io.github.portlek.fakeplayer.api.Fake;
 import io.github.portlek.fakeplayer.file.ConfigFile;
 import io.github.portlek.fakeplayer.file.FakesFile;
 import io.github.portlek.fakeplayer.file.LanguageFile;
 import io.github.portlek.fakeplayer.file.MenuFile;
+import io.github.portlek.fakeplayer.util.FileElement;
 import io.github.portlek.fakeplayer.util.ListenerBasic;
 import io.github.portlek.fakeplayer.util.UpdateChecker;
 import io.github.portlek.smartinventory.SmartInventory;
@@ -12,6 +14,7 @@ import io.github.portlek.smartinventory.manager.BasicSmartInventory;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
 public final class FakePlayerAPI {
@@ -20,27 +23,24 @@ public final class FakePlayerAPI {
     public final SmartInventory inventory;
 
     @NotNull
-    public final FakePlayer fakePlayer;
+    public final Plugin plugin;
 
     @NotNull
-    public final ConfigFile configFile;
+    public final ConfigFile configFile = new ConfigFile();
 
     @NotNull
-    public final LanguageFile languageFile;
+    public final LanguageFile languageFile = new LanguageFile(this.configFile);
 
     @NotNull
-    public final FakesFile fakesFile;
+    public final FakesFile fakesFile = new FakesFile();
 
     @NotNull
-    public final MenuFile menuFile;
+    public final MenuFile menuFile = new MenuFile();
 
-    public FakePlayerAPI(@NotNull final FakePlayer fakePlayer) {
-        this.inventory = new BasicSmartInventory(fakePlayer);
-        this.fakePlayer = fakePlayer;
-        this.configFile = new ConfigFile();
-        this.languageFile = new LanguageFile(this.configFile);
-        this.fakesFile = new FakesFile();
-        this.menuFile = new MenuFile();
+    public FakePlayerAPI(@NotNull final Plugin plugin) {
+        this.inventory = new BasicSmartInventory(plugin);
+        this.plugin = plugin;
+        CfgSection.addProvidedClass(FileElement.class, new FileElement.Provider());
     }
 
     public void reloadPlugin(final boolean first) {
@@ -55,7 +55,7 @@ public final class FakePlayerAPI {
                 PlayerJoinEvent.class,
                 event -> event.getPlayer().hasPermission("fakeplayer.version"),
                 event -> this.checkForUpdate(event.getPlayer())
-            ).register(this.fakePlayer);
+            ).register(this.plugin);
             new ListenerBasic<>(
                 PlayerJoinEvent.class,
                 event ->
@@ -63,9 +63,9 @@ public final class FakePlayerAPI {
                         npc.deSpawn();
                         npc.spawn();
                     })
-            ).register(this.fakePlayer);
+            ).register(this.plugin);
         }
-        this.checkForUpdate(this.fakePlayer.getServer().getConsoleSender());
+        this.checkForUpdate(this.plugin.getServer().getConsoleSender());
     }
 
     public void disablePlugin() {
@@ -73,11 +73,11 @@ public final class FakePlayerAPI {
     }
 
     public void checkForUpdate(@NotNull final CommandSender sender) {
-        Bukkit.getScheduler().runTaskAsynchronously(this.fakePlayer, () -> {
+        Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () -> {
             if (!this.configFile.check_for_update) {
                 return;
             }
-            final UpdateChecker updater = new UpdateChecker(this.fakePlayer, 73139);
+            final UpdateChecker updater = new UpdateChecker(this.plugin, 73139);
 
             try {
                 if (updater.checkForUpdates()) {
@@ -92,7 +92,7 @@ public final class FakePlayerAPI {
                     );
                 }
             } catch (final Exception exception) {
-                this.fakePlayer.getLogger().warning("Update checker failed, could not connect to the API.");
+                this.plugin.getLogger().warning("Update checker failed, could not connect to the API.");
             }
         });
     }

@@ -4,18 +4,18 @@ import io.github.portlek.configs.annotations.*;
 import io.github.portlek.configs.bukkit.BukkitLinkedManaged;
 import io.github.portlek.configs.bukkit.BukkitSection;
 import io.github.portlek.configs.bukkit.util.ColorUtil;
+import io.github.portlek.configs.replaceable.Replaceable;
+import io.github.portlek.configs.replaceable.ReplaceableString;
 import io.github.portlek.configs.util.MapEntry;
-import io.github.portlek.configs.util.Replaceable;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
 import org.jetbrains.annotations.NotNull;
 
-@LinkedConfig(files = @LinkedFile(
+@LinkedConfig(@LinkedFile(
     key = "en",
     config = @Config(
-        name = "en",
+        value = "en",
         location = "%basedir%/FakePlayer/languages"
     )
 ))
@@ -28,7 +28,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
     public LanguageFile.General generals = new LanguageFile.General();
 
     @Property
-    public Replaceable<String> help_messages = this.match(s ->
+    public ReplaceableString help_messages = this.match(s ->
         Optional.of(
             Replaceable.from(
                 new StringBuilder()
@@ -44,9 +44,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
                     .append('\n')
                     .append("&7/fakeplayer menu &r> &eShows the main menu."))
                 .map(ColorUtil::colored)
-                .replace(this.getPrefix())
-        )
-    );
+                .replace(this.getPrefix())));
 
     public LanguageFile(@NotNull final ConfigFile configFile) {
         super(() -> configFile.plugin_language, MapEntry.from("config", configFile));
@@ -59,87 +57,73 @@ public final class LanguageFile extends BukkitLinkedManaged {
 
     @NotNull
     private ConfigFile getConfig() {
-        return (ConfigFile) this.pull("config").orElseThrow(() ->
+        return (ConfigFile) this.object("config").orElseThrow(() ->
             new IllegalStateException("Config couldn't put into the objects!"));
     }
 
-    @Section(path = "errors")
+    @Section("errors")
     public final class Errors extends BukkitSection {
 
         @Property
-        public Replaceable<String> there_is_already = LanguageFile.this.match(s ->
+        public ReplaceableString there_is_already = LanguageFile.this.match(s ->
             Optional.of(
                 Replaceable.from("%prefix% &cThere is already fake player such that name (%name%).")
                     .map(ColorUtil::colored)
                     .replaces("%name%")
-                    .replace(LanguageFile.this.getPrefix())
-            )
-        );
+                    .replace(LanguageFile.this.getPrefix())));
 
     }
 
-    @Section(path = "general")
+    @Section("general")
     public final class General extends BukkitSection {
 
         @Property
-        public Replaceable<String> join_message = LanguageFile.this.match(s ->
+        public ReplaceableString join_message = LanguageFile.this.match(s ->
             Optional.of(
                 Replaceable.from("%prefix% &a%player_name% just joined the server!")
                     .map(ColorUtil::colored)
                     .replaces("%player_name%")
-                    .replace(LanguageFile.this.getPrefix())
-            )
-        );
+                    .replace(LanguageFile.this.getPrefix())));
 
         @Property
-        public Replaceable<String> quit_message = LanguageFile.this.match(s ->
+        public ReplaceableString quit_message = LanguageFile.this.match(s ->
             Optional.of(
                 Replaceable.from("%prefix% &a%player_name% just quit the server!")
                     .map(ColorUtil::colored)
                     .replaces("%player_name%")
-                    .replace(LanguageFile.this.getPrefix())
-            )
-        );
+                    .replace(LanguageFile.this.getPrefix())));
 
         @Property
-        public Replaceable<String> reload_complete = LanguageFile.this.match(s ->
+        public ReplaceableString reload_complete = LanguageFile.this.match(s ->
             Optional.of(
                 Replaceable.from("%prefix% &aReload complete! &7Took (%ms%ms)")
                     .map(ColorUtil::colored)
                     .replace(LanguageFile.this.getPrefix())
-                    .replaces("%ms%")
-            )
-        );
+                    .replaces("%ms%")));
 
         @Property
-        public Replaceable<String> new_version_found = LanguageFile.this.match(s ->
+        public ReplaceableString new_version_found = LanguageFile.this.match(s ->
             Optional.of(
                 Replaceable.from("%prefix% &eNew version found (v%version%)")
                     .map(ColorUtil::colored)
                     .replaces("%version%")
-                    .replace(LanguageFile.this.getPrefix())
-            )
-        );
+                    .replace(LanguageFile.this.getPrefix())));
 
         @Property
-        public Replaceable<String> latest_version = LanguageFile.this.match(s ->
+        public ReplaceableString latest_version = LanguageFile.this.match(s ->
             Optional.of(
                 Replaceable.from("%prefix% &aYou're using the latest version (v%version%)")
                     .map(ColorUtil::colored)
                     .replaces("%version%")
-                    .replace(LanguageFile.this.getPrefix())
-            )
-        );
+                    .replace(LanguageFile.this.getPrefix())));
 
         @Property
-        public Replaceable<String> fake_player_added = LanguageFile.this.match(s ->
+        public ReplaceableString fake_player_added = LanguageFile.this.match(s ->
             Optional.of(
                 Replaceable.from("%prefix% &aFake player added (%name%)")
                     .map(ColorUtil::colored)
                     .replaces("%name%")
-                    .replace(LanguageFile.this.getPrefix())
-            )
-        );
+                    .replace(LanguageFile.this.getPrefix())));
 
     }
 
