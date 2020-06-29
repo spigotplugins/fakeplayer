@@ -1,7 +1,6 @@
 package io.github.portlek.fakeplayer.nms.v1_16_R1;
 
 import io.netty.channel.*;
-
 import java.net.SocketAddress;
 
 public final class EmptyChannel extends AbstractChannel {

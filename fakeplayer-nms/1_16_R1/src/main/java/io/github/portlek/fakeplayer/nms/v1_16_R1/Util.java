@@ -1,14 +1,13 @@
 package io.github.portlek.fakeplayer.nms.v1_16_R1;
 
-import net.minecraft.server.v1_16_R1.*;
-import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_16_R1.entity.CraftPlayer;
-import org.jetbrains.annotations.NotNull;
-
 import java.lang.reflect.Field;
 import java.net.SocketAddress;
 import java.util.Arrays;
 import java.util.List;
+import net.minecraft.server.v1_16_R1.*;
+import org.bukkit.Bukkit;
+import org.bukkit.craftbukkit.v1_16_R1.entity.CraftPlayer;
+import org.jetbrains.annotations.NotNull;
 
 final class Util {
 

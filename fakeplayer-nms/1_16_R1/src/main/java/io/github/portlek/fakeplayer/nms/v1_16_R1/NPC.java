@@ -2,6 +2,9 @@ package io.github.portlek.fakeplayer.nms.v1_16_R1;
 
 import com.mojang.authlib.GameProfile;
 import io.github.portlek.fakeplayer.api.INPC;
+import java.io.IOException;
+import java.net.Socket;
+import java.util.UUID;
 import net.minecraft.server.v1_16_R1.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -11,10 +14,6 @@ import org.bukkit.craftbukkit.v1_16_R1.CraftServer;
 import org.bukkit.craftbukkit.v1_16_R1.CraftWorld;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
-import java.net.Socket;
-import java.util.UUID;
 
 public final class NPC extends EntityPlayer implements INPC {
 

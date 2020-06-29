@@ -37,7 +37,7 @@
     <dependencies>
         <dependency>
             <groupId>io.github.portlek.fakeplayer</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>fakeplayer-api</artifactId>
             <version>1.6</version>
         </dependency>
     </dependencies>

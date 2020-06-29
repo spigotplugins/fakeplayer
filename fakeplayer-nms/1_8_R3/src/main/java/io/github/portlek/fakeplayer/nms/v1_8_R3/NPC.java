@@ -1,7 +1,7 @@
 package io.github.portlek.fakeplayer.nms.v1_8_R3;
 
-import io.github.portlek.fakeplayer.api.INPC;
 import com.mojang.authlib.GameProfile;
+import io.github.portlek.fakeplayer.api.INPC;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.UUID;

@@ -7,15 +7,12 @@ import io.github.portlek.configs.bukkit.util.ColorUtil;
 import io.github.portlek.configs.replaceable.Replaceable;
 import io.github.portlek.configs.replaceable.ReplaceableString;
 import io.github.portlek.configs.util.MapEntry;
-
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
-
 import org.jetbrains.annotations.NotNull;
 
-@LinkedConfig(value = @LinkedFile(
+@LinkedConfig(@LinkedFile(
     key = "en",
     config = @Config(
         value = "en",
@@ -62,15 +59,15 @@ public final class LanguageFile extends BukkitLinkedManaged {
 
     @NotNull
     private ConfigFile getConfig() {
-        return (ConfigFile) this.pull("config").orElseThrow(() ->
+        return (ConfigFile) this.object("config").orElseThrow(() ->
             new IllegalStateException("Config couldn't put into the objects!"));
     }
 
-    @Section(path = "errors")
+    @Section("errors")
     public final class Errors extends BukkitSection {
 
         @Property
-        public Replaceable<String> there_is_already = LanguageFile.this.match(s ->
+        public ReplaceableString there_is_already = LanguageFile.this.match(s ->
             Optional.of(
                 Replaceable.from("%prefix% &cThere is already fake player such that name (%name%).")
                     .map(ColorUtil::colored)
@@ -81,11 +78,11 @@ public final class LanguageFile extends BukkitLinkedManaged {
 
     }
 
-    @Section(path = "general")
+    @Section("general")
     public final class General extends BukkitSection {
 
         @Property
-        public Replaceable<String> join_message = LanguageFile.this.match(s ->
+        public ReplaceableString join_message = LanguageFile.this.match(s ->
             Optional.of(
                 Replaceable.from("%prefix% &a%player_name% just joined the server!")
                     .map(ColorUtil::colored)
@@ -95,7 +92,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
         );
 
         @Property
-        public Replaceable<String> quit_message = LanguageFile.this.match(s ->
+        public ReplaceableString quit_message = LanguageFile.this.match(s ->
             Optional.of(
                 Replaceable.from("%prefix% &a%player_name% just quit the server!")
                     .map(ColorUtil::colored)
@@ -105,7 +102,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
         );
 
         @Property
-        public Replaceable<String> reload_complete = LanguageFile.this.match(s ->
+        public ReplaceableString reload_complete = LanguageFile.this.match(s ->
             Optional.of(
                 Replaceable.from("%prefix% &aReload complete! &7Took (%ms%ms)")
                     .map(ColorUtil::colored)
@@ -115,7 +112,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
         );
 
         @Property
-        public Replaceable<String> new_version_found = LanguageFile.this.match(s ->
+        public ReplaceableString new_version_found = LanguageFile.this.match(s ->
             Optional.of(
                 Replaceable.from("%prefix% &eNew version found (v%version%)")
                     .map(ColorUtil::colored)
@@ -125,7 +122,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
         );
 
         @Property
-        public Replaceable<String> latest_version = LanguageFile.this.match(s ->
+        public ReplaceableString latest_version = LanguageFile.this.match(s ->
             Optional.of(
                 Replaceable.from("%prefix% &aYou're using the latest version (v%version%)")
                     .map(ColorUtil::colored)
@@ -135,7 +132,7 @@ public final class LanguageFile extends BukkitLinkedManaged {
         );
 
         @Property
-        public Replaceable<String> fake_player_added = LanguageFile.this.match(s ->
+        public ReplaceableString fake_player_added = LanguageFile.this.match(s ->
             Optional.of(
                 Replaceable.from("%prefix% &aFake player added (%name%)")
                     .map(ColorUtil::colored)

@@ -28,6 +28,7 @@ public final class FakeBasic implements Fake {
 
     private static final FakeCreated FAKE_CREATED = new VersionMatched<>(
         new MockFakeCreated(),
+        FakeCreated1_16_R1.class,
         FakeCreated1_15_R1.class,
         FakeCreated1_14_R1.class,
         FakeCreated1_13_R2.class,
