@@ -87,7 +87,7 @@
         <dependency>
             <groupId>io.github.portlek</groupId>
             <artifactId>version-matched</artifactId>
-            <version>2.5.1</version>
+            <version>2.5.2</version>
         </dependency>
         <dependency>
             <groupId>com.github.WesJD.AnvilGUI</groupId>
