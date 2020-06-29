@@ -6,7 +6,7 @@
 
     <groupId>io.github.portlek.fakeplayer</groupId>
     <artifactId>parent</artifactId>
-    <version>1.5</version>
+    <version>1.6</version>
     <packaging>pom</packaging>
     <modules>
         <module>nms</module>
