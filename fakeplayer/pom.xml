@@ -25,6 +25,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <outputFile>/home/portlek/Desktop/server/plugins/${project.name}.jar</outputFile>
                             <minimizeJar>true</minimizeJar>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                             <relocations>
@@ -118,7 +119,7 @@
         <dependency>
             <groupId>io.github.portlek</groupId>
             <artifactId>configs-bukkit</artifactId>
-            <version>4.6.2</version>
+            <version>4.7</version>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
