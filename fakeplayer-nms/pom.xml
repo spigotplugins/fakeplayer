@@ -5,7 +5,7 @@
     <parent>
         <artifactId>fakeplayer-parent</artifactId>
         <groupId>io.github.portlek.fakeplayer</groupId>
-        <version>1.6</version>
+        <version>1.6.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>fakeplayer-nms</artifactId>
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>io.github.portlek.fakeplayer</groupId>
             <artifactId>fakeplayer-api</artifactId>
-            <version>1.6</version>
+            <version>1.6.1</version>
         </dependency>
     </dependencies>
 
