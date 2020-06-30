@@ -44,9 +44,7 @@ public final class FakePlayer extends JavaPlugin {
     public void onEnable() {
         final BukkitCommandManager manager = new BukkitCommandManager(this);
         FakePlayer.api = new FakePlayerAPI(this);
-        this.getServer().getScheduler().runTask(this, () ->
-            this.getServer().getScheduler().runTaskAsynchronously(this, () ->
-                FakePlayer.api.reloadPlugin(true)));
+        FakePlayer.api.reloadPlugin(true);
         manager.registerCommand(new FakePlayerCommand());
     }
 
