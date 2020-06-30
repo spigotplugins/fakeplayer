@@ -3,6 +3,7 @@ package io.github.portlek.fakeplayer.util;
 import io.github.portlek.configs.bukkit.BkktSection;
 import io.github.portlek.configs.provided.Provided;
 import io.github.portlek.configs.structure.section.CfgSection;
+import io.github.portlek.configs.util.GeneralUtilities;
 import io.github.portlek.smartinventory.Icon;
 import io.github.portlek.smartinventory.InventoryContents;
 import io.github.portlek.smartinventory.event.abs.ClickEvent;
@@ -111,18 +112,20 @@ public final class FileElement {
     public static class Provider implements Provided<FileElement> {
 
         @Override
-        public void set(@NotNull final FileElement fileElement, @NotNull final CfgSection section, @NotNull final String s) {
-            section.set("row", fileElement.position.getRow());
-            section.set("column", fileElement.position.getColumn());
-            ((BkktSection) section).setItemStack(s, fileElement.itemStack);
+        public void set(@NotNull final FileElement fileElement, @NotNull final CfgSection section, @NotNull final String path) {
+            final String dot = GeneralUtilities.putDot(path);
+            section.set(dot + "row", fileElement.position.getRow());
+            section.set(dot + "column", fileElement.position.getColumn());
+            ((BkktSection) section).setItemStack(dot + "item", fileElement.itemStack);
         }
 
         @NotNull
         @Override
-        public Optional<FileElement> get(@NotNull final CfgSection section, @NotNull final String s) {
-            final Optional<ItemStack> itemStackOptional = ((BkktSection) section).getItemStack(s);
-            final Optional<Integer> rowOptional = section.getInteger("row");
-            final Optional<Integer> columnOptional = section.getInteger("column");
+        public Optional<FileElement> get(@NotNull final CfgSection section, @NotNull final String path) {
+            final String dot = GeneralUtilities.putDot(path);
+            final Optional<ItemStack> itemStackOptional = ((BkktSection) section).getItemStack(dot + "item");
+            final Optional<Integer> rowOptional = section.getInteger(dot + "row");
+            final Optional<Integer> columnOptional = section.getInteger(dot + "column");
             if (!itemStackOptional.isPresent() || !rowOptional.isPresent() || !columnOptional.isPresent()) {
                 return Optional.empty();
             }
