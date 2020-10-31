@@ -12,7 +12,7 @@
   <artifactId>fakeplayer-parent</artifactId>
   <version>1.7.0</version>
   <packaging>pom</packaging>
-  <description>FakePlayer plugin for Bukkit servers</description>
+  <description>A plugin that allows you to create fake players to increase your server player amount.</description>
   <modules>
     <module>fakeplayer-api</module>
     <module>fakeplayer-nms</module>
