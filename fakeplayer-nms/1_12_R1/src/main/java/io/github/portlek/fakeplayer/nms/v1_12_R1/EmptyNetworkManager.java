@@ -7,20 +7,19 @@ import net.minecraft.server.v1_12_R1.Packet;
 
 class EmptyNetworkManager extends NetworkManager {
 
-    EmptyNetworkManager(final EnumProtocolDirection flag) {
-        super(flag);
-        try {
-            this.channel = new EmptyChannel(null);
-        } catch (final Exception e1) {
-            e1.printStackTrace();
-        }
-        this.l = new SocketAddress() {
-            private static final long serialVersionUID = 8207338859896320185L;
-        };
+  EmptyNetworkManager(final EnumProtocolDirection flag) {
+    super(flag);
+    try {
+      this.channel = new EmptyChannel(null);
+    } catch (final Exception e1) {
+      e1.printStackTrace();
     }
+    this.l = new SocketAddress() {
+      private static final long serialVersionUID = 8207338859896320185L;
+    };
+  }
 
-    @Override
-    public void sendPacket(final Packet<?> packet) {
-    }
-
+  @Override
+  public void sendPacket(final Packet<?> packet) {
+  }
 }

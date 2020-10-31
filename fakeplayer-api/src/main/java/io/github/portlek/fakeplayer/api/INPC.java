@@ -5,10 +5,9 @@ import org.jetbrains.annotations.NotNull;
 
 public interface INPC {
 
-    void spawn(@NotNull Location location);
+  void spawn(@NotNull Location location);
 
-    void deSpawn();
+  void deSpawn();
 
-    void toggleVisible();
-
+  void toggleVisible();
 }
