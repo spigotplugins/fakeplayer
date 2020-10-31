@@ -16,7 +16,6 @@ public final class FakeCreated1_16_R1 implements FakeCreated {
       Bukkit.getServer().getOfflinePlayer(name).getUniqueId(),
       name,
       tabname,
-      (CraftWorld) world
-    );
+      (CraftWorld) world);
   }
 }
