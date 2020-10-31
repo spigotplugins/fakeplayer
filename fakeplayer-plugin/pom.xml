@@ -24,7 +24,6 @@
               <goal>shade</goal>
             </goals>
             <configuration>
-              <outputFile>C:\Users\hasan\Desktop\server\plugins\${project.name}.jar</outputFile>
               <minimizeJar>true</minimizeJar>
               <createDependencyReducedPom>false</createDependencyReducedPom>
               <relocations>
