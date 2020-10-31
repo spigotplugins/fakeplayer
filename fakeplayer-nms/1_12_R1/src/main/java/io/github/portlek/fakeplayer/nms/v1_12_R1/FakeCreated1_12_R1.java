@@ -9,15 +9,14 @@ import org.jetbrains.annotations.NotNull;
 
 public final class FakeCreated1_12_R1 implements FakeCreated {
 
-    @NotNull
-    @Override
-    public INPC create(@NotNull final String name, @NotNull final String tabname, @NotNull final World world) {
-        return new NPC(
-            Bukkit.getServer().getOfflinePlayer(name).getUniqueId(),
-            name,
-            tabname,
-            (CraftWorld) world
-        );
-    }
-
+  @NotNull
+  @Override
+  public INPC create(@NotNull final String name, @NotNull final String tabname, @NotNull final World world) {
+    return new NPC(
+      Bukkit.getServer().getOfflinePlayer(name).getUniqueId(),
+      name,
+      tabname,
+      (CraftWorld) world
+    );
+  }
 }

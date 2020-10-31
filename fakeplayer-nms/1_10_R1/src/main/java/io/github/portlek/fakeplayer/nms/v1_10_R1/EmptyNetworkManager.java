@@ -6,13 +6,12 @@ import net.minecraft.server.v1_10_R1.Packet;
 
 class EmptyNetworkManager extends NetworkManager {
 
-    EmptyNetworkManager(final EnumProtocolDirection flag) {
-        super(flag);
-        Util.initNetworkManager(this);
-    }
+  EmptyNetworkManager(final EnumProtocolDirection flag) {
+    super(flag);
+    Util.initNetworkManager(this);
+  }
 
-    @Override
-    public void sendPacket(final Packet<?> packet) {
-    }
-
+  @Override
+  public void sendPacket(final Packet<?> packet) {
+  }
 }

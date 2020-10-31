@@ -8,20 +8,19 @@ import java.net.Socket;
 
 class EmptySocket extends Socket {
 
-    private static final byte[] EMPTY;
+  private static final byte[] EMPTY;
 
-    static {
-        EMPTY = new byte[50];
-    }
+  static {
+    EMPTY = new byte[50];
+  }
 
-    @Override
-    public InputStream getInputStream() {
-        return new ByteArrayInputStream(EmptySocket.EMPTY);
-    }
+  @Override
+  public InputStream getInputStream() {
+    return new ByteArrayInputStream(EmptySocket.EMPTY);
+  }
 
-    @Override
-    public OutputStream getOutputStream() {
-        return new ByteArrayOutputStream(10);
-    }
-
+  @Override
+  public OutputStream getOutputStream() {
+    return new ByteArrayOutputStream(10);
+  }
 }

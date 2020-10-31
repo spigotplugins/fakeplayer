@@ -5,16 +5,15 @@ import org.jetbrains.annotations.NotNull;
 
 public interface Fake {
 
-    @NotNull
-    String getName();
+  @NotNull
+  String getName();
 
-    @NotNull
-    Location getSpawnPoint();
+  @NotNull
+  Location getSpawnPoint();
 
-    void spawn();
+  void spawn();
 
-    void deSpawn();
+  void deSpawn();
 
-    void toggleVisible();
-
+  void toggleVisible();
 }

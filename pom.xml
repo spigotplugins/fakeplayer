@@ -2,69 +2,20 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>io.github.portlek.fakeplayer</groupId>
-    <artifactId>fakeplayer-parent</artifactId>
-    <version>1.6.1</version>
-    <packaging>pom</packaging>
-    <description>FakePlayer plugin for Bukkit servers</description>
-
-    <modules>
-        <module>fakeplayer-nms</module>
-        <module>fakeplayer-api</module>
-        <module>fakeplayer</module>
-    </modules>
-
-    <developers>
-        <developer>
-            <id>portlek</id>
-            <name>Hasan Demirtaş</name>
-            <url>https://github.com/portlek</url>
-            <roles>
-                <role>LeadDeveloper</role>
-                <role>Architect</role>
-            </roles>
-        </developer>
-    </developers>
-
-    <properties>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>2.7</version>
-            </plugin>
-        </plugins>
-    </build>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>19.0.0</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>io.github.portlek</groupId>
+    <artifactId>ppom</artifactId>
+    <version>1.9.2</version>
+  </parent>
+  <groupId>io.github.portlek.fakeplayer</groupId>
+  <artifactId>fakeplayer-parent</artifactId>
+  <version>1.7.0</version>
+  <packaging>pom</packaging>
+  <description>A plugin that allows you to create fake players to increase your server player amount.</description>
+  <modules>
+    <module>fakeplayer-api</module>
+    <module>fakeplayer-nms</module>
+    <module>fakeplayer-plugin</module>
+  </modules>
 </project>
