@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.github.portlek.fakeplayer</groupId>
     <artifactId>fakeplayer-nms</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.7.0</version>
   </parent>
   <groupId>io.github.portlek.fakeplayer.nms</groupId>
   <artifactId>1_9_R2</artifactId>

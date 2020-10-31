@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.github.portlek.fakeplayer</groupId>
     <artifactId>fakeplayer-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.7.0</version>
   </parent>
   <artifactId>FakePlayer</artifactId>
   <name>FakePlayer</name>
@@ -70,7 +70,7 @@
     <dependency>
       <groupId>io.github.portlek.fakeplayer</groupId>
       <artifactId>fakeplayer-api</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek</groupId>
@@ -137,72 +137,72 @@
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_8_R1</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_8_R2</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_8_R3</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_9_R1</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_9_R2</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_10_R1</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_11_R1</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_12_R1</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_13_R1</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_13_R2</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_14_R1</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_15_R1</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_16_R1</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_16_R2</artifactId>
-      <version>1.0-SNAPSHOT</version>
+      <version>1.7.0</version>
     </dependency>
   </dependencies>
 </project>
