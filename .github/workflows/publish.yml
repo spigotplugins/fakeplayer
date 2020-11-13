@@ -30,8 +30,8 @@ jobs:
         uses: pozetroninc/github-action-get-latest-release@v0.5.0
         id: version
         with:
-          owner: shiruka
-          repo: shiruka
+          owner: spigotplugins
+          repo: fakeplayer
 
       - name: Bump and return the new version.
         uses: actions-ecosystem/action-bump-semver@v1
@@ -56,4 +56,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ steps.bump-semver.outputs.new_version }}
           tag: ${{ steps.bump-semver.outputs.new_version }}
-          artifacts: "target/shiruka.jar"
+          artifacts: "target/FakePlayer.jar"

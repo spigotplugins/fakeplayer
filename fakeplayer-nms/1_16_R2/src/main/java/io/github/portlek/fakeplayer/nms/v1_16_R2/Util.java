@@ -5,8 +5,6 @@ import java.net.SocketAddress;
 import java.util.Arrays;
 import java.util.List;
 import net.minecraft.server.v1_16_R2.*;
-import net.minecraft.server.v1_16_R2.EntityPlayer;
-import net.minecraft.server.v1_16_R2.NetworkManager;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_16_R2.entity.CraftPlayer;
 import org.jetbrains.annotations.NotNull;
