@@ -1,0 +1,59 @@
+name: publish
+
+on:
+  pull_request:
+    types: [ closed ]
+
+jobs:
+  tag:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get release label of the pull request.
+        uses: actions-ecosystem/action-release-label@v1
+        id: release-label
+
+      - name: Cancel if the the p.r. does not have the release labels.
+        if: ${{ steps.release-label.outputs.level == null }}
+        run: exit 1
+
+      - name: Turnstyle
+        uses: softprops/turnstyle@v1
+        with:
+          poll-interval-seconds: 10
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v2
+
+      - name: Get Latest Release
+        uses: pozetroninc/github-action-get-latest-release@v0.5.0
+        id: version
+        with:
+          owner: shiruka
+          repo: shiruka
+
+      - name: Bump and return the new version.
+        uses: actions-ecosystem/action-bump-semver@v1
+        id: bump-semver
+        with:
+          current_version: ${{ steps.version.outputs.release }}
+          level: ${{ steps.release-label.outputs.level }}
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+
+      - name: Publish with Maven
+        run: |
+          [[ "${{ steps.bump-semver.outputs.new_version }}" =~ ^[0-9]+(\.[0-9]+)*$ ]] || exit -1
+          mvn versions:set -DnewVersion="${{ steps.bump-semver.outputs.new_version }}" -ntp -B
+          mvn install -Dgpg.skip=true -ntp -B
+
+      - uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: ${{ steps.bump-semver.outputs.new_version }}
+          tag: ${{ steps.bump-semver.outputs.new_version }}
+          artifacts: "target/shiruka.jar"
