@@ -1,12 +1,12 @@
-package io.github.portlek.fakeplayer.nms.v1_16_R2;
+package io.github.portlek.fakeplayer.nms.v1_16_R3;
 
 import java.lang.reflect.Field;
 import java.net.SocketAddress;
 import java.util.Arrays;
 import java.util.List;
-import net.minecraft.server.v1_16_R2.*;
+import net.minecraft.server.v1_16_R3.*;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_16_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_16_R3.entity.CraftPlayer;
 import org.jetbrains.annotations.NotNull;
 
 final class Util {
@@ -44,7 +44,7 @@ final class Util {
         e.printStackTrace();
       }
       viewDistanceField.setAccessible(access);
-    } catch (NoSuchFieldException e) {
+    } catch (final NoSuchFieldException e) {
       e.printStackTrace();
     }
   }
