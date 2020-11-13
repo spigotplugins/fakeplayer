@@ -13,6 +13,7 @@ import io.github.portlek.fakeplayer.nms.v1_14_R1.FakeCreated1_14_R1;
 import io.github.portlek.fakeplayer.nms.v1_15_R1.FakeCreated1_15_R1;
 import io.github.portlek.fakeplayer.nms.v1_16_R1.FakeCreated1_16_R1;
 import io.github.portlek.fakeplayer.nms.v1_16_R2.FakeCreated1_16_R2;
+import io.github.portlek.fakeplayer.nms.v1_16_R3.FakeCreated1_16_R3;
 import io.github.portlek.fakeplayer.nms.v1_8_R1.FakeCreated1_8_R1;
 import io.github.portlek.fakeplayer.nms.v1_8_R2.FakeCreated1_8_R2;
 import io.github.portlek.fakeplayer.nms.v1_8_R3.FakeCreated1_8_R3;
