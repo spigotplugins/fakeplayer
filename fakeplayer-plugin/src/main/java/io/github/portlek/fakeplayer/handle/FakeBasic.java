@@ -28,6 +28,7 @@ import org.jetbrains.annotations.Nullable;
 public final class FakeBasic implements Fake {
 
   private static final FakeCreated FAKE_CREATED = new VersionMatched<>(
+    FakeCreated1_16_R3.class,
     FakeCreated1_16_R2.class,
     FakeCreated1_16_R1.class,
     FakeCreated1_15_R1.class,
