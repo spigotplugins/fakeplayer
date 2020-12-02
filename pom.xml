@@ -6,11 +6,11 @@
   <parent>
     <groupId>io.github.portlek</groupId>
     <artifactId>ppom</artifactId>
-    <version>1.9.2</version>
+    <version>2.0.3</version>
   </parent>
   <groupId>io.github.portlek.fakeplayer</groupId>
   <artifactId>fakeplayer-parent</artifactId>
-  <version>2.0.0</version>
+  <version>2.1.0</version>
   <packaging>pom</packaging>
   <description>A plugin that allows you to create fake players to increase your server player amount.</description>
   <modules>

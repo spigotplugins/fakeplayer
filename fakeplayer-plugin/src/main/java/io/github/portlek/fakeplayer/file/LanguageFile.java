@@ -43,7 +43,17 @@ public final class LanguageFile extends BukkitLinkedManaged {
         .append('\n')
         .append("&7/fakeplayer version &r> &eChecks for update.")
         .append('\n')
-        .append("&7/fakeplayer menu &r> &eShows the main menu."))
+        .append("&7/fakeplayer menu &r> &eShows the main menu.")
+        .append('\n')
+        .append("&7/fakeplayer add <name> &r> &eAdds a fake player name.")
+        .append('\n')
+        .append("&7/fakeplayer remove <name> &r> &eRemoves the fake player.")
+        .append('\n')
+        .append("&7/fakeplayer toggle <name> &r> &eToggles the visibility of the fake player.")
+        .append('\n')
+        .append("&7/fakeplayer tp <name> &r> &eTeleports you to the fake player location.")
+        .append('\n')
+        .append("&7/fakeplayer chat <name> <message> &r> &eSends a fake message for the fake player."))
       .map(ColorUtil::colored)
       .replace(this.getPrefix())));
 
@@ -67,9 +77,16 @@ public final class LanguageFile extends BukkitLinkedManaged {
 
     @Property
     public Scalar<RpString> there_is_already = LanguageFile.this.match(map ->
-      map.put("en", Replaceable.from("%prefix% &cThere is already fake player such that name (%name%).")
+      map.put("en", Replaceable.from("%prefix% &cThere is already fake player such that name (%player_name%).")
         .map(ColorUtil::colored)
-        .replaces("%name%")
+        .replaces("%player_name%")
+        .replace(LanguageFile.this.getPrefix())));
+
+    @Property
+    public Scalar<RpString> not_found = LanguageFile.this.match(map ->
+      map.put("en", Replaceable.from("%prefix% &cThere is no fake player such that name (%player_name%).")
+        .map(ColorUtil::colored)
+        .replaces("%player_name%")
         .replace(LanguageFile.this.getPrefix())));
   }
 
@@ -113,9 +130,23 @@ public final class LanguageFile extends BukkitLinkedManaged {
 
     @Property
     public Scalar<RpString> fake_player_added = LanguageFile.this.match(map ->
-      map.put("en", Replaceable.from("%prefix% &aFake player added (%name%)")
+      map.put("en", Replaceable.from("%prefix% &aFake player added (%player_name%)")
         .map(ColorUtil::colored)
-        .replaces("%name%")
+        .replaces("%player_name%")
+        .replace(LanguageFile.this.getPrefix())));
+
+    @Property
+    public Scalar<RpString> toggle_fake_player = LanguageFile.this.match(map ->
+      map.put("en", Replaceable.from("%prefix% &aFake player toggled (%player_name%)")
+        .map(ColorUtil::colored)
+        .replaces("%player_name%")
+        .replace(LanguageFile.this.getPrefix())));
+
+    @Property
+    public Scalar<RpString> fake_player_removed = LanguageFile.this.match(map ->
+      map.put("en", Replaceable.from("%prefix% &aFake player removed (%player_name%)")
+        .map(ColorUtil::colored)
+        .replaces("%player_name%")
         .replace(LanguageFile.this.getPrefix())));
   }
 }

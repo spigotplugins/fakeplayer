@@ -30,6 +30,11 @@ public final class ConfigFile extends BukkitManaged {
     .map(ColorUtil::colored)
     .replaces("%player_name%");
 
+  @Property
+  public RpString chat_format = Replaceable.from("&e[Player] &a%player_name%: &7%message%")
+    .map(ColorUtil::colored)
+    .replaces("%player_name%", "%message%");
+
   @Override
   public void onLoad() {
     this.setAutoSave(true);

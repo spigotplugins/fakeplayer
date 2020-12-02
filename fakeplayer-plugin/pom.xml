@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.github.portlek.fakeplayer</groupId>
     <artifactId>fakeplayer-parent</artifactId>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
   </parent>
   <artifactId>FakePlayer</artifactId>
   <name>FakePlayer</name>
@@ -34,6 +34,10 @@
                 <relocation>
                   <pattern>io.github.portlek.configs</pattern>
                   <shadedPattern>io.github.portlek.fakeplayer.file</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.yaml.snakeyaml</pattern>
+                  <shadedPattern>io.github.portlek.fakeplayer.yaml</shadedPattern>
                 </relocation>
               </relocations>
             </configuration>
@@ -65,12 +69,16 @@
       <url>https://dl.bintray.com/portlek/maven</url>
       <id>portlek</id>
     </repository>
+    <repository>
+      <id>codemc-snapshots</id>
+      <url>https://repo.codemc.io/repository/maven-snapshots/</url>
+    </repository>
   </repositories>
   <dependencies>
     <dependency>
       <groupId>io.github.portlek.fakeplayer</groupId>
       <artifactId>fakeplayer-api</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek</groupId>
@@ -83,9 +91,9 @@
       <version>2.9</version>
     </dependency>
     <dependency>
-      <groupId>com.github.WesJD.AnvilGUI</groupId>
+      <groupId>net.wesjd</groupId>
       <artifactId>anvilgui</artifactId>
-      <version>master-SNAPSHOT</version>
+      <version>1.4.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>co.aikar</groupId>
@@ -101,7 +109,7 @@
     <dependency>
       <groupId>io.github.portlek</groupId>
       <artifactId>SmartInventory</artifactId>
-      <version>3.0.0</version>
+      <version>3.0.8</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek</groupId>
@@ -127,6 +135,12 @@
       <groupId>io.github.portlek</groupId>
       <artifactId>configs-bukkit</artifactId>
       <version>4.9.9.6</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>bukkit-location</artifactId>
+          <groupId>io.github.portlek</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.spigotmc</groupId>
@@ -137,77 +151,77 @@
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_8_R1</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_8_R2</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_8_R3</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_9_R1</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_9_R2</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_10_R1</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_11_R1</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_12_R1</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_13_R1</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_13_R2</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_14_R1</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_15_R1</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_16_R1</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_16_R2</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_16_R3</artifactId>
-      <version>2.0.0</version>
+      <version>${project.version}</version>
     </dependency>
   </dependencies>
 </project>
