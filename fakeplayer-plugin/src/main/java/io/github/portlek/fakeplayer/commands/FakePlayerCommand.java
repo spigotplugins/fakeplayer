@@ -1,10 +1,7 @@
 package io.github.portlek.fakeplayer.commands;
 
 import co.aikar.commands.BaseCommand;
-import co.aikar.commands.annotation.CommandAlias;
-import co.aikar.commands.annotation.CommandPermission;
-import co.aikar.commands.annotation.Default;
-import co.aikar.commands.annotation.Subcommand;
+import co.aikar.commands.annotation.*;
 import io.github.portlek.fakeplayer.FakePlayer;
 import io.github.portlek.fakeplayer.api.Fake;
 import io.github.portlek.mapentry.MapEntry;
@@ -52,7 +49,8 @@ public final class FakePlayerCommand extends BaseCommand {
     FakePlayer.getAPI().menuFile.fakePlayers.inventory().open(player);
   }
 
-  @Subcommand("add <name>")
+  @Syntax("<name>")
+  @Subcommand("add")
   @CommandPermission("fakeplayer.command.add")
   public static void addCommand(final CommandSender sender, final String name) {
     if (FakePlayer.getAPI().fakesFile.fakeplayers.containsKey(name)) {
@@ -68,7 +66,8 @@ public final class FakePlayerCommand extends BaseCommand {
     }
   }
 
-  @Subcommand("remove <name>")
+  @Syntax("<name>")
+  @Subcommand("remove")
   @CommandPermission("fakeplayer.command.remove")
   public static void removeCommand(final CommandSender sender, final String name) {
     if (FakePlayer.getAPI().fakesFile.fakeplayers.containsKey(name)) {
@@ -81,7 +80,8 @@ public final class FakePlayerCommand extends BaseCommand {
     FakePlayer.getAPI().fakesFile.remove(name.trim());
   }
 
-  @Subcommand("toggle <name>")
+  @Syntax("<name>")
+  @Subcommand("toggle")
   @CommandPermission("fakeplayer.command.toggle")
   public static void toggleCommand(final CommandSender sender, final String name) {
     final Optional<Fake> optional = Optional.ofNullable(FakePlayer.getAPI().fakesFile.fakeplayers.get(name));
@@ -95,7 +95,8 @@ public final class FakePlayerCommand extends BaseCommand {
     }
   }
 
-  @Subcommand("tp <name>")
+  @Syntax("<name>")
+  @Subcommand("tp")
   @CommandPermission("fakeplayer.command.tp")
   public static void chatCommand(final Player sender, final String name) {
     if (!FakePlayer.getAPI().fakesFile.fakeplayers.containsKey(name)) {
@@ -107,7 +108,8 @@ public final class FakePlayerCommand extends BaseCommand {
       FakePlayer.getAPI().fakesFile.fakeplayers.get(name).getSpawnPoint());
   }
 
-  @Subcommand("chat <name> <message>")
+  @Syntax("<name> <message>")
+  @Subcommand("chat")
   @CommandPermission("fakeplayer.command.chat")
   public static void chatCommand(final CommandSender sender, final String name, final String msg) {
     if (FakePlayer.getAPI().fakesFile.fakeplayers.containsKey(name)) {
