@@ -69,6 +69,10 @@
       <url>https://dl.bintray.com/portlek/maven</url>
       <id>portlek</id>
     </repository>
+    <repository>
+      <id>codemc-snapshots</id>
+      <url>https://repo.codemc.io/repository/maven-snapshots/</url>
+    </repository>
   </repositories>
   <dependencies>
     <dependency>
@@ -87,9 +91,9 @@
       <version>2.9</version>
     </dependency>
     <dependency>
-      <groupId>com.github.WesJD.AnvilGUI</groupId>
+      <groupId>net.wesjd</groupId>
       <artifactId>anvilgui</artifactId>
-      <version>master-SNAPSHOT</version>
+      <version>1.4.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>co.aikar</groupId>
