@@ -101,7 +101,7 @@
     <dependency>
       <groupId>io.github.portlek</groupId>
       <artifactId>SmartInventory</artifactId>
-      <version>3.0.0</version>
+      <version>3.0.8</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek</groupId>
@@ -127,6 +127,12 @@
       <groupId>io.github.portlek</groupId>
       <artifactId>configs-bukkit</artifactId>
       <version>4.9.9.6</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>bukkit-location</artifactId>
+          <groupId>io.github.portlek</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.spigotmc</groupId>
