@@ -41,10 +41,10 @@ public final class MenuFile extends BukkitManaged {
   public static final class FakePlayers extends BukkitSection {
 
     @Property
-    public String type_fake_player = "Type fake player name";
+    public String type_fake_player = "Type a name";
 
     @Property
-    public String put_less_than_16_charater = "Put less than 16 char!";
+    public String put_less_than_16_character = "Put less than 16 char!";
 
     @Property
     public RpString title = Replaceable.from("&eFake Players")
@@ -96,7 +96,7 @@ public final class MenuFile extends BukkitManaged {
             return AnvilGUI.Response.close();
           }
           if (s.trim().length() > 16) {
-            return AnvilGUI.Response.text(this.put_less_than_16_charater);
+            return AnvilGUI.Response.text(this.put_less_than_16_character);
           }
           FakePlayer.getAPI().fakesFile.addFakes(s.trim(), clicker.getLocation());
           clicker.sendMessage(FakePlayer.getAPI().languageFile.generals.fake_player_added.get()
