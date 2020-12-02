@@ -35,6 +35,10 @@
                   <pattern>io.github.portlek.configs</pattern>
                   <shadedPattern>io.github.portlek.fakeplayer.file</shadedPattern>
                 </relocation>
+                <relocation>
+                  <pattern>org.yaml.snakeyaml</pattern>
+                  <shadedPattern>io.github.portlek.fakeplayer.yaml</shadedPattern>
+                </relocation>
               </relocations>
             </configuration>
           </execution>

@@ -1,6 +1,7 @@
 package io.github.portlek.fakeplayer;
 
 import co.aikar.commands.BukkitCommandManager;
+import io.github.portlek.configs.bukkit.BukkitExtensions;
 import io.github.portlek.fakeplayer.commands.FakePlayerCommand;
 import java.util.Optional;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -40,6 +41,7 @@ public final class FakePlayer extends JavaPlugin {
 
   @Override
   public void onEnable() {
+    BukkitExtensions.registerExtensions();
     final BukkitCommandManager manager = new BukkitCommandManager(this);
     FakePlayer.api = new FakePlayerAPI(this);
     FakePlayer.api.reloadPlugin(true);
