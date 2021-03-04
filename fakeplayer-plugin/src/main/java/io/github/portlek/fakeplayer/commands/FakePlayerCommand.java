@@ -70,7 +70,7 @@ public final class FakePlayerCommand extends BaseCommand {
   @Subcommand("remove")
   @CommandPermission("fakeplayer.command.remove")
   public static void removeCommand(final CommandSender sender, final String name) {
-    if (FakePlayer.getAPI().fakesFile.fakeplayers.containsKey(name)) {
+    if (!FakePlayer.getAPI().fakesFile.fakeplayers.containsKey(name)) {
       sender.sendMessage(FakePlayer.getAPI().languageFile.errors.not_found.get().build(
         MapEntry.from("%player_name%", () -> name)));
       return;
