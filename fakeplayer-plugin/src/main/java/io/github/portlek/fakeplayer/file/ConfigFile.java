@@ -26,6 +26,9 @@ public final class ConfigFile extends BukkitManaged {
   public boolean check_for_update = true;
 
   @Property
+  public boolean enable_join_quit_messages = true;
+
+  @Property
   public RpString tab_name = Replaceable.from("&e[Player] &a%player_name%")
     .map(ColorUtil::colored)
     .replaces("%player_name%");

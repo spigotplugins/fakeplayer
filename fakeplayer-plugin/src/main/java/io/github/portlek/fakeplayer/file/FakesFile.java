@@ -8,6 +8,7 @@ import io.github.portlek.configs.bukkit.BukkitManaged;
 import io.github.portlek.configs.bukkit.BukkitSection;
 import io.github.portlek.configs.type.JsonFileType;
 import io.github.portlek.fakeplayer.FakePlayer;
+import io.github.portlek.fakeplayer.FakePlayerAPI;
 import io.github.portlek.fakeplayer.api.Fake;
 import io.github.portlek.fakeplayer.handle.FakeBasic;
 import java.util.HashMap;
@@ -53,25 +54,36 @@ public final class FakesFile extends BukkitManaged {
 
   @Override
   public void remove(@NotNull final String name) {
+    final FakePlayerAPI api = FakePlayer.getAPI();
     Optional.ofNullable(this.fakeplayers.remove(name)).ifPresent(fake -> {
-      Bukkit.getOnlinePlayers().forEach(player ->
-        player.sendMessage(
-          FakePlayer.getAPI().languageFile.generals.quit_message.get()
-            .build("%player_name%", () -> name)));
       fake.deSpawn();
       this.fakes.set(name, null);
+
+      if (!api.configFile.enable_join_quit_messages) {
+        return;
+      }
+
+      Bukkit.getOnlinePlayers().forEach(player ->
+        player.sendMessage(api.languageFile.generals.quit_message.get()
+          .build("%player_name%", () -> name)));
     });
   }
 
   public void addFakes(@NotNull final String name, @NotNull final Location location) {
     final Fake fake = new FakeBasic(name, location);
-    Bukkit.getOnlinePlayers().forEach(player ->
-      player.sendMessage(
-        FakePlayer.getAPI().languageFile.generals.join_message.get()
-          .build("%player_name%", () -> name)));
+    final FakePlayerAPI api = FakePlayer.getAPI();
+
     fake.spawn();
     this.fakeplayers.put(name, fake);
     this.fakes.set(name, LocationUtil.toKey(location));
+
+    if (!api.configFile.enable_join_quit_messages) {
+      return;
+    }
+
+    Bukkit.getOnlinePlayers().forEach(player ->
+      player.sendMessage(api.languageFile.generals.join_message.get()
+        .build("%player_name%", () -> name)));
   }
 
   @Section("fakes")
