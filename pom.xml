@@ -13,6 +13,26 @@
   <version>2.1.1</version>
   <packaging>pom</packaging>
   <description>A plugin that allows you to create fake players to increase your server player amount.</description>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>1.18.20</version>
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
   <modules>
     <module>fakeplayer-api</module>
     <module>fakeplayer-nms</module>
