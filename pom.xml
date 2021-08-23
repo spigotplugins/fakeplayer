@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>io.github.portlek</groupId>
+    <groupId>io.github.parentpom</groupId>
     <artifactId>ppom</artifactId>
-    <version>2.0.3</version>
+    <version>3.4.49</version>
   </parent>
   <groupId>io.github.portlek.fakeplayer</groupId>
   <artifactId>fakeplayer-parent</artifactId>
@@ -38,4 +38,14 @@
     <module>fakeplayer-nms</module>
     <module>fakeplayer-plugin</module>
   </modules>
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+    </dependency>
+  </dependencies>
 </project>
