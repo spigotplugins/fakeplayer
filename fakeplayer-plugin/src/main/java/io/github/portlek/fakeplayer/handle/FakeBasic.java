@@ -14,6 +14,7 @@ import io.github.portlek.fakeplayer.nms.v1_15_R1.FakeCreated1_15_R1;
 import io.github.portlek.fakeplayer.nms.v1_16_R1.FakeCreated1_16_R1;
 import io.github.portlek.fakeplayer.nms.v1_16_R2.FakeCreated1_16_R2;
 import io.github.portlek.fakeplayer.nms.v1_16_R3.FakeCreated1_16_R3;
+import io.github.portlek.fakeplayer.nms.v1_17_R1.FakeCreated1_17_R1;
 import io.github.portlek.fakeplayer.nms.v1_8_R1.FakeCreated1_8_R1;
 import io.github.portlek.fakeplayer.nms.v1_8_R2.FakeCreated1_8_R2;
 import io.github.portlek.fakeplayer.nms.v1_8_R3.FakeCreated1_8_R3;
@@ -29,6 +30,7 @@ import org.jetbrains.annotations.Nullable;
 public final class FakeBasic implements Fake {
 
   private static final FakeCreated FAKE_CREATED = new VersionMatched<>(
+    FakeCreated1_17_R1.class,
     FakeCreated1_16_R3.class,
     FakeCreated1_16_R2.class,
     FakeCreated1_16_R1.class,
