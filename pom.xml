@@ -13,6 +13,12 @@
   <version>2.1.1</version>
   <packaging>pom</packaging>
   <description>A plugin that allows you to create fake players to increase your server player amount.</description>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>maven</id>
+      <url>https://repository.apache.org/content/repositories/snapshots/</url>
+    </pluginRepository>
+  </pluginRepositories>
   <build>
     <plugins>
       <plugin>
