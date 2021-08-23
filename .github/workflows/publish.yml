@@ -40,10 +40,10 @@ jobs:
           current_version: ${{ steps.version.outputs.release }}
           level: ${{ steps.release-label.outputs.level }}
 
-      - name: Set up JDK 8
+      - name: Set up JDK 16
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
+          java-version: 16
 
       - name: Publish with Maven
         run: |
