@@ -4,7 +4,15 @@ import java.lang.reflect.Field;
 import java.net.SocketAddress;
 import java.util.Arrays;
 import java.util.List;
-import net.minecraft.server.v1_17_R1.*;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.PacketPlayOutEntityTeleport;
+import net.minecraft.network.protocol.game.PacketPlayOutPlayerInfo;
+import net.minecraft.server.level.ChunkProviderServer;
+import net.minecraft.server.level.EntityPlayer;
+import net.minecraft.server.level.PlayerChunkMap;
+import net.minecraft.server.level.WorldServer;
+import net.minecraft.world.entity.Entity;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
 import org.jetbrains.annotations.NotNull;
@@ -15,8 +23,8 @@ final class Util {
   }
 
   static void initNetworkManager(@NotNull final NetworkManager network) {
-    network.channel = new EmptyChannel(null);
-    network.socketAddress = new SocketAddress() {
+    network.k = new EmptyChannel(null);
+    network.l = new SocketAddress() {
       private static final long serialVersionUID = 8207338859896320185L;
     };
   }
@@ -25,17 +33,17 @@ final class Util {
     int viewDistance = -1;
     PlayerChunkMap chunkMap = null;
     try {
-      final Field viewDistanceField = PlayerChunkMap.class.getDeclaredField("viewDistance");
+      final Field viewDistanceField = PlayerChunkMap.class.getDeclaredField("J");
       final boolean access = viewDistanceField.isAccessible();
       viewDistanceField.setAccessible(true);
       try {
-        chunkMap = ((ChunkProviderServer) player.world.getChunkProvider()).playerChunkMap;
+        chunkMap = ((ChunkProviderServer) player.t.getChunkProvider()).a;
         viewDistance = (int) viewDistanceField.get(chunkMap);
         viewDistanceField.set(chunkMap, -1);
       } catch (final Throwable e) {
         e.printStackTrace();
       }
-      player.world.addEntity(player);
+      player.t.addEntity(player);
       try {
         if (chunkMap != null) {
           viewDistanceField.set(chunkMap, viewDistance);
@@ -50,24 +58,24 @@ final class Util {
   }
 
   static void addOrRemoveFromPlayerList(@NotNull final EntityPlayer player, final boolean remove) {
-    if (player.world == null) {
+    if (player.t == null) {
       return;
     }
     if (remove) {
-      player.world.getPlayers().remove(player);
-      player.server.getPlayerList().players.remove(player);
-    } else if (!player.world.getPlayers().contains(player)) {
-      ((List) player.world.getPlayers()).add(player);
-      player.server.getPlayerList().players.add(player);
+      player.t.getPlayers().remove(player);
+      player.c.getPlayerList().j.remove(player);
+    } else if (!player.t.getPlayers().contains(player)) {
+      ((List) player.t.getPlayers()).add(player);
+      player.c.getPlayerList().j.add(player);
     }
   }
 
   static void removeFromServerPlayerList(@NotNull final EntityPlayer player) {
-    player.server.getPlayerList().players.remove(player);
+    player.c.getPlayerList().j.remove(player);
   }
 
   static void removeFromWorld(@NotNull final EntityPlayer player) {
-    ((WorldServer) player.world).removePlayer(player);
+    ((WorldServer) player.t).a(player, Entity.RemovalReason.a);
   }
 
   static void sendPositionUpdate(@NotNull final EntityPlayer from) {
@@ -78,26 +86,26 @@ final class Util {
     Bukkit.getOnlinePlayers().stream()
       .map(player -> (CraftPlayer) player)
       .forEach(player ->
-        Arrays.stream(packets).forEach(player.getHandle().playerConnection::sendPacket)
+        Arrays.stream(packets).forEach(player.getHandle().b::sendPacket)
       );
   }
 
   static void sendTabListAdd(@NotNull final EntityPlayer player) {
     Util.sendPacket(
-      new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.ADD_PLAYER, player)
+      new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.a, player)
     );
   }
 
   static void sendTabListRemove(@NotNull final EntityPlayer... players) {
     Util.sendPacket(
-      new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.REMOVE_PLAYER, players)
+      new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.e, players)
     );
   }
 
   static void setHeadYaw(@NotNull final EntityPlayer player, final float yaw) {
     final float clamp = Util.clampYaw(yaw);
-    player.aC = clamp;
-    player.aD = clamp;
+    player.aZ = clamp;
+    player.ba = clamp;
   }
 
   static float clampYaw(final float yaw) {

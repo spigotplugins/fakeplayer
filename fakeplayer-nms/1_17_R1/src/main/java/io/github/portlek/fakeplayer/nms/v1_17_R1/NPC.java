@@ -5,7 +5,16 @@ import io.github.portlek.fakeplayer.api.INPC;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.UUID;
-import net.minecraft.server.v1_17_R1.*;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.protocol.EnumProtocolDirection;
+import net.minecraft.network.protocol.game.PacketPlayOutEntityDestroy;
+import net.minecraft.network.protocol.game.PacketPlayOutNamedEntitySpawn;
+import net.minecraft.network.protocol.game.PacketPlayOutPlayerInfo;
+import net.minecraft.server.level.EntityPlayer;
+import net.minecraft.server.level.PlayerInteractManager;
+import net.minecraft.server.level.WorldServer;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.level.EnumGamemode;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -24,14 +33,13 @@ public final class NPC extends EntityPlayer implements INPC {
     super(
       ((CraftServer) Bukkit.getServer()).getServer(),
       world.getHandle(),
-      new GameProfile(uuid, ChatColor.translateAlternateColorCodes('&', name)),
-      new PlayerInteractManager(world.getHandle())
+      new GameProfile(uuid, ChatColor.translateAlternateColorCodes('&', name))
     );
-    this.playerInteractManager.b(EnumGamemode.CREATIVE);
+    this.d.setGameMode(EnumGamemode.b);
     try (final Socket ignored = new EmptySocket()) {
-      final NetworkManager conn = new EmptyNetworkManager(EnumProtocolDirection.CLIENTBOUND);
-      this.playerConnection = new EmptyNetHandler(this.server, conn, this);
-      conn.setPacketListener(this.playerConnection);
+      final NetworkManager conn = new EmptyNetworkManager(EnumProtocolDirection.b);
+      this.b = new EmptyNetHandler(this.c, conn, this);
+      conn.setPacketListener(this.b);
     } catch (final IOException exception) {
       exception.printStackTrace();
     }
@@ -60,7 +68,7 @@ public final class NPC extends EntityPlayer implements INPC {
   public void deSpawn() {
     Util.sendPacket(
       new PacketPlayOutEntityDestroy(this.getId()),
-      new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.REMOVE_PLAYER, this)
+      new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.e, this)
     );
     Util.removeFromWorld(this);
     Util.removeFromServerPlayerList(this);
@@ -78,9 +86,9 @@ public final class NPC extends EntityPlayer implements INPC {
 
   @Override
   public void die(final DamageSource damagesource) {
-    if (!this.dead) {
+    if (!this.isRemoved()) {
       super.die(damagesource);
-      ((WorldServer) this.world).removeEntity(this);
+//      ((WorldServer) this.t).removeEntity(this);
     }
   }
 }

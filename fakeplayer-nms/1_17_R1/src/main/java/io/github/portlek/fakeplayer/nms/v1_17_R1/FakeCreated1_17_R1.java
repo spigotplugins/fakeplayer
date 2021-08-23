@@ -7,7 +7,7 @@ import org.bukkit.World;
 import org.bukkit.craftbukkit.v1_17_R1.CraftWorld;
 import org.jetbrains.annotations.NotNull;
 
-public final class FakeCreated1_16_R3 implements FakeCreated {
+public final class FakeCreated1_17_R1 implements FakeCreated {
 
   @NotNull
   @Override

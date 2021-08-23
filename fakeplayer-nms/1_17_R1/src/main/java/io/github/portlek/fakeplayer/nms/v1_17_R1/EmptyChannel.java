@@ -38,7 +38,7 @@ public final class EmptyChannel extends AbstractChannel {
   }
 
   @Override
-  protected boolean isCompatible(final EventLoop arg0) {
+  protected boolean isCompatible(final EventLoop eventLoop) {
     return true;
   }
 
@@ -53,7 +53,7 @@ public final class EmptyChannel extends AbstractChannel {
   }
 
   @Override
-  protected void doBind(final SocketAddress arg0) {
+  protected void doBind(final SocketAddress socketAddress) {
   }
 
   @Override
@@ -69,6 +69,6 @@ public final class EmptyChannel extends AbstractChannel {
   }
 
   @Override
-  protected void doWrite(final ChannelOutboundBuffer arg0) {
+  protected void doWrite(final ChannelOutboundBuffer channelOutboundBuffer) {
   }
 }

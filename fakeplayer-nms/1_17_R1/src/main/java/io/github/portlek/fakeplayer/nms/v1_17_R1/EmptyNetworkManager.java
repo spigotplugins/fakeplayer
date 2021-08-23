@@ -1,13 +1,13 @@
 package io.github.portlek.fakeplayer.nms.v1_17_R1;
 
-import net.minecraft.server.v1_17_R1.EnumProtocolDirection;
-import net.minecraft.server.v1_17_R1.NetworkManager;
-import net.minecraft.server.v1_17_R1.Packet;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.protocol.EnumProtocolDirection;
+import net.minecraft.network.protocol.Packet;
 
 final class EmptyNetworkManager extends NetworkManager {
 
-  EmptyNetworkManager(final EnumProtocolDirection flag) {
-    super(flag);
+  EmptyNetworkManager(final EnumProtocolDirection enumprotocoldirection) {
+    super(enumprotocoldirection);
     Util.initNetworkManager(this);
   }
 

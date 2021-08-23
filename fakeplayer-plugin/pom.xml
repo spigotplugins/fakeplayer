@@ -83,12 +83,12 @@
     <dependency>
       <groupId>io.github.portlek</groupId>
       <artifactId>BukkitItemBuilder</artifactId>
-      <version>3.1</version>
+      <version>5.0.7</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek</groupId>
       <artifactId>version-matched</artifactId>
-      <version>2.9</version>
+      <version>3.0.4</version>
     </dependency>
     <dependency>
       <groupId>net.wesjd</groupId>
@@ -109,12 +109,12 @@
     <dependency>
       <groupId>io.github.portlek</groupId>
       <artifactId>SmartInventory</artifactId>
-      <version>3.0.8</version>
+      <version>4.3.3</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek</groupId>
       <artifactId>bukkit-location</artifactId>
-      <version>2.0.2</version>
+      <version>3.0.3</version>
     </dependency>
     <dependency>
       <groupId>io.github.portlek</groupId>
@@ -221,6 +221,11 @@
     <dependency>
       <groupId>io.github.portlek.fakeplayer.nms</groupId>
       <artifactId>1_16_R3</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.github.portlek.fakeplayer.nms</groupId>
+      <artifactId>1_17_R1</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>
