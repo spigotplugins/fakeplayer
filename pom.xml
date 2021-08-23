@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.github.parentpom</groupId>
     <artifactId>ppom</artifactId>
-    <version>3.4.49</version>
+    <version>3.4.62</version>
   </parent>
   <groupId>io.github.portlek.fakeplayer</groupId>
   <artifactId>fakeplayer-parent</artifactId>
