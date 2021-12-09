@@ -1,11 +1,7 @@
 plugins {
   java
   `java-library`
-  // `maven-publish`
-  // signing
   id("com.github.johnrengelman.shadow") version "7.1.0"
-  // id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
-  // id("io.papermc.paperweight.userdev") version "1.3.1" apply false
 }
 
 allprojects {
@@ -68,6 +64,9 @@ subprojects {
   dependencies {
     compileOnlyApi("org.projectlombok:lombok:1.18.22")
     compileOnlyApi("org.jetbrains:annotations:23.0.0")
+    compileOnlyApi("tr.com.infumia:InfumiaShared:3.0.8")
+    compileOnlyApi("tr.com.infumia:InfumiaCommon:3.0.8")
+    compileOnlyApi("tr.com.infumia:InfumiaPaper:3.0.8")
 
     annotationProcessor("org.projectlombok:lombok:1.18.22")
     annotationProcessor("org.jetbrains:annotations:23.0.0")
