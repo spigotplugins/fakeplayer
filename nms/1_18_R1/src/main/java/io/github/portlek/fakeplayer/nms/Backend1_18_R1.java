@@ -12,10 +12,10 @@ import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * a class that represents backed implementation for 1_8_R1 version.
+ * a class that represents backed implementation for 1_18_R1 version.
  */
 @RequiredArgsConstructor
-public final class Backend1_8_R1 implements AiBackend {
+public final class Backend1_18_R1 implements AiBackend {
 
   /**
    * the plugin.
@@ -31,7 +31,7 @@ public final class Backend1_8_R1 implements AiBackend {
 
   @Override
   public void location(@NotNull final AiPlayer ai, @NotNull final Location location) {
-    final AiPlayerNms nms = this.registry.get(ai.uniqueId());
+    final var nms = this.registry.get(ai.uniqueId());
     if (nms == null) {
       return;
     }
@@ -40,7 +40,7 @@ public final class Backend1_8_R1 implements AiBackend {
 
   @Override
   public void remove(@NotNull final AiPlayer ai) {
-    final AiPlayerNms nms = this.registry.remove(ai.uniqueId());
+    final var nms = this.registry.remove(ai.uniqueId());
     if (nms == null) {
       return;
     }
@@ -49,14 +49,14 @@ public final class Backend1_8_R1 implements AiBackend {
 
   @Override
   public void spawn(@NotNull final AiPlayer ai) {
-    final AiPlayerNms nms = new AiPlayerNms(ai);
+    final var nms = new AiPlayerNms(ai);
     this.registry.put(ai.uniqueId(), nms);
     nms.spawn();
   }
 
   @Override
   public void toggleVisible(@NotNull final AiPlayer ai) {
-    final AiPlayerNms nms = this.registry.get(ai.uniqueId());
+    final var nms = this.registry.get(ai.uniqueId());
     if (nms == null) {
       return;
     }

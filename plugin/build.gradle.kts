@@ -7,7 +7,7 @@ dependencies {
   implementation(project(":api"))
   compileOnlyApi("org.spigotmc:spigot-api:1.18-R0.1-SNAPSHOT")
 
-  implementation(project(":nms:1_8_R1"))
+  implementation(project(":nms:1_18_R1"))
 }
 
 tasks.withType<ProcessResources> {

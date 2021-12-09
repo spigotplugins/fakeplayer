@@ -57,6 +57,8 @@ allprojects {
 subprojects {
   repositories {
     mavenCentral()
+    maven("https://jitpack.io/")
+    maven("https://repo.opencollab.dev/maven-snapshots/")
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     mavenLocal()
   }
