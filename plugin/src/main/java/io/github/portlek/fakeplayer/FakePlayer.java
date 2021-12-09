@@ -1,7 +1,6 @@
 package io.github.portlek.fakeplayer;
 
 import io.github.portlek.fakeplayer.api.AiBackend;
-import io.github.portlek.fakeplayer.api.AiPlayer;
 import io.github.portlek.fakeplayer.api.AiPlayerCoordinator;
 import org.bukkit.plugin.java.JavaPlugin;
 import tr.com.infumia.infumialib.platform.paper.versionmatched.VersionMatched;
@@ -21,7 +20,6 @@ public final class FakePlayer extends JavaPlugin {
 
   @Override
   public void onDisable() {
-    AiPlayer.all().forEach(AiPlayer::remove);
   }
 
   @Override
