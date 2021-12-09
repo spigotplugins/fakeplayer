@@ -20,16 +20,6 @@ public interface AiPlayer extends Definition.Name, Definition.UniqueId, Definiti
   Registry<UUID, AiPlayer> REGISTRY = new Registry<>();
 
   /**
-   * obtains all the AIs.
-   *
-   * @return all the AIs.
-   */
-  @NotNull
-  static ObjectCollection<AiPlayer> all() {
-    return AiPlayer.REGISTRY.values();
-  }
-
-  /**
    * creates a simple AI player.
    *
    * @param name the name to create.
