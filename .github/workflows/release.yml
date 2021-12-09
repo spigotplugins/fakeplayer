@@ -32,11 +32,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradlew-
 
-      - uses: crazy-max/ghaction-import-gpg@v3.2.0
-        with:
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.GPG_PASSPHRASE }}
-
       - run: |
           [[ "${{ github.event.release.tag_name }}" =~ ^[0-9]+(\.[0-9]+)*$ ]] || exit -1
           chmod +x gradlew
