@@ -4,9 +4,7 @@ plugins {
   // `maven-publish`
   // signing
   id("com.github.johnrengelman.shadow") version "7.1.0"
-  id("io.github.slimjar") version "1.3.0-SNAPSHOT" apply false
-  id("com.google.protobuf") version "0.8.18" apply false
-  id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+  // id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
   // id("io.papermc.paperweight.userdev") version "1.3.1" apply false
 }
 
@@ -18,11 +16,6 @@ allprojects {
   }
 
   group = "io.github.portlek"
-
-  java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-  }
 
   val projectName = findProperty("projectname") as String? ?: "FakePlayer"
 
@@ -66,6 +59,7 @@ allprojects {
 
   repositories {
     mavenCentral()
+    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     mavenLocal()
   }
 }
@@ -76,7 +70,6 @@ subprojects {
     compileOnlyApi("org.jetbrains:annotations:23.0.0")
 
     annotationProcessor("org.projectlombok:lombok:1.18.22")
-    annotationProcessor("org.jetbrains:annotations:22.0.0")
+    annotationProcessor("org.jetbrains:annotations:23.0.0")
   }
 }
-
