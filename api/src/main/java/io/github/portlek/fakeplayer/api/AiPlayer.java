@@ -1,23 +1,16 @@
 package io.github.portlek.fakeplayer.api;
 
-import it.unimi.dsi.fastutil.objects.ObjectCollection;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 import tr.com.infumia.infumialib.shared.Definition;
-import tr.com.infumia.infumialib.shared.registries.Registry;
 
 /**
  * an interface to determine AI players.
  */
-public interface AiPlayer extends Definition.Name, Definition.UniqueId, Definition.Key<UUID> {
-
-  /**
-   * the registry.
-   */
-  Registry<UUID, AiPlayer> REGISTRY = new Registry<>();
+public interface AiPlayer extends Definition.Name, Definition.UniqueId, AiPlayerFunction {
 
   /**
    * creates a simple AI player.
@@ -43,15 +36,7 @@ public interface AiPlayer extends Definition.Name, Definition.UniqueId, Definiti
    */
   @NotNull
   static AiPlayer create(@NotNull final String name, @NotNull final UUID uniqueId, @NotNull final Location location) {
-    final Impl ai = new Impl(name, location, uniqueId);
-    AiPlayer.REGISTRY.register(ai);
-    return ai;
-  }
-
-  @Override
-  @NotNull
-  default UUID key() {
-    return this.uniqueId();
+    return new Impl(name, location, uniqueId);
   }
 
   /**
@@ -63,39 +48,12 @@ public interface AiPlayer extends Definition.Name, Definition.UniqueId, Definiti
   Location location();
 
   /**
-   * sets the location of the AI.
-   *
-   * @param location the location to set.
-   *
-   * @return {@code this} for the chain.
-   */
-  @NotNull
-  AiPlayer location(@NotNull Location location);
-
-  /**
-   * removes the AI from the server.
-   */
-  void remove();
-
-  /**
-   * spawns the AI.
-   *
-   * @see #spawnPoint()
-   */
-  void spawn();
-
-  /**
    * obtains the spawn point.
    *
    * @return spawn point.
    */
   @NotNull
   Location spawnPoint();
-
-  /**
-   * toggles visible.
-   */
-  void toggleVisible();
 
   /**
    * a simple implementation of {@link  AiPlayer}.
@@ -142,12 +100,10 @@ public interface AiPlayer extends Definition.Name, Definition.UniqueId, Definiti
       this.location = spawnPoint;
     }
 
-    @NotNull
     @Override
-    public AiPlayer location(@NotNull final Location location) {
+    public void location(@NotNull final Location location) {
       this.location = location;
       AiPlayerCoordinator.teleport(this, location);
-      return this;
     }
 
     @Override

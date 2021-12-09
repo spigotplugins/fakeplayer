@@ -16,7 +16,7 @@ public final class FakePlayer extends JavaPlugin {
   private final AiBackend backend = new VersionMatched<AiBackend>()
     .of(this)
     .create(this)
-    .orElseThrow(() -> new IllegalStateException("Something went wrong when creating the backend nms classes, 0x001!"));
+    .orElseThrow(() -> new IllegalStateException("Something went wrong when creating the backend nms class!"));
 
   @Override
   public void onDisable() {

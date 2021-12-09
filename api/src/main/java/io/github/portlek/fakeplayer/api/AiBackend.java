@@ -9,6 +9,14 @@ import org.jetbrains.annotations.NotNull;
 public interface AiBackend {
 
   /**
+   * sets the AI to the location.
+   *
+   * @param ai the AI to teleport.
+   * @param location the location to teleport.
+   */
+  void location(@NotNull AiPlayer ai, @NotNull Location location);
+
+  /**
    * removes the AI.
    *
    * @param ai the AI to remove.
@@ -21,14 +29,6 @@ public interface AiBackend {
    * @param ai the AI to spawn.
    */
   void spawn(@NotNull AiPlayer ai);
-
-  /**
-   * teleports the AI to the location.
-   *
-   * @param ai the AI to teleport.
-   * @param location the location to teleport.
-   */
-  void teleport(@NotNull AiPlayer ai, @NotNull Location location);
 
   /**
    * toggles visibility of the AI.
