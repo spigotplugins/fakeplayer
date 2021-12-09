@@ -52,15 +52,15 @@ allprojects {
     options.encoding = Charsets.UTF_8.name()
     (options as StandardJavadocDocletOptions).tags("todo")
   }
+}
 
+subprojects {
   repositories {
     mavenCentral()
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     mavenLocal()
   }
-}
 
-subprojects {
   dependencies {
     compileOnlyApi("org.projectlombok:lombok:1.18.22")
     compileOnlyApi("org.jetbrains:annotations:23.0.0")
