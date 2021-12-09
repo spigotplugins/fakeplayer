@@ -1,5 +1,6 @@
 package io.github.portlek.fakeplayer.api;
 
+import it.unimi.dsi.fastutil.objects.ObjectCollection;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.experimental.Accessors;
@@ -17,6 +18,16 @@ public interface AiPlayer extends Definition.Name, Definition.UniqueId, Definiti
    * the registry.
    */
   Registry<UUID, AiPlayer> REGISTRY = new Registry<>();
+
+  /**
+   * obtains all the AIs.
+   *
+   * @return all the AIs.
+   */
+  @NotNull
+  static ObjectCollection<AiPlayer> all() {
+    return AiPlayer.REGISTRY.values();
+  }
 
   /**
    * creates a simple AI player.
@@ -145,23 +156,23 @@ public interface AiPlayer extends Definition.Name, Definition.UniqueId, Definiti
     @Override
     public AiPlayer location(@NotNull final Location location) {
       this.location = location;
-      AiPlayerCoordinator.backend().teleport(this, location);
+      AiPlayerCoordinator.teleport(this, location);
       return this;
     }
 
     @Override
     public void remove() {
-      AiPlayerCoordinator.backend().remove(this);
+      AiPlayerCoordinator.remove(this);
     }
 
     @Override
     public void spawn() {
-      AiPlayerCoordinator.backend().spawn(this);
+      AiPlayerCoordinator.spawn(this);
     }
 
     @Override
     public void toggleVisible() {
-      AiPlayerCoordinator.backend().toggleVisible(this);
+      AiPlayerCoordinator.toggleVisible(this);
     }
   }
 }
