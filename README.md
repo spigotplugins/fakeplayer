@@ -1,9 +1,11 @@
 # FakePlayer
-A plugin that allows you to create fake players to increase your server player amount.
 
-## Build
-mvn clean install -Dgpg.skip=true
+[![idea](https://www.elegantobjects.org/intellij-idea.svg)](https://www.jetbrains.com/idea/)
 
-*For 4+ core pcs*
+![master](https://github.com/spigotplugins/fakeplayer/workflows/build/badge.svg)
 
-mvn clean install -Dgpg.skip=true -T 4
+## How to Use (Server Owners)
+
+Download the latest Jar files here https://github.com/spigotplugins/fakeplayer/releases/latest
+
+Put the Jar file into your mods/plugins directory.
