@@ -2,7 +2,6 @@ package io.github.portlek.fakeplayer.api;
 
 import java.util.UUID;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
@@ -93,17 +92,6 @@ public interface AiPlayer extends Definition.Name, Definition.UniqueId, Definiti
   Location spawnPoint();
 
   /**
-   * teleports the AI to the location.
-   *
-   * @param location the location to teleport.
-   *
-   * @see #location(Location)
-   */
-  default void teleport(@NotNull final Location location) {
-    this.location(location);
-  }
-
-  /**
    * toggles visible.
    */
   void toggleVisible();
@@ -112,7 +100,6 @@ public interface AiPlayer extends Definition.Name, Definition.UniqueId, Definiti
    * a simple implementation of {@link  AiPlayer}.
    */
   @Getter
-  @Setter
   @Accessors(fluent = true)
   final class Impl implements AiPlayer {
 
@@ -154,16 +141,27 @@ public interface AiPlayer extends Definition.Name, Definition.UniqueId, Definiti
       this.location = spawnPoint;
     }
 
+    @NotNull
+    @Override
+    public AiPlayer location(@NotNull final Location location) {
+      this.location = location;
+      AiPlayerCoordinator.backend().teleport(this, location);
+      return this;
+    }
+
     @Override
     public void remove() {
+      AiPlayerCoordinator.backend().remove(this);
     }
 
     @Override
     public void spawn() {
+      AiPlayerCoordinator.backend().spawn(this);
     }
 
     @Override
     public void toggleVisible() {
+      AiPlayerCoordinator.backend().toggleVisible(this);
     }
   }
 }
