@@ -32,11 +32,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradlew-
 
-      - uses: crazy-max/ghaction-import-gpg@v3.2.0
-        with:
-          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.GPG_PASSPHRASE }}
-
       - uses: release-drafter/release-drafter@master
         id: release
         env:
