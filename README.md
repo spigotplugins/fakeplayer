@@ -6,6 +6,8 @@
 
 ## How to Use (Server Owners)
 
-Download the latest Jar files here https://github.com/spigotplugins/fakeplayer/releases/latest
+[InfumiaLib](https://github.com/infumia/infumialib/releases/)
 
-Put the Jar file into your mods/plugins directory.
+[Plugin Itself](https://github.com/spigotplugins/fakeplayer/releases/)
+
+Put all the Jar files into your mods/plugins directory.
