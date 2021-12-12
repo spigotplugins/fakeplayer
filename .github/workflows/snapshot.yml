@@ -1,12 +1,12 @@
-name: Build
+name: Snapshot
 
 on:
-  pull_request:
+  push:
     branches: [ master ]
 
 jobs:
-  build:
-    name: Build
+  snapshot:
+    name: Upload snapshot
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -32,6 +32,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradlew-
 
+      - uses: release-drafter/release-drafter@master
+        id: release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - run: |
+          [[ "${{ steps.release.outputs.tag_name }}" =~ ^[0-9]+(\.[0-9]+)*$ ]] || exit -1
           chmod +x gradlew
           ./gradlew shadowJar
