@@ -5,7 +5,7 @@ java {
 
 dependencies {
   implementation(project(":api"))
-  compileOnlyApi("org.spigotmc:spigot-api:1.18-R0.1-SNAPSHOT")
+  compileOnlyApi("org.spigotmc:spigot-api:1.18.1-R0.1-SNAPSHOT")
 
   implementation(project(":nms:1_18_R1"))
 }
