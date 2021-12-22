@@ -9,5 +9,5 @@ java {
 
 dependencies {
   paperDevBundle("1.18-R0.1-SNAPSHOT")
-  implementation("com.github.GeyserMC:MCProtocolLib:1.18-1")
+  implementation("com.github.GeyserMC:MCProtocolLib:1.18-2")
 }
