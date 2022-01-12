@@ -69,7 +69,7 @@ subprojects {
     compileOnlyApi("it.unimi.dsi:fastutil:8.5.6")
     compileOnlyApi("tr.com.infumia:InfumiaShared:3.1.1")
     compileOnlyApi("tr.com.infumia:InfumiaCommon:3.0.10")
-    compileOnlyApi("tr.com.infumia:InfumiaPaper:3.1.4")
+    compileOnlyApi("tr.com.infumia:InfumiaPaper:3.1.6")
 
     annotationProcessor("org.projectlombok:lombok:1.18.22")
     annotationProcessor("org.jetbrains:annotations:23.0.0")
