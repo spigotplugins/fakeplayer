@@ -119,6 +119,7 @@ subprojects {
     mavenCentral()
     maven("https://jitpack.io/")
     maven("https://repo.opencollab.dev/maven-snapshots/")
+    maven("https://oss.sonatype.org/content/repositories/snapshots/")
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     mavenLocal()
   }
@@ -131,8 +132,8 @@ subprojects {
     annotationProcessor("org.jetbrains:annotations:23.0.0")
     // Annotations
 
-    compileOnlyApi("tr.com.infumia:InfumiaShared:3.1.9")
-    compileOnlyApi("tr.com.infumia:InfumiaPaperApi:3.1.9")
+    implementation("tr.com.infumia:reflection:0.1.4-SNAPSHOT")
+    implementation("tr.com.infumia:versionmatched:0.1.0-SNAPSHOT")
   }
 }
 

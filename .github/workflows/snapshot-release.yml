@@ -1,13 +1,14 @@
-name: Release
+name: Snapshot Release
 
 on:
   release:
-    types: [ released ]
+    types: [ published ]
 
 jobs:
   build:
-    name: Release
+    name: Snapshot Release
     runs-on: ubuntu-latest
+    if: "github.event.release.prerelease"
     steps:
       - uses: actions/checkout@v3
 
@@ -36,9 +37,8 @@ jobs:
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
       - run: |
-          [[ "${{ github.event.release.tag_name }}" =~ ^[0-9]+(\.[0-9]+)*$ ]] || exit -1
           chmod +x gradlew
-          ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository -Pversion="${{ github.event.release.tag_name }}" -Psigning.gnupg.keyName="${{ secrets.GPG_SECRET_KEY_ID }}" -Psigning.gnupg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -PsonatypeUsername="${{ secrets.SONATYPE_USERNAME }}" -PsonatypePassword="${{ secrets.SONATYPE_PASSWORD }}"
+          ./gradlew build javadocJar sourcesJar
 
       - uses: softprops/action-gh-release@v1
         with:

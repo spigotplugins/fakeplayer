@@ -3,8 +3,9 @@ package io.github.portlek.fakeplayer;
 import io.github.portlek.fakeplayer.api.AiBackend;
 import io.github.portlek.fakeplayer.api.AiPlayerCoordinator;
 import io.github.portlek.fakeplayer.nms.v1_18_R1.Backend1_18_R1;
+import io.github.portlek.fakeplayer.nms.v1_18_R2.Backend1_18_R2;
 import org.bukkit.plugin.java.JavaPlugin;
-import tr.com.infumia.infumialib.platform.paper.versionmatched.VersionMatched;
+import tr.com.infumia.versionmatched.VersionMatched;
 
 /**
  * a class that represents main class of FakePlayer plugin.
@@ -14,11 +15,12 @@ public final class FakePlayer extends JavaPlugin {
   /**
    * the backend.
    */
-  private final AiBackend backend = new VersionMatched<AiBackend>(
-    Backend1_18_R1.class
+  private final AiBackend backend = new VersionMatched<>(
+    Backend1_18_R1.class,
+    Backend1_18_R2.class
   )
-    .of(this)
-    .create(this)
+    .of()
+    .create()
     .orElseThrow(() -> new IllegalStateException("Something went wrong when creating the backend nms class!"));
 
   @Override

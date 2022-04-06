@@ -1,4 +1,3 @@
-
 dependencies {
   implementation(project(":api"))
   implementation(project(":nms:1_18_R1"))
