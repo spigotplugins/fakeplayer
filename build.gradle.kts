@@ -131,9 +131,6 @@ subprojects {
     annotationProcessor("org.projectlombok:lombok:1.18.22")
     annotationProcessor("org.jetbrains:annotations:23.0.0")
     // Annotations
-
-    implementation("tr.com.infumia:reflection:0.1.4-SNAPSHOT")
-    implementation("tr.com.infumia:versionmatched:0.1.0-SNAPSHOT")
   }
 }
 
