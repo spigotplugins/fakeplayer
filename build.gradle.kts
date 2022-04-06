@@ -64,13 +64,16 @@ subprojects {
   }
 
   dependencies {
+    // Annotations
     compileOnlyApi("org.projectlombok:lombok:1.18.22")
     compileOnlyApi("org.jetbrains:annotations:23.0.0")
+    annotationProcessor("org.projectlombok:lombok:1.18.22")
+    annotationProcessor("org.jetbrains:annotations:23.0.0")
+    // Annotations
+
     compileOnlyApi("it.unimi.dsi:fastutil:8.5.8")
     compileOnlyApi("tr.com.infumia:InfumiaShared:3.1.9")
     compileOnlyApi("tr.com.infumia:InfumiaPaperApi:3.1.9")
 
-    annotationProcessor("org.projectlombok:lombok:1.18.22")
-    annotationProcessor("org.jetbrains:annotations:23.0.0")
   }
 }
