@@ -9,12 +9,12 @@ import org.jetbrains.annotations.NotNull;
 public interface AiBackend {
 
   /**
-   * sets the AI to the location.
+   * teleports the AI to the location.
    *
    * @param ai the AI to teleport.
    * @param location the location to teleport.
    */
-  void location(@NotNull AiPlayer ai, @NotNull Location location);
+  void teleport(@NotNull AiPlayer ai, @NotNull Location location);
 
   /**
    * removes the AI.

@@ -2,7 +2,7 @@ package io.github.portlek.fakeplayer;
 
 import io.github.portlek.fakeplayer.api.AiBackend;
 import io.github.portlek.fakeplayer.api.AiPlayerCoordinator;
-import io.github.portlek.fakeplayer.nms.Backend1_18_R1;
+import io.github.portlek.fakeplayer.nms.v1_18_R1.Backend1_18_R1;
 import org.bukkit.plugin.java.JavaPlugin;
 import tr.com.infumia.infumialib.platform.paper.versionmatched.VersionMatched;
 

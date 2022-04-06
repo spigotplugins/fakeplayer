@@ -18,8 +18,8 @@ public class AiPlayerCoordinator {
   /**
    * the backend.
    */
-  @Nullable
   @Setter
+  @Nullable
   private AiBackend backend;
 
   /**
@@ -47,7 +47,7 @@ public class AiPlayerCoordinator {
    * @param location the location to teleport.
    */
   void teleport(@NotNull final AiPlayer ai, @NotNull final Location location) {
-    AiPlayerCoordinator.backend().location(ai, location);
+    AiPlayerCoordinator.backend().teleport(ai, location);
   }
 
   /**

@@ -1,6 +1,5 @@
-package io.github.portlek.fakeplayer.nms;
+package io.github.portlek.fakeplayer.nms.v1_18_R1;
 
-import com.github.steveice10.mc.protocol.MinecraftProtocol;
 import io.github.portlek.fakeplayer.api.AiPlayer;
 import io.github.portlek.fakeplayer.api.AiPlayerFunction;
 import lombok.AccessLevel;
@@ -19,11 +18,6 @@ final class AiPlayerNms implements AiPlayerFunction {
    */
   @NotNull
   private final AiPlayer ai;
-
-  /**
-   * the protocol.
-   */
-  private final MinecraftProtocol protocol = new MinecraftProtocol();
 
   @Override
   public void location(@NotNull final Location location) {

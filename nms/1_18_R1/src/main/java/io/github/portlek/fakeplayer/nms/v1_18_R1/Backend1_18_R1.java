@@ -1,4 +1,4 @@
-package io.github.portlek.fakeplayer.nms;
+package io.github.portlek.fakeplayer.nms.v1_18_R1;
 
 import io.github.portlek.fakeplayer.api.AiBackend;
 import io.github.portlek.fakeplayer.api.AiPlayer;
@@ -30,21 +30,19 @@ public final class Backend1_18_R1 implements AiBackend {
     new Object2ObjectOpenHashMap<>());
 
   @Override
-  public void location(@NotNull final AiPlayer ai, @NotNull final Location location) {
+  public void teleport(@NotNull final AiPlayer ai, @NotNull final Location location) {
     final var nms = this.registry.get(ai.uniqueId());
-    if (nms == null) {
-      return;
+    if (nms != null) {
+      nms.location(location);
     }
-    nms.location(location);
   }
 
   @Override
   public void remove(@NotNull final AiPlayer ai) {
     final var nms = this.registry.remove(ai.uniqueId());
-    if (nms == null) {
-      return;
+    if (nms != null) {
+      nms.remove();
     }
-    nms.remove();
   }
 
   @Override
@@ -57,9 +55,8 @@ public final class Backend1_18_R1 implements AiBackend {
   @Override
   public void toggleVisible(@NotNull final AiPlayer ai) {
     final var nms = this.registry.get(ai.uniqueId());
-    if (nms == null) {
-      return;
+    if (nms != null) {
+      nms.toggleVisible();
     }
-    nms.toggleVisible();
   }
 }
