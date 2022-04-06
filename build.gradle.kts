@@ -1,56 +1,63 @@
 plugins {
   java
   `java-library`
-  id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 allprojects {
   apply {
     plugin("java")
     plugin("java-library")
-    plugin("com.github.johnrengelman.shadow")
   }
 
   group = "io.github.portlek"
 
   val projectName = findProperty("projectname") as String? ?: "FakePlayer"
 
-  val sourcesJar by tasks.creating(Jar::class) {
-    dependsOn("classes")
-    archiveClassifier.convention("sources")
-    archiveClassifier.set("sources")
-    archiveBaseName.set(projectName)
-    archiveVersion.set(null as String?)
-    archiveVersion.convention(null as String?)
-    from(sourceSets["main"].allSource)
+  java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+  }
+
+  tasks {
+    compileJava {
+      options.encoding = Charsets.UTF_8.name()
+    }
+
+    javadoc {
+      options.encoding = Charsets.UTF_8.name()
+      (options as StandardJavadocDocletOptions).tags("todo")
+    }
+
+    jar {
+      archiveClassifier.set(null as String?)
+      archiveClassifier.convention(null as String?)
+      archiveBaseName.set(projectName)
+      archiveBaseName.convention(projectName)
+      archiveVersion.set(null as String?)
+      archiveVersion.convention(null as String?)
+    }
   }
 
   val javadocJar by tasks.creating(Jar::class) {
     dependsOn("javadoc")
-    archiveClassifier.convention("")
     archiveClassifier.set("javadoc")
+    archiveClassifier.convention("javadoc")
     archiveBaseName.set(projectName)
+    archiveBaseName.convention(projectName)
     archiveVersion.set(null as String?)
     archiveVersion.convention(null as String?)
     from(tasks.javadoc)
   }
 
-  tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
-    dependsOn(sourcesJar)
-    dependsOn(javadocJar)
-    archiveClassifier.set(null as String?)
+  val sourcesJar by tasks.creating(Jar::class) {
+    dependsOn("classes")
+    archiveClassifier.set("sources")
+    archiveClassifier.convention("sources")
+    archiveBaseName.set(projectName)
+    archiveBaseName.convention(projectName)
     archiveVersion.set(null as String?)
     archiveVersion.convention(null as String?)
-    archiveBaseName.set(projectName)
-  }
-
-  tasks.withType<JavaCompile> {
-    options.encoding = Charsets.UTF_8.name()
-  }
-
-  tasks.withType<Javadoc> {
-    options.encoding = Charsets.UTF_8.name()
-    (options as StandardJavadocDocletOptions).tags("todo")
+    from(sourceSets["main"].allSource)
   }
 }
 
@@ -74,6 +81,5 @@ subprojects {
     compileOnlyApi("it.unimi.dsi:fastutil:8.5.8")
     compileOnlyApi("tr.com.infumia:InfumiaShared:3.1.9")
     compileOnlyApi("tr.com.infumia:InfumiaPaperApi:3.1.9")
-
   }
 }
