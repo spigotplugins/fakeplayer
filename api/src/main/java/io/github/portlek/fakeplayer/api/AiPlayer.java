@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
-import tr.com.infumia.infumialib.shared.Definition;
+import tr.com.infumia.infumialib.definition.Definition;
 
 /**
  * an interface to determine AI players.

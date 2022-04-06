@@ -40,4 +40,4 @@ jobs:
       - run: |
           [[ "${{ steps.release.outputs.tag_name }}" =~ ^[0-9]+(\.[0-9]+)*$ ]] || exit -1
           chmod +x gradlew
-          ./gradlew shadowJar
+          ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository -Pversion="${{ steps.release.outputs.tag_name }}-SNAPSHOT" -Psigning.gnupg.keyName="${{ secrets.GPG_SECRET_KEY_ID }}" -Psigning.gnupg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -PsonatypeUsername="${{ secrets.SONATYPE_USERNAME }}" -PsonatypePassword="${{ secrets.SONATYPE_PASSWORD }}"

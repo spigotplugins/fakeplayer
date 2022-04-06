@@ -34,4 +34,4 @@ jobs:
 
       - run: |
           chmod +x gradlew
-          ./gradlew shadowJar
+          ./gradlew build javadocJar sourcesJar

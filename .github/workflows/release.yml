@@ -2,7 +2,7 @@ name: Release
 
 on:
   release:
-    types: [ published ]
+    types: [ released ]
 
 jobs:
   build:
@@ -35,7 +35,7 @@ jobs:
       - run: |
           [[ "${{ github.event.release.tag_name }}" =~ ^[0-9]+(\.[0-9]+)*$ ]] || exit -1
           chmod +x gradlew
-          ./gradlew shadowJar
+          ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository -Pversion="${{ github.event.release.tag_name }}" -Psigning.gnupg.keyName="${{ secrets.GPG_SECRET_KEY_ID }}" -Psigning.gnupg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -PsonatypeUsername="${{ secrets.SONATYPE_USERNAME }}" -PsonatypePassword="${{ secrets.SONATYPE_PASSWORD }}"
 
       - uses: softprops/action-gh-release@v1
         with:
