@@ -71,7 +71,7 @@ public interface AiPlayer extends AiPlayerFunction {
   UUID uniqueId();
 
   /**
-   * a simple implementation of {@link  AiPlayer}.
+   * a simple implementation of {@link AiPlayer}.
    */
   @Getter
   @Accessors(fluent = true)
