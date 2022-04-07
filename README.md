@@ -39,3 +39,9 @@ Put all the Jar files into your mods/plugins directory.
 ```groovy
 implementation "io.github.portlek:FakePlayerApi:VERSION"
 ```
+
+### Kotlin DSL
+
+```kotlin
+implementation("io.github.portlek:FakePlayerApi:VERSION")
+```
