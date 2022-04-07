@@ -34,6 +34,7 @@ public final class FakePlayer extends JavaPlugin {
     AiPlayerCoordinator.backend(this.backend);
     final var handler = BukkitCommandHandler.create(this);
     handler.registerBrigadier();
+    handler.setMessagePrefix("&6[&eFakePlayer&6]&r ");
     handler.register(new FakePlayerCommand());
   }
 }
