@@ -27,7 +27,6 @@ Put all the Jar files into your mods/plugins directory.
 ### Maven
 
 ```xml
-
 <dependency>
   <groupId>io.github.portlek</groupId>
   <artifactId>FakePlayerApi</artifactId>
