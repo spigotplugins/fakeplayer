@@ -16,11 +16,18 @@ Put all the Jar files into your mods/plugins directory.
 
 ### Build yourself
 
+#### Build the plugin Jar file
+
 `./gradlew build`
+
+#### Publish the FakePlayerApi to your local maven repository
+
+`./gradlew publishToMavenLocal -Pdev=true`
 
 ### Maven
 
 ```xml
+
 <dependency>
   <groupId>io.github.portlek</groupId>
   <artifactId>FakePlayerApi</artifactId>
