@@ -1,10 +1,3 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-
-apply {
-  plugin("com.github.johnrengelman.shadow")
-  plugin("kr.entree.spigradle")
-}
-
 dependencies {
   implementation(project(":api"))
   implementation(project(":nms:1_18_R1"))
@@ -32,7 +25,7 @@ tasks {
     }
   }
 
-  withType<ShadowJar> {
+  shadowJar {
     define()
     rootProject.findProperty("pluginsFolder")?.let {
       val path = it.toString()
@@ -43,6 +36,16 @@ tasks {
   }
 
   build {
-    dependsOn(getByName("shadowJar"))
+    dependsOn(shadowJar)
+  }
+
+  debugPaper {
+    dependsOn(shadowJar)
+  }
+}
+
+spigot {
+  debug {
+    eula = true
   }
 }
