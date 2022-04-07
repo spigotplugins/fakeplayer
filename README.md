@@ -14,11 +14,15 @@ Put all the Jar files into your mods/plugins directory.
 
 ## How to Use (Developers)
 
+### Build yourself
+
+`./gradlew build`
+
 ### Maven
 
 ```xml
 <dependency>
-  <groupId>tr.com.infumia</groupId>
+  <groupId>io.github.portlek</groupId>
   <artifactId>FakePlayerApi</artifactId>
   <version>VERSION</version>
 </dependency>
@@ -27,5 +31,5 @@ Put all the Jar files into your mods/plugins directory.
 ### Gradle
 
 ```groovy
-implementation "tr.com.infumia:FakePlayerApi:VERSION"
+implementation "io.github.portlek:FakePlayerApi:VERSION"
 ```
