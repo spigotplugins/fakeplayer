@@ -28,7 +28,7 @@ Put all the Jar files into your mods/plugins directory.
 
 `./gradlew publishToMavenLocal -Pdev=true`
 
-### Maven
+#### Maven
 
 ```xml
 <dependency>
@@ -38,7 +38,7 @@ Put all the Jar files into your mods/plugins directory.
 </dependency>
 ```
 
-### Gradle
+#### Gradle
 
 ```groovy
 // Groovy
