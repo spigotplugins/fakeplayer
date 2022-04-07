@@ -2,6 +2,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 apply {
   plugin("com.github.johnrengelman.shadow")
+  plugin("kr.entree.spigradle")
 }
 
 dependencies {
