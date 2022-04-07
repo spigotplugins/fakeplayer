@@ -5,12 +5,11 @@ import lombok.Getter;
 import lombok.experimental.Accessors;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
-import tr.com.infumia.infumialib.shared.Definition;
 
 /**
  * an interface to determine AI players.
  */
-public interface AiPlayer extends Definition.Name, Definition.UniqueId, AiPlayerFunction {
+public interface AiPlayer extends AiPlayerFunction {
 
   /**
    * creates a simple AI player.
@@ -48,12 +47,28 @@ public interface AiPlayer extends Definition.Name, Definition.UniqueId, AiPlayer
   Location location();
 
   /**
+   * obtains the name.
+   *
+   * @return name.
+   */
+  @NotNull
+  String name();
+
+  /**
    * obtains the spawn point.
    *
    * @return spawn point.
    */
   @NotNull
   Location spawnPoint();
+
+  /**
+   * obtains the unique id.
+   *
+   * @return unique id.
+   */
+  @NotNull
+  UUID uniqueId();
 
   /**
    * a simple implementation of {@link  AiPlayer}.

@@ -1,10 +1,10 @@
-package io.github.portlek.fakeplayer.nms;
+package io.github.portlek.fakeplayer.nms.v1_18_R2;
 
-import com.github.steveice10.mc.protocol.MinecraftProtocol;
 import io.github.portlek.fakeplayer.api.AiPlayer;
 import io.github.portlek.fakeplayer.api.AiPlayerFunction;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.Delegate;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,18 +12,14 @@ import org.jetbrains.annotations.NotNull;
  * a class that represents AI player nms.
  */
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-final class AiPlayerNms implements AiPlayerFunction {
+final class AiPlayerNms implements AiPlayer {
 
   /**
    * the ai.
    */
   @NotNull
+  @Delegate(excludes = AiPlayerFunction.class)
   private final AiPlayer ai;
-
-  /**
-   * the protocol.
-   */
-  private final MinecraftProtocol protocol = new MinecraftProtocol();
 
   @Override
   public void location(@NotNull final Location location) {

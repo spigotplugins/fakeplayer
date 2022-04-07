@@ -1,13 +1,14 @@
-name: Build
+name: Snapshot Release
 
 on:
-  pull_request:
-    branches: [ master ]
+  release:
+    types: [ published ]
 
 jobs:
   build:
-    name: Build
+    name: Snapshot Release
     runs-on: ubuntu-latest
+    if: "github.event.release.prerelease"
     steps:
       - uses: actions/checkout@v3
 
@@ -30,6 +31,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradlew-
 
+      - uses: crazy-max/ghaction-import-gpg@v4.3.0
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+
       - run: |
           chmod +x gradlew
           ./gradlew build
+
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            plugin/build/libs/FakePlayerPlugin.jar

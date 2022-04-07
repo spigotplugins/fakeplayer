@@ -1,5 +1,6 @@
 name-template: '$RESOLVED_VERSION'
 tag-template: '$RESOLVED_VERSION'
+
 template: |
   # What's Changed
 

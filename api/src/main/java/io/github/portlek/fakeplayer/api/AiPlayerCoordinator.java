@@ -1,6 +1,7 @@
 package io.github.portlek.fakeplayer.api;
 
 import java.util.Objects;
+import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import lombok.experimental.UtilityClass;
@@ -18,9 +19,27 @@ public class AiPlayerCoordinator {
   /**
    * the backend.
    */
-  @Nullable
   @Setter
+  @Nullable
   private AiBackend backend;
+
+  /**
+   * the registry.
+   */
+  @Getter
+  @Setter
+  @NotNull
+  private AiRegistry registry = AiRegistry.simple();
+
+  /**
+   * obtains the backend.
+   *
+   * @return backend.
+   */
+  @NotNull
+  AiBackend backend() {
+    return Objects.requireNonNull(AiPlayerCoordinator.backend, "Backend not initiated!");
+  }
 
   /**
    * removes the AI.
@@ -28,7 +47,7 @@ public class AiPlayerCoordinator {
    * @param ai the AI to remove.
    */
   void remove(@NotNull final AiPlayer ai) {
-    AiPlayerCoordinator.backend().remove(ai);
+    AiPlayerCoordinator.registry.remove(ai);
   }
 
   /**
@@ -37,7 +56,7 @@ public class AiPlayerCoordinator {
    * @param ai the AI to spawn.
    */
   void spawn(@NotNull final AiPlayer ai) {
-    AiPlayerCoordinator.backend().spawn(ai);
+    AiPlayerCoordinator.registry.spawn(ai);
   }
 
   /**
@@ -47,7 +66,7 @@ public class AiPlayerCoordinator {
    * @param location the location to teleport.
    */
   void teleport(@NotNull final AiPlayer ai, @NotNull final Location location) {
-    AiPlayerCoordinator.backend().location(ai, location);
+    AiPlayerCoordinator.registry.teleport(ai, location);
   }
 
   /**
@@ -56,16 +75,6 @@ public class AiPlayerCoordinator {
    * @param ai the AI to toggle.
    */
   void toggleVisible(@NotNull final AiPlayer ai) {
-    AiPlayerCoordinator.backend().toggleVisible(ai);
-  }
-
-  /**
-   * obtains the backend.
-   *
-   * @return backend.
-   */
-  @NotNull
-  private AiBackend backend() {
-    return Objects.requireNonNull(AiPlayerCoordinator.backend, "Backend not initiated!");
+    AiPlayerCoordinator.registry.toggleVisible(ai);
   }
 }
