@@ -23,7 +23,7 @@ Put the plugin file into plugins folder.
 
 `./gradlew build`
 
-#### Publish the FakePlayerApi to your local maven repository
+#### Publish FakePlayerApi to your local maven repository
 
 `./gradlew publishToMavenLocal -Pdev=true`
 
