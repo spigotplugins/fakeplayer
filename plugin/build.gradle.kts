@@ -11,6 +11,13 @@ dependencies {
 
   implementation("tr.com.infumia:reflection:0.1.4")
   implementation("tr.com.infumia:versionmatched:0.1.1")
+  implementation("com.github.Revxrsal.Lamp:common:3.0.2")
+  implementation("com.github.Revxrsal.Lamp:brigadier:3.0.2") {
+    exclude("com.mojang")
+  }
+  implementation("com.github.Revxrsal.Lamp:bukkit:3.0.2") {
+    exclude("com.mojang")
+  }
 
   compileOnlyApi("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
 }
@@ -26,6 +33,12 @@ tasks {
 
   withType<ShadowJar> {
     define()
+    rootProject.findProperty("pluginsFolder")?.let {
+      val path = it.toString()
+      if (path.isNotEmpty() && path.isNotBlank()) {
+        destinationDirectory.set(File(path))
+      }
+    }
   }
 
   build {
