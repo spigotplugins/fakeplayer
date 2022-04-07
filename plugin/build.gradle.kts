@@ -33,6 +33,12 @@ tasks {
 
   withType<ShadowJar> {
     define()
+    rootProject.findProperty("pluginsFolder")?.let {
+      val path = it.toString()
+      if (path.isNotEmpty() && path.isNotBlank()) {
+        destinationDirectory.set(File(path))
+      }
+    }
   }
 
   build {
