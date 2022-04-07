@@ -15,24 +15,26 @@ dependencies {
   implementation("tr.com.infumia:versionmatched:0.1.0-SNAPSHOT")
 }
 
-tasks.withType<ProcessResources> {
-  duplicatesStrategy = DuplicatesStrategy.INCLUDE
-  from(project.the<SourceSetContainer>()["main"].resources.srcDirs) {
-    expand("pluginVersion" to project.version)
-    include("plugin.yml")
+tasks {
+  withType<ProcessResources> {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    from(project.the<SourceSetContainer>()["main"].resources.srcDirs) {
+      expand("pluginVersion" to project.version)
+      include("plugin.yml")
+    }
   }
-}
 
-tasks.withType<ShadowJar> {
-  val projectName = getProjectName()
+  withType<ShadowJar> {
+    val projectName = getProjectName()
 
-  dependsOn(tasks.sourcesJar)
-  dependsOn(tasks.javadocJar)
-  dependsOn(tasks.jar)
-  archiveClassifier.set(null as String?)
-  archiveClassifier.convention(null as String?)
-  archiveBaseName.set(projectName)
-  archiveBaseName.convention(projectName)
-  archiveVersion.set(null as String?)
-  archiveVersion.convention(null as String?)
+    dependsOn(sourcesJar)
+    dependsOn(javadocJar)
+    dependsOn(jar)
+    archiveClassifier.set(null as String?)
+    archiveClassifier.convention(null as String?)
+    archiveBaseName.set(projectName)
+    archiveBaseName.convention(projectName)
+    archiveVersion.set(null as String?)
+    archiveVersion.convention(null as String?)
+  }
 }
