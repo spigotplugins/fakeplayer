@@ -1,4 +1,4 @@
-# FakePlayer (WIP)
+# Fake Player (WIP)
 
 A Minecraft plugin that allows you to spawn fake players to your game.\
 They increase player count of your server.\
