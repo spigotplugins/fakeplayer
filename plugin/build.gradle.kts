@@ -41,17 +41,18 @@ tasks {
         destinationDirectory.set(File(path))
       }
     }
+    configurations = listOf(project.configurations["runtimeClasspath"], project.configurations["shadow"])
   }
 
   build {
-    dependsOn(getByName("shadowJar"))
+    dependsOn("shadowJar")
   }
 
-  named("prepareSpigotPlugins") {
-    dependsOn(getByName("shadowJar"))
+  "prepareSpigotPlugins" {
+    dependsOn("shadowJar")
   }
 
-  named("generateSpigotDescription") {
+  "generateSpigotDescription" {
     onlyIf { false }
   }
 }
