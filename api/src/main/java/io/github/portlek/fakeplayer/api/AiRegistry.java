@@ -1,11 +1,11 @@
 package io.github.portlek.fakeplayer.api;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -24,33 +24,41 @@ public interface AiRegistry {
   }
 
   /**
+   * gets the AI.
+   *
+   * @param uniqueId the unique id to get.
+   *
+   * @return AI if exists.
+   */
+  @NotNull
+  Optional<AiPlayer> get(@NotNull UUID uniqueId);
+
+  /**
+   * puts the AI.
+   *
+   * @param ai the ai to put.
+   */
+  default void put(@NotNull final AiPlayer ai) {
+    this.put(ai.uniqueId(), ai);
+  }
+
+  /**
+   * puts the AI.
+   *
+   * @param uniqueId the unique id to put.
+   * @param ai the ai to put.
+   */
+  void put(@NotNull UUID uniqueId, @NotNull AiPlayer ai);
+
+  /**
    * removes the AI.
    *
-   * @param ai the ai to remove.
-   */
-  void remove(@NotNull AiPlayer ai);
-
-  /**
-   * spawns the AI.
+   * @param uniqueId the unique id to remove.
    *
-   * @param ai the AI to spawn.
+   * @return removed AI if exists.
    */
-  void spawn(@NotNull AiPlayer ai);
-
-  /**
-   * teleports the AI to the location.
-   *
-   * @param ai the AI to teleport.
-   * @param location the location to teleport.
-   */
-  void teleport(@NotNull AiPlayer ai, @NotNull Location location);
-
-  /**
-   * toggles visibility of the AI.
-   *
-   * @param ai the AI to toggle.
-   */
-  void toggleVisible(@NotNull AiPlayer ai);
+  @NotNull
+  Optional<AiPlayer> remove(@NotNull UUID uniqueId);
 
   /**
    * a class that represents simple implementation of {@link AiRegistry}.
@@ -63,35 +71,21 @@ public interface AiRegistry {
      */
     private final Map<UUID, AiPlayer> registry = new ConcurrentHashMap<>();
 
+    @NotNull
     @Override
-    public void remove(@NotNull final AiPlayer ai) {
-      final var nms = this.registry.remove(ai.uniqueId());
-      if (nms != null) {
-        nms.remove();
-      }
+    public Optional<AiPlayer> get(@NotNull final UUID uniqueId) {
+      return Optional.ofNullable(this.registry.get(uniqueId));
     }
 
     @Override
-    public void spawn(@NotNull final AiPlayer ai) {
-      final var nms = AiPlayerCoordinator.backend().createPlayer(ai);
-      this.registry.put(ai.uniqueId(), nms);
-      nms.spawn();
+    public void put(@NotNull final UUID uniqueId, @NotNull final AiPlayer ai) {
+      this.registry.put(uniqueId, ai);
     }
 
+    @NotNull
     @Override
-    public void teleport(@NotNull final AiPlayer ai, @NotNull final Location location) {
-      final var nms = this.registry.get(ai.uniqueId());
-      if (nms != null) {
-        nms.location(location);
-      }
-    }
-
-    @Override
-    public void toggleVisible(@NotNull final AiPlayer ai) {
-      final var nms = this.registry.get(ai.uniqueId());
-      if (nms != null) {
-        nms.toggleVisible();
-      }
+    public Optional<AiPlayer> remove(@NotNull final UUID uniqueId) {
+      return Optional.ofNullable(this.registry.remove(uniqueId));
     }
   }
 }

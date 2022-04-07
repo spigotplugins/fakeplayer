@@ -47,7 +47,7 @@ public class AiPlayerCoordinator {
    * @param ai the AI to remove.
    */
   void remove(@NotNull final AiPlayer ai) {
-    AiPlayerCoordinator.registry.remove(ai);
+    AiPlayerCoordinator.registry.remove(ai.uniqueId()).ifPresent(AiPlayerFunction::remove);
   }
 
   /**
@@ -56,7 +56,9 @@ public class AiPlayerCoordinator {
    * @param ai the AI to spawn.
    */
   void spawn(@NotNull final AiPlayer ai) {
-    AiPlayerCoordinator.registry.spawn(ai);
+    final var nms = AiPlayerCoordinator.backend().createPlayer(ai);
+    AiPlayerCoordinator.registry.put(ai);
+    nms.spawn();
   }
 
   /**
@@ -66,7 +68,7 @@ public class AiPlayerCoordinator {
    * @param location the location to teleport.
    */
   void teleport(@NotNull final AiPlayer ai, @NotNull final Location location) {
-    AiPlayerCoordinator.registry.teleport(ai, location);
+    AiPlayerCoordinator.registry.get(ai.uniqueId()).ifPresent(p -> p.location(location));
   }
 
   /**
@@ -75,6 +77,6 @@ public class AiPlayerCoordinator {
    * @param ai the AI to toggle.
    */
   void toggleVisible(@NotNull final AiPlayer ai) {
-    AiPlayerCoordinator.registry.toggleVisible(ai);
+    AiPlayerCoordinator.registry.get(ai.uniqueId()).ifPresent(AiPlayerFunction::toggleVisible);
   }
 }
