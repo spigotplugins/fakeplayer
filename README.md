@@ -14,9 +14,8 @@ This plugin would help to both server owners and plugin developers for benchmark
 
 ### Server Owners
 
-[Plugin Itself](https://github.com/spigotplugins/fakeplayer/releases/)
-
-Put all the Jar files into your mods/plugins directory.
+Download [FakePlayerPlugin](https://github.com/spigotplugins/fakeplayer/releases/) \
+Put the plugin file into plugins folder.
 
 ### Developers
 
