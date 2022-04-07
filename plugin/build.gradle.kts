@@ -15,7 +15,9 @@ dependencies {
   implementation("com.github.Revxrsal.Lamp:brigadier:3.0.2") {
     exclude("com.mojang")
   }
-  implementation("com.github.Revxrsal.Lamp:bukkit:3.0.2")
+  implementation("com.github.Revxrsal.Lamp:bukkit:3.0.2") {
+    exclude("com.mojang")
+  }
 
   compileOnlyApi("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
 }
