@@ -45,6 +45,9 @@ subprojects {
   tasks {
     compileJava {
       options.encoding = Charsets.UTF_8.name()
+      options.compilerArgs.add("-parameters")
+      options.isFork = true
+      options.forkOptions.executable = "javac"
     }
 
     javadoc {

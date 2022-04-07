@@ -11,6 +11,8 @@ dependencies {
 
   implementation("tr.com.infumia:reflection:0.1.4")
   implementation("tr.com.infumia:versionmatched:0.1.1")
+  implementation("com.github.Revxrsal.Lamp:common:3.0.2")
+  implementation("com.github.Revxrsal.Lamp:bukkit:3.0.2")
 
   compileOnlyApi("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
 }
