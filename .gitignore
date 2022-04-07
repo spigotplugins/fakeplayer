@@ -8,3 +8,4 @@ build/
 .settings/
 **/bin/
 .vscode/
+**/debug/**

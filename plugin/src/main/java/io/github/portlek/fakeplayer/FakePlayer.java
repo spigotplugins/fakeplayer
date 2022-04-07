@@ -35,6 +35,8 @@ public final class FakePlayer extends JavaPlugin {
     final var handler = BukkitCommandHandler.create(this);
     handler.registerBrigadier();
     handler.setMessagePrefix("&6[&eFakePlayer&6]&r ");
+    handler.setHelpWriter((c, a) -> "%s %s - %s"
+      .formatted(c.getPath().toRealString(), c.getUsage(), c.getDescription()));
     handler.register(new FakePlayerCommand());
   }
 }

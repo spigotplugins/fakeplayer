@@ -5,6 +5,7 @@ plugins {
   signing
   id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
   id("com.github.johnrengelman.shadow") version "7.1.2" apply false
+  id("kr.entree.spigradle") version "2.3.4" apply false
 }
 
 allprojects {
