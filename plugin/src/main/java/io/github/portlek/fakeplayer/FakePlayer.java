@@ -2,6 +2,7 @@ package io.github.portlek.fakeplayer;
 
 import io.github.portlek.fakeplayer.api.AiBackend;
 import io.github.portlek.fakeplayer.api.AiPlayerCoordinator;
+import io.github.portlek.fakeplayer.commands.FakePlayerCommand;
 import io.github.portlek.fakeplayer.nms.v1_18_R1.Backend1_18_R1;
 import io.github.portlek.fakeplayer.nms.v1_18_R2.Backend1_18_R2;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -33,5 +34,6 @@ public final class FakePlayer extends JavaPlugin {
     AiPlayerCoordinator.backend(this.backend);
     final var handler = BukkitCommandHandler.create(this);
     handler.registerBrigadier();
+    handler.register(new FakePlayerCommand());
   }
 }
