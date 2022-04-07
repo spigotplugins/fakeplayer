@@ -7,8 +7,8 @@ This plugin would help to both server owners and plugin developers for benchmark
 [![idea](https://www.elegantobjects.org/intellij-idea.svg)](https://www.jetbrains.com/idea/)
 
 ![master](https://github.com/spigotplugins/fakeplayer/workflows/build/badge.svg)
-![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/tr.com.spigotplugins/fakeplayer?label=maven-central&server=https%3A%2F%2Foss.sonatype.org%2F)
-![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/tr.com.spigotplugins/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org)
+![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org%2F)
+![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org)
 
 ## How to Use
 
