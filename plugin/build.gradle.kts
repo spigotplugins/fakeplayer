@@ -24,24 +24,8 @@ tasks {
     }
   }
 
-  javadocJar {
-    onlyIf { false }
-  }
-
-  sourcesJar {
-    onlyIf { false }
-  }
-
   withType<ShadowJar> {
-    val projectName = getProjectName()
-
-    dependsOn(jar)
-    archiveClassifier.set(null as String?)
-    archiveClassifier.convention(null as String?)
-    archiveBaseName.set(projectName)
-    archiveBaseName.convention(projectName)
-    archiveVersion.set(null as String?)
-    archiveVersion.convention(null as String?)
+    define()
   }
 
   build {

@@ -52,43 +52,8 @@ subprojects {
       (options as StandardJavadocDocletOptions).tags("todo")
     }
 
-    val projectName = getProjectName()
-
     jar {
-      archiveClassifier.set(null as String?)
-      archiveClassifier.convention(null as String?)
-      archiveBaseName.set(projectName)
-      archiveBaseName.convention(projectName)
-      archiveVersion.set(null as String?)
-      archiveVersion.convention(null as String?)
-    }
-
-    val javadocJar by creating(Jar::class) {
-      dependsOn("javadoc")
-      archiveClassifier.set("javadoc")
-      archiveClassifier.convention("javadoc")
-      archiveBaseName.set(projectName)
-      archiveBaseName.convention(projectName)
-      archiveVersion.set(null as String?)
-      archiveVersion.convention(null as String?)
-      from(javadoc)
-    }
-
-    val sourcesJar by creating(Jar::class) {
-      dependsOn("classes")
-      archiveClassifier.set("sources")
-      archiveClassifier.convention("sources")
-      archiveBaseName.set(projectName)
-      archiveBaseName.convention(projectName)
-      archiveVersion.set(null as String?)
-      archiveVersion.convention(null as String?)
-      from(sourceSets["main"].allSource)
-    }
-
-    build {
-      dependsOn(javadocJar)
-      dependsOn(sourcesJar)
-      dependsOn(jar)
+      define()
     }
   }
 }
