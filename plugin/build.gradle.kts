@@ -24,11 +24,17 @@ tasks {
     }
   }
 
+  javadocJar {
+    onlyIf { false }
+  }
+
+  sourcesJar {
+    onlyIf { false }
+  }
+
   withType<ShadowJar> {
     val projectName = getProjectName()
 
-    dependsOn(sourcesJar)
-    dependsOn(javadocJar)
     dependsOn(jar)
     archiveClassifier.set(null as String?)
     archiveClassifier.convention(null as String?)
