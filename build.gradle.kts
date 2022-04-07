@@ -22,7 +22,7 @@ subprojects {
   repositories {
     mavenCentral()
     maven("https://jitpack.io/")
-    maven("https://repo.opencollab.dev/maven-snapshots/")
+    maven("https://libraries.minecraft.net")
     maven("https://oss.sonatype.org/content/repositories/snapshots/")
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     mavenLocal()
@@ -34,6 +34,8 @@ subprojects {
     compileOnlyApi("org.jetbrains:annotations:23.0.0")
     annotationProcessor("org.projectlombok:lombok:1.18.22")
     annotationProcessor("org.jetbrains:annotations:23.0.0")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.22")
+    testAnnotationProcessor("org.jetbrains:annotations:23.0.0")
     // Annotations
   }
 
