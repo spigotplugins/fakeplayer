@@ -14,7 +14,7 @@ This plugin would help to both server owners and plugin developers for benchmark
 
 ### Server Owners
 
-Download [FakePlayerPlugin](https://github.com/spigotplugins/fakeplayer/releases/) \
+Download latest [FakePlayerPlugin](https://github.com/spigotplugins/fakeplayer/releases/) release.\
 Put the plugin file into plugins folder.
 
 ### Developers
