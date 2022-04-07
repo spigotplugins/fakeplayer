@@ -1,3 +1,11 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import kr.entree.spigradle.module.spigot.SpigotExtension
+
+apply {
+  plugin("com.github.johnrengelman.shadow")
+  plugin("kr.entree.spigradle")
+}
+
 dependencies {
   implementation(project(":api"))
   implementation(project(":nms:1_18_R1"))
@@ -25,7 +33,7 @@ tasks {
     }
   }
 
-  shadowJar {
+  withType<ShadowJar> {
     define()
     rootProject.findProperty("pluginsFolder")?.let {
       val path = it.toString()
@@ -36,15 +44,19 @@ tasks {
   }
 
   build {
-    dependsOn(shadowJar)
+    dependsOn(getByName("shadowJar"))
   }
 
-  debugPaper {
-    dependsOn(shadowJar)
+  named("prepareSpigotPlugins") {
+    dependsOn(getByName("shadowJar"))
+  }
+
+  named("generateSpigotDescription") {
+    onlyIf { false }
   }
 }
 
-spigot {
+configure<SpigotExtension> {
   debug {
     eula = true
   }

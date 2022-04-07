@@ -18,8 +18,6 @@ subprojects {
     plugin("java-library")
     plugin("maven-publish")
     plugin("signing")
-    plugin("com.github.johnrengelman.shadow")
-    plugin("kr.entree.spigradle")
   }
 
   repositories {
