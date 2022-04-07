@@ -88,6 +88,7 @@ subprojects {
     build {
       dependsOn(javadocJar)
       dependsOn(sourcesJar)
+      dependsOn(jar)
     }
   }
 }

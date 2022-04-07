@@ -37,4 +37,8 @@ tasks {
     archiveVersion.set(null as String?)
     archiveVersion.convention(null as String?)
   }
+
+  build {
+    dependsOn(getByName("shadowJar"))
+  }
 }
