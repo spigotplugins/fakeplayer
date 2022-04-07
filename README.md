@@ -1,5 +1,9 @@
 # FakePlayer (WIP)
 
+A Minecraft plugin that allows you to spawn fake players to your game.\
+They increase player count of your server.\
+This plugin would help to both server owners and plugin developers for benchmarking their servers/plugins.
+
 [![idea](https://www.elegantobjects.org/intellij-idea.svg)](https://www.jetbrains.com/idea/)
 
 ![master](https://github.com/spigotplugins/fakeplayer/workflows/build/badge.svg)
