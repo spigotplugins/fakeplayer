@@ -99,7 +99,7 @@ public interface AiPlayer extends AiPlayerFunction {
      * the location.
      */
     @NotNull
-    private Location location;
+    private volatile Location location;
 
     /**
      * ctor.
