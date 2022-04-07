@@ -1,3 +1,9 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+apply {
+  plugin("com.github.johnrengelman.shadow")
+}
+
 dependencies {
   implementation(project(":api"))
   implementation(project(":nms:1_18_R1"))
@@ -15,4 +21,18 @@ tasks.withType<ProcessResources> {
     expand("pluginVersion" to project.version)
     include("plugin.yml")
   }
+}
+
+tasks.withType<ShadowJar> {
+  val projectName = getProjectName()
+
+  dependsOn(tasks.sourcesJar)
+  dependsOn(tasks.javadocJar)
+  dependsOn(tasks.jar)
+  archiveClassifier.set(null as String?)
+  archiveClassifier.convention(null as String?)
+  archiveBaseName.set(projectName)
+  archiveBaseName.convention(projectName)
+  archiveVersion.set(null as String?)
+  archiveVersion.convention(null as String?)
 }

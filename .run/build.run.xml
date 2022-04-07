@@ -11,8 +11,6 @@
       <option name="taskNames">
         <list>
           <option value="build"/>
-          <option value="javadocJar"/>
-          <option value="sourcesJar"/>
         </list>
       </option>
       <option name="vmOptions"/>
