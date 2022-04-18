@@ -31,11 +31,11 @@ subprojects {
 
   dependencies {
     // Annotations
-    compileOnlyApi("org.projectlombok:lombok:1.18.22")
+    compileOnlyApi("org.projectlombok:lombok:1.18.24")
     compileOnlyApi("org.jetbrains:annotations:23.0.0")
-    annotationProcessor("org.projectlombok:lombok:1.18.22")
+    annotationProcessor("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.jetbrains:annotations:23.0.0")
-    testAnnotationProcessor("org.projectlombok:lombok:1.18.22")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
     testAnnotationProcessor("org.jetbrains:annotations:23.0.0")
     // Annotations
   }
