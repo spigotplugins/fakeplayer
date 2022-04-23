@@ -19,6 +19,10 @@ This plugin would help to both server owners and plugin developers for benchmark
   - random-names -> Use these names if you don't specify a name when adding fake player.
   - tab-format -> Specifies the tab format of each fake player if the custom one does not exist.
   - language -> Specifies the plugin's language.
+  - join-quit-message -> Join/Quit message settings.
+    - enabled -> Enables it.
+    - join -> Specifies the join message. (`null` for default)
+    - quit -> Specifies the quit message. (`null` for default)
 - Add commands.
   - /fakeplayer -> Shows help message.
   - help -> Shows help message.
