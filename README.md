@@ -50,7 +50,8 @@ function enable(core: Core) {
   core.registerEvent(fakeplayer_join)
 }
 
-funtion disable(core: Core) {
+// Runs when the plugin disables.
+function disable(core: Core) {
   const all = core.allFakePlayers()
   for (var fp of all) {
     fp.removeProperty('password')
