@@ -10,7 +10,7 @@ This plugin would help to both server owners and plugin developers for benchmark
 ![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org%2F)
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org)
 
-[![Support Server](https://img.shields.io/discord/591914197219016707.svg?label=Discord&logo=Discord&colorB=7289da&style=for-the-badge)](https://discord.gg/jQhquEkb58)
+[![Support Server](https://img.shields.io/discord/967385751870390333.svg?label=Discord&logo=Discord&colorB=7289da&style=for-the-badge)](https://discord.gg/jQhquEkb58)
 
 ## How to Use
 
