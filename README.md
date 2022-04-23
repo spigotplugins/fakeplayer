@@ -43,17 +43,16 @@ Put the plugin file into plugins folder.
 ##### authme.script
 ```script
 // If a fakeplayer joins to the server, gets its password then run /login <password> to pass AuthMe.
-fakeplayer-join { (server, player) ->
-  server.runAfter(3, SECONDS, () -> {
+fakeplayer-join(server: Server, player: FakePlayer) {
+  server.runAfter(3, 'seconds', () -> {
     val password = player.property('password');
     player.sendCommand('/register ${password} ${password});
-    server.runAfter(2, SECONDS, () -> {
+    server.runAfter(2, 'seconds', () -> {
       player.sendCommand('/login ${password}');
     });
   });
 }
 ```
-
 ### Developers
 #### Build the plugin Jar file
 `./gradlew build`
