@@ -40,7 +40,7 @@ This plugin would help to both server owners and plugin developers for benchmark
 Download latest [FakePlayerPlugin](https://github.com/spigotplugins/fakeplayer/releases/) release.\
 Put the plugin file into plugins folder.
 #### Scripting (Planning)
-##### authme.script
+##### authme.ts
 If a fakeplayer joins to the server, gets its password then run /login \<password\> to pass AuthMe.
 ```typescript
 import {
