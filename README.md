@@ -44,17 +44,17 @@ Put the plugin file into plugins folder.
 ```script
 // If a fakeplayer joins to the server, gets its password then run /login <password> to pass AuthMe.
 fakeplayer-join(
-  server: Server,
+  core: Core,
   player: FakePlayer
 ) {
-  server.runAfter(3, 'seconds', () -> {
+  core.runAfter(3, 'seconds', () -> {
     var password = player.property('password');
     if (password == null) {
-      password = server.randomPassword();
+      password = core.randomPassword();
       player.property('password', password);
     }
     player.sendCommand('/register ${password} ${password});
-    server.runAfter(2, 'seconds', () -> {
+    core.runAfter(2, 'seconds', () -> {
       player.sendCommand('/login ${password}');
     });
   });
