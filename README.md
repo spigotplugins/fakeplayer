@@ -54,10 +54,9 @@ function enable(
   core.registerEvent(fakeplayer_join);
 }
 
-function fakeplayer_join(
-  core: Core,
-  player: FakePlayer,
-) {
+function fakeplayer_join(event: FakePlayerJoinEvent) {
+  const core = event.core()
+  const player = event.player()
   core.runAfter(core.seconds(3), () => {
     let password = player.property('password')
     if (password == null) {
