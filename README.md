@@ -42,9 +42,7 @@ Put the plugin file into plugins folder.
 #### Scripting
 ##### authme.script
 ```script
-// If a fakeplayer joins to the server
-// gets its password, then run /login <password>
-// to pass AuthMe.
+// If a fakeplayer joins to the server, gets its password then run /login <password> to pass AuthMe.
 on fakeplayer-join { (player) ->
   wait 3 seconds;
   val password = player.property('password');
