@@ -43,26 +43,30 @@ Put the plugin file into plugins folder.
 ##### authme.ts
 If a fakeplayer joins to the server, gets its password then run /login \<password\> to pass AuthMe.
 ```typescript
-import {
-  Core,
-  FakePlayer,
-} from 'FakePlayerBase';
+import { Core, FakePlayer } from 'FakePlayerBase';
 
-function enable(
-  core: Core,
-) {
-  core.registerEvent(fakeplayer_join);
+// Runs when the plugin enables.
+function enable(core: Core) {
+  core.registerEvent(fakeplayer_join)
 }
 
-function fakeplayer_join(
-  core: Core,
-  player: FakePlayer,
-) {
+// Runs when the plugin disables.
+function disable(core: Core) {
+  const all = core.allFakePlayers()
+  for (var fp of all) {
+    fp.removeProperty('password')
+  }
+}
+
+// Runs when a fake player joins to the server.
+function join(event: FakePlayerJoinEvent) {
+  const core = event.core()
+  const player = event.player()
   core.runAfter(core.seconds(3), () => {
-    let password = player.property('password')
+    let password = player.getProperty('password')
     if (password == null) {
       password = core.randomPassword()
-      player.property('password', password)
+      player.setProperty('password', password)
     }
     player.sendCommand('/register ${password} ${password}')
     core.runAfter(core.seconds(1), 'seconds', () => {
