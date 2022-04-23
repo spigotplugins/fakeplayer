@@ -1,5 +1,4 @@
 # Fake Player (WIP)
-
 A Minecraft plugin that allows you to spawn fake players to your game.\
 They increase player count of your server.\
 This plugin would help to both server owners and plugin developers for benchmarking their servers/plugins.
@@ -13,7 +12,6 @@ This plugin would help to both server owners and plugin developers for benchmark
 [![Discord](https://img.shields.io/discord/967385751870390333.svg?label=Discord&logo=Discord&colorB=7289da&style=for-the-badge)](https://discord.gg/jQhquEkb58)
 
 ## Todo
-
 - Nms implementations for 1.8-1.18.2 versions.
 - Configuration
   - random-names -> Use these names if you don't specify a name when adding fake player.
@@ -37,38 +35,44 @@ This plugin would help to both server owners and plugin developers for benchmark
 - A simple scripting to manage fake players.
 
 ## How to Use
-
 ### Server Owners
-
+#### Installing
 Download latest [FakePlayerPlugin](https://github.com/spigotplugins/fakeplayer/releases/) release.\
 Put the plugin file into plugins folder.
+#### Scripting
+##### authme.script
+```script
+// If a fakeplayer joins to the server
+// gets its password, then run /login <password>
+// to pass AuthMe.
+on fakeplayer-join { (player) ->
+  wait 3 seconds;
+  val password = player.property('password');
+  player.sendCommand('/register ${password} ${password});
+  wait 2 seconds;
+  player.sendCommand('/login ${password}');
+}
+```
 
 ### Developers
-
 #### Build the plugin Jar file
-
 `./gradlew build`
-
 #### Publish FakePlayerApi to your local maven repository
-
 `./gradlew publishToMavenLocal -Pdev=true`
-
 #### Maven
-
 ```xml
 <dependency>
   <groupId>io.github.portlek</groupId>
   <artifactId>FakePlayerApi</artifactId>
   <version>VERSION</version>
+  <scope>provided</scope>
 </dependency>
 ```
-
 #### Gradle
-
 ```groovy
 // Groovy
-implementation "io.github.portlek:FakePlayerApi:VERSION"
+compileOnly "io.github.portlek:FakePlayerApi:VERSION"
 
 // Kotlin DSL
-implementation("io.github.portlek:FakePlayerApi:VERSION")
+compileOnly("io.github.portlek:FakePlayerApi:VERSION")
 ```
