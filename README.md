@@ -10,6 +10,19 @@ This plugin would help to both server owners and plugin developers for benchmark
 ![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org%2F)
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org)
 
+## Todo
+
+- Nms implementations for 1.8-1.18.2 versions.
+- Configuration
+  - random-names -> Use these names if user don't specify a name for fake player when creating it.
+  - tab-format -> Specifies the tab format of each fake player if the custom one does not exist.
+- Add commands (/fakeplayer).
+  - reload -> Reloads config and script files.
+  - add [name] [location] -> Creates a fake player to the location.
+  - remove \<name\> -> Removes the fake player.
+  - menu -> Opens the management menu for all fake players.
+- A simple scripting to manage fake players.
+
 ## How to Use
 
 ### Server Owners
