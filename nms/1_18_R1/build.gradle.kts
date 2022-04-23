@@ -1,5 +1,5 @@
 plugins {
-  id("io.papermc.paperweight.userdev") version "1.3.6-SNAPSHOT"
+  id("io.papermc.paperweight.userdev") version "1.3.6"
 }
 
 dependencies {
