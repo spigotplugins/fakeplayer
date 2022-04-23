@@ -39,25 +39,36 @@ This plugin would help to both server owners and plugin developers for benchmark
 #### Installing
 Download latest [FakePlayerPlugin](https://github.com/spigotplugins/fakeplayer/releases/) release.\
 Put the plugin file into plugins folder.
-#### Scripting
+#### Scripting (Planning)
 ##### authme.script
-```script
-// If a fakeplayer joins to the server, gets its password then run /login <password> to pass AuthMe.
-fakeplayer-join(
+If a fakeplayer joins to the server, gets its password then run /login \<password\> to pass AuthMe.
+```typescript
+import {
+  Core,
+  FakePlayer,
+} from 'FakePlayerBase';
+
+function enable(
   core: Core,
-  player: FakePlayer
 ) {
-  core.runAfter(3, 'seconds', () -> {
-    var password = player.property('password');
+  core.registerEvent(fakeplayer_join);
+}
+
+function fakeplayer_join(
+  core: Core,
+  player: FakePlayer,
+) {
+  core.runAfter(core.seconds(3), () => {
+    let password = player.property('password')
     if (password == null) {
-      password = core.randomPassword();
-      player.property('password', password);
+      password = core.randomPassword()
+      player.property('password', password)
     }
-    player.sendCommand('/register ${password} ${password});
-    core.runAfter(2, 'seconds', () -> {
-      player.sendCommand('/login ${password}');
-    });
-  });
+    player.sendCommand('/register ${password} ${password}')
+    core.runAfter(core.seconds(1), 'seconds', () => {
+      player.sendCommand('/login ${password}')
+    })
+  })
 }
 ```
 ### Developers
