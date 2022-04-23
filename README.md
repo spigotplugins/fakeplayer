@@ -18,6 +18,7 @@ This plugin would help to both server owners and plugin developers for benchmark
 - Configuration
   - random-names -> Use these names if you don't specify a name when adding fake player.
   - tab-format -> Specifies the tab format of each fake player if the custom one does not exist.
+  - language -> Specifies the plugin's language.
 - Add commands.
   - /fakeplayer -> Shows help message.
   - help -> Shows help message.
