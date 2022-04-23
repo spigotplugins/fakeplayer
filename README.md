@@ -58,7 +58,8 @@ function disable(core: Core) {
   }
 }
 
-function fakeplayer_join(event: FakePlayerJoinEvent) {
+// Runs when a fake player joins to the server.
+function join(event: FakePlayerJoinEvent) {
   const core = event.core()
   const player = event.player()
   core.runAfter(core.seconds(3), () => {
