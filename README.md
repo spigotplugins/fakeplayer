@@ -45,18 +45,26 @@ If a fakeplayer joins to the server, gets its password then run /login \<passwor
 ```typescript
 import { Core, FakePlayer } from 'FakePlayerBase';
 
+// Runs when the plugin enables.
 function enable(core: Core) {
   core.registerEvent(fakeplayer_join)
+}
+
+funtion disable(core: Core) {
+  const all = core.allFakePlayers()
+  for (var fp of all) {
+    fp.removeProperty('password')
+  }
 }
 
 function fakeplayer_join(event: FakePlayerJoinEvent) {
   const core = event.core()
   const player = event.player()
   core.runAfter(core.seconds(3), () => {
-    let password = player.property('password')
+    let password = player.getProperty('password')
     if (password == null) {
       password = core.randomPassword()
-      player.property('password', password)
+      player.setProperty('password', password)
     }
     player.sendCommand('/register ${password} ${password}')
     core.runAfter(core.seconds(1), 'seconds', () => {
