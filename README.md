@@ -16,7 +16,7 @@ This plugin would help to both server owners and plugin developers for benchmark
 
 - Nms implementations for 1.8-1.18.2 versions.
 - Configuration
-  - random-names -> Use these names if user don't specify a name for fake player when creating it.
+  - random-names -> Use these names if you don't specify a name when adding fake player.
   - tab-format -> Specifies the tab format of each fake player if the custom one does not exist.
 - Add commands.
   - /fakeplayer -> Shows help message.
