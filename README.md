@@ -18,10 +18,16 @@ This plugin would help to both server owners and plugin developers for benchmark
 - Configuration
   - random-names -> Use these names if user don't specify a name for fake player when creating it.
   - tab-format -> Specifies the tab format of each fake player if the custom one does not exist.
-- Add commands (/fakeplayer).
+- Add commands.
+  - /fakeplayer -> Shows help message.
+  - help -> Shows help message.
   - reload -> Reloads config and script files.
+  - version -> Shows version also checks for update.
   - add [name] [location] -> Creates a fake player to the location.
   - remove \<name\> -> Removes the fake player.
+  - toggle \<name\> -> Actives/Deactives the fake player.
+  - teleport/tp \<name\> [location] -> Teleports the fake player to location.
+  - chat \<name\> \<message\> -> Sends a message by the fake player.
   - menu -> Opens the management menu for all fake players.
 - A simple scripting to manage fake players.
 
