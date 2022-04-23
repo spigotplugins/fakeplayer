@@ -48,7 +48,11 @@ fakeplayer-join(
   player: FakePlayer
 ) {
   server.runAfter(3, 'seconds', () -> {
-    val password = player.property('password');
+    var password = player.property('password');
+    if (password == null) {
+      password = server.randomPassword();
+      player.property('password', password);
+    }
     player.sendCommand('/register ${password} ${password});
     server.runAfter(2, 'seconds', () -> {
       player.sendCommand('/login ${password}');
