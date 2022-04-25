@@ -32,7 +32,11 @@ This plugin would help to both server owners and plugin developers for benchmark
   - teleport/tp \<name\> [location] -> Teleports the fake player to location.
   - chat \<name\> \<message\> -> Sends a message by the fake player.
   - menu -> Opens the management menu for all fake players.
+  - stress
+    - start [mode] [count] -> Starts a stress test.
+    - stop -> Stops the currently running stress test manually.
 - A simple scripting to manage fake players.
+- Stress test.
 
 ## How to Use
 ### Server Owners
