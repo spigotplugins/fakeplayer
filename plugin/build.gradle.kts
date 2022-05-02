@@ -13,7 +13,7 @@ dependencies {
 
   implementation("tr.com.infumia:reflection:0.1.4")
   implementation("tr.com.infumia:versionmatched:0.1.2")
-  implementation("com.github.Revxrsal.Lamp:common:3.0.3")
+  implementation("com.github.Revxrsal.Lamp:common:3.0.4")
   implementation("com.github.Revxrsal.Lamp:brigadier:3.0.4") {
     exclude("com.mojang")
   }
