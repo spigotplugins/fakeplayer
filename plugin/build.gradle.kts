@@ -12,7 +12,7 @@ dependencies {
   implementation(project(":nms:1_18_R2"))
 
   implementation("tr.com.infumia:reflection:0.1.6")
-  implementation("tr.com.infumia:versionmatched:0.1.4")
+  implementation("tr.com.infumia:versionmatched:0.1.5")
   implementation("com.github.Revxrsal.Lamp:common:3.0.4")
   implementation("com.github.Revxrsal.Lamp:brigadier:3.0.4") {
     exclude("com.mojang")
