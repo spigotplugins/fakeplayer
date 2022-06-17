@@ -38,10 +38,6 @@ final class AiPlayerNms implements AiPlayer {
       public void packetReceived(final Session session, final Packet packet) {
         if (packet instanceof ClientboundLoginPacket) {
           session.send(new ServerboundChatPacket("Hello, this is a test of MCProtocolLib."));
-        } else if (packet instanceof ClientboundChatPacket) {
-          final var message = ((ClientboundChatPacket) packet).getMessage();
-          System.out.println("Received Message: " + message);
-          session.disconnect("Finished");
         }
       }
 
