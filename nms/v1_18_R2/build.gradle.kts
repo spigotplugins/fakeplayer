@@ -8,6 +8,7 @@ dependencies {
   implementation("com.github.steveice10:mcprotocollib:1.18.2-1") {
     exclude("net.kyori")
     exclude("io.netty")
+    exclude("io.netty.incubator")
     exclude("org.junit")
     exclude("com.google.code.gson")
     exclude("com.github.spotbugs")
