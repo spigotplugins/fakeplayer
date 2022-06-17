@@ -6,6 +6,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -64,12 +65,13 @@ public interface AiRegistry {
    * a class that represents simple implementation of {@link AiRegistry}.
    */
   @NoArgsConstructor(access = AccessLevel.PRIVATE)
+  @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
   final class Impl implements AiRegistry {
 
     /**
      * the registry.
      */
-    private final Map<UUID, AiPlayer> registry = new ConcurrentHashMap<>();
+    Map<UUID, AiPlayer> registry = new ConcurrentHashMap<>();
 
     @NotNull
     @Override
