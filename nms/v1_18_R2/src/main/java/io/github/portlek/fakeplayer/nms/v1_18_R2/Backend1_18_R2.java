@@ -4,9 +4,6 @@ import io.github.portlek.fakeplayer.api.AiBackend;
 import io.github.portlek.fakeplayer.api.AiPlayer;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * a class that represents backed implementation for 1_18_R2 version.
- */
 public final class Backend1_18_R2 implements AiBackend {
 
   @NotNull

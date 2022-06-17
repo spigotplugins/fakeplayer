@@ -8,15 +8,9 @@ import lombok.experimental.Delegate;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * a class that represents AI player nms.
- */
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 final class AiPlayerNms implements AiPlayer {
 
-  /**
-   * the ai.
-   */
   @NotNull
   @Delegate(excludes = AiPlayerFunction.class)
   private final AiPlayer ai;

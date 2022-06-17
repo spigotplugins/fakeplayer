@@ -6,14 +6,8 @@ import io.github.portlek.fakeplayer.nms.v1_18_R2.Backend1_18_R2;
 import org.bukkit.plugin.java.JavaPlugin;
 import tr.com.infumia.versionmatched.VersionMatched;
 
-/**
- * a class that represents main class of FakePlayer plugin.
- */
 public final class FakePlayer extends JavaPlugin {
 
-  /**
-   * the backend.
-   */
   private final AiBackend backend = new VersionMatched<>(
     Backend1_18_R2.class
   )
