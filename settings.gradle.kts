@@ -9,7 +9,8 @@ pluginManagement {
 rootProject.name = "FakePlayer"
 
 include("api")
+
 include("nms")
+include("nms:v1_18_R2")
+
 include("plugin")
-include("nms:1_18_R1")
-include("nms:1_18_R2")

@@ -1,65 +1,154 @@
 plugins {
   java
-  `java-library`
   `maven-publish`
   signing
   id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
   id("com.github.johnrengelman.shadow") version "7.1.2" apply false
-  id("kr.entree.spigradle") version "2.4.2" apply false
 }
+
+val signRequired = !rootProject.property("dev").toString().toBoolean()
 
 allprojects {
   group = "io.github.portlek"
 }
 
 subprojects {
-  apply {
-    plugin("java")
-    plugin("java-library")
-    plugin("maven-publish")
-    plugin("signing")
-  }
+  apply<JavaPlugin>()
 
-  repositories {
-    mavenCentral()
-    maven("https://jitpack.io/")
-    maven("https://libraries.minecraft.net")
-    maven("https://oss.sonatype.org/content/repositories/snapshots/")
-    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
-    mavenLocal()
-  }
-
-  dependencies {
-    // Annotations
-    compileOnlyApi("org.projectlombok:lombok:1.18.24")
-    compileOnlyApi("org.jetbrains:annotations:23.0.0")
-    annotationProcessor("org.projectlombok:lombok:1.18.24")
-    annotationProcessor("org.jetbrains:annotations:23.0.0")
-    testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
-    testAnnotationProcessor("org.jetbrains:annotations:23.0.0")
-    // Annotations
-  }
-
-  java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
-  }
-
-  tasks {
-    compileJava {
-      options.encoding = Charsets.UTF_8.name()
-      options.compilerArgs.add("-parameters")
-      options.isFork = true
-      options.forkOptions.executable = "javac"
+  if (isJar()) {
+    java {
+      toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+      }
     }
 
-    javadoc {
-      options.encoding = Charsets.UTF_8.name()
-      (options as StandardJavadocDocletOptions).tags("todo")
+    tasks {
+      compileJava {
+        options.encoding = Charsets.UTF_8.name()
+      }
+
+      jar {
+        define()
+      }
+
+      build {
+        dependsOn(jar)
+      }
     }
 
-    jar {
-      define()
+    repositories {
+      mavenCentral()
+      maven(JITPACK)
+      maven(MINECRAFT)
+      maven(SNAPSHOTS)
+      maven(SPONGEPOWERED)
+      maven(PAPERMC)
+      maven(CODEMC)
+      maven(CODEMC_NMS)
+      mavenLocal()
+    }
+
+    dependencies {
+      compileOnly("org.projectlombok:lombok:1.18.24")
+      compileOnly("org.jetbrains:annotations:23.0.0")
+
+      annotationProcessor("org.projectlombok:lombok:1.18.24")
+      annotationProcessor("org.jetbrains:annotations:23.0.0")
+
+      testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
+      testAnnotationProcessor("org.jetbrains:annotations:23.0.0")
+    }
+  }
+
+  if (isPlugin()) {
+    apply {
+      plugin("com.github.johnrengelman.shadow")
+    }
+
+    tasks {
+      processResources {
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
+        from(project.the<SourceSetContainer>()["main"].resources.srcDirs) {
+          expand("pluginVersion" to project.version)
+          include("plugin.yml")
+        }
+      }
+    }
+  }
+
+  if (isPublishing()) {
+    apply {
+      plugin("maven-publish")
+      plugin("signing")
+    }
+
+    tasks {
+      javadoc {
+        options.encoding = Charsets.UTF_8.name()
+        (options as StandardJavadocDocletOptions).tags("todo")
+      }
+
+      val javadocJar by creating(Jar::class) {
+        dependsOn("javadoc")
+        define(classifier = "javadoc")
+        from(javadoc)
+      }
+
+      val sourcesJar by creating(Jar::class) {
+        dependsOn("classes")
+        define(classifier = "sources")
+        from(sourceSets["main"].allSource)
+      }
+
+      build {
+        dependsOn(sourcesJar)
+        dependsOn(javadocJar)
+      }
+    }
+
+    publishing {
+      publications {
+        val publication = create<MavenPublication>("mavenJava") {
+          groupId = project.group.toString()
+          artifactId = getQualifiedProjectName()
+          version = project.version.toString()
+
+          from(components["java"])
+          artifact(tasks["sourcesJar"])
+          artifact(tasks["javadocJar"])
+          pom {
+            name.set("FakePlayerApi")
+            description.set("A Minecraft plugin that allows you to create fake players to increase your server player amount.")
+            url.set("https://infumia.com.tr/")
+            licenses {
+              license {
+                name.set("MIT License")
+                url.set("https://mit-license.org/license.txt")
+              }
+            }
+            developers {
+              developer {
+                id.set("portlek")
+                name.set("Hasan Demirtaş")
+                email.set("utsukushihito@outlook.com")
+              }
+            }
+            scm {
+              connection.set("scm:git:git://github.com/spigotplugins/fakeplayer.git")
+              developerConnection.set("scm:git:ssh://github.com/spigotplugins/fakeplayer.git")
+              url.set("https://github.com/spigotplugins/fakeplayer")
+            }
+          }
+        }
+
+        signing {
+          isRequired = signRequired
+          if (isRequired) {
+            useGpgCmd()
+            sign(publication)
+          }
+        }
+      }
     }
   }
 }

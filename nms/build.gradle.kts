@@ -1,5 +1,5 @@
 subprojects {
   dependencies {
-    compileOnlyApi(project(":api"))
+    compileOnly(project(":api"))
   }
 }

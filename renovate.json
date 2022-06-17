@@ -4,12 +4,17 @@
   ],
   "labels": ["dependencies"],
   "schedule": [
-    "on monday after 9am"
+    "after 9am"
   ],
-  "packageRules": [
+  "regexManagers": [
     {
-      "matchUpdateTypes": ["major", "minor", "patch", "pin", "digest", "lockFileMaintenance", "rollback", "bump"],
-      "automerge": true
+      "description": "Detect template under buildSrc",
+      "fileMatch": [
+        "(^|/)buildSrc/.*"
+      ],
+      "matchStrings": [
+        "datasource=(?<datasource>.*?) dep=(?<depName>.*?)\n([a-z A-Z]*)Version = \"(?<currentValue>.*?)\"\n"
+      ]
     }
   ]
 }
