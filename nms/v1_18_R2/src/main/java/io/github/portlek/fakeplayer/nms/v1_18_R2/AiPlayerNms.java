@@ -13,15 +13,17 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Delegate;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.Bukkit;
 import org.jetbrains.annotations.NotNull;
 
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 final class AiPlayerNms implements AiPlayer {
 
   @NotNull
   @Delegate(excludes = AiPlayerFunction.class)
-  private final AiPlayer ai;
+  AiPlayer ai;
 
   @Override
   public void connect() {

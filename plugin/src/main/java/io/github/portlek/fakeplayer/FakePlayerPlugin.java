@@ -4,12 +4,15 @@ import io.github.portlek.fakeplayer.api.AiBackend;
 import io.github.portlek.fakeplayer.api.AiPlayerCoordinator;
 import io.github.portlek.fakeplayer.nms.v1_18_R2.Backend1_18_R2;
 import java.util.Objects;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.plugin.java.JavaPlugin;
 import tr.com.infumia.versionmatched.VersionMatched;
 
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public final class FakePlayerPlugin extends JavaPlugin {
 
-  private final AiBackend backend = new VersionMatched<>(
+  AiBackend backend = new VersionMatched<>(
     Backend1_18_R2.class
   )
     .of()
