@@ -38,7 +38,7 @@ public class AiPlayerCoordinator {
   void connect(
     @NotNull final AiPlayer ai
   ) {
-    final var wrapped = AiPlayerCoordinator.backend().wrapAi(ai);
+    final var wrapped = AiPlayerCoordinator.backend().wrap(ai);
     AiPlayerCoordinator.registry.put(wrapped.uniqueId(), wrapped);
     wrapped.connect();
   }

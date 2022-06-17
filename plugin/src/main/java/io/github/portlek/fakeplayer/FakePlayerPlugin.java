@@ -7,7 +7,7 @@ import java.util.Objects;
 import org.bukkit.plugin.java.JavaPlugin;
 import tr.com.infumia.versionmatched.VersionMatched;
 
-public final class FakePlayer extends JavaPlugin {
+public final class FakePlayerPlugin extends JavaPlugin {
 
   private final AiBackend backend = new VersionMatched<>(
     Backend1_18_R2.class

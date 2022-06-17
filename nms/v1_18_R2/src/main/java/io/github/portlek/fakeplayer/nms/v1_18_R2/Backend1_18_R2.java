@@ -8,7 +8,7 @@ public final class Backend1_18_R2 implements AiBackend {
 
   @NotNull
   @Override
-  public AiPlayer wrapAi(@NotNull final AiPlayer ai) {
+  public AiPlayer wrap(@NotNull final AiPlayer ai) {
     return new AiPlayerNms(ai);
   }
 }
