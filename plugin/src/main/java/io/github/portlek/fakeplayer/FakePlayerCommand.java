@@ -3,6 +3,7 @@ package io.github.portlek.fakeplayer;
 import io.github.portlek.fakeplayer.api.AiPlayer;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -24,11 +25,10 @@ public final class FakePlayerCommand implements TabExecutor {
     }
     switch (args[0]) {
       case "create" -> {
-        if (args.length < 2) {
-          System.out.println("xx");
-          return true;
+        final var count = Integer.parseInt(args[1]);
+        for (var index = 0; index < count; index++) {
+          AiPlayer.create(UUID.randomUUID().toString().substring(0, 7), player.getLocation()).connect();
         }
-        AiPlayer.create(args[1], player.getLocation()).connect();
       }
     }
     return true;
