@@ -3,7 +3,6 @@ import org.gradle.api.Project
 private val jarModule = setOf(
   "Api",
   "Plugin",
-  "V1_18_R1",
   "V1_18_R2",
 ).fakePlayer()
 

@@ -43,6 +43,7 @@ subprojects {
       maven(SNAPSHOTS)
       maven(SPONGEPOWERED)
       maven(PAPERMC)
+      maven(OPENCOLLAB)
       maven(CODEMC)
       maven(CODEMC_NMS)
       mavenLocal()

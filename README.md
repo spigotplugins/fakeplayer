@@ -55,7 +55,10 @@ Planning
 `./gradlew build`
 #### Publish FakePlayerApi to your local maven repository
 `./gradlew publishToMavenLocal -Pdev=true`
-#### Maven
+#### Api
+![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org%2F)
+![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org)
+##### Maven
 ```xml
 <dependency>
   <groupId>io.github.portlek</groupId>
@@ -64,7 +67,7 @@ Planning
   <scope>provided</scope>
 </dependency>
 ```
-#### Gradle
+##### Gradle
 ```groovy
 // Groovy
 compileOnly "io.github.portlek:FakePlayerApi:VERSION"

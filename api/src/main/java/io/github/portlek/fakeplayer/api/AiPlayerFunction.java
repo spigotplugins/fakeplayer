@@ -1,32 +1,12 @@
 package io.github.portlek.fakeplayer.api;
 
-import org.bukkit.Location;
-import org.jetbrains.annotations.NotNull;
-
 /**
- * an interface to determine AI players.
+ * an interface that contains functions of Ai players.
  */
 public interface AiPlayerFunction {
 
   /**
-   * sets the location of the AI.
-   *
-   * @param location the location to set.
+   * connects the Ai to the server.
    */
-  void location(@NotNull Location location);
-
-  /**
-   * removes the AI from the server.
-   */
-  void remove();
-
-  /**
-   * spawns the AI.
-   */
-  void spawn();
-
-  /**
-   * toggles visible.
-   */
-  void toggleVisible();
+  void connect();
 }

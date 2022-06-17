@@ -8,12 +8,12 @@ import org.jetbrains.annotations.NotNull;
 public interface AiBackend {
 
   /**
-   * creates a functional AI.
+   * wraps the Ai player with the backend Ai player.
    *
-   * @param ai the ai to create.
+   * @param ai the Ai to create.
    *
-   * @return functional AI.
+   * @return functional Ai.
    */
   @NotNull
-  AiPlayer createPlayer(@NotNull AiPlayer ai);
+  AiPlayer wrap(@NotNull AiPlayer ai);
 }

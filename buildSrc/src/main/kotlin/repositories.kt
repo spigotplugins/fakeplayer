@@ -11,3 +11,5 @@ const val CODEMC = "https://repo.codemc.org/repository/maven-public/"
 const val CODEMC_NMS = "https://repo.codemc.org/repository/nms/"
 
 const val MINECRAFT = "https://libraries.minecraft.net"
+
+const val OPENCOLLAB = "https://repo.opencollab.dev/maven-releases/"
