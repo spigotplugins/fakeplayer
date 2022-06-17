@@ -1,6 +1,5 @@
 dependencies {
   implementation(project(":api"))
-  implementation(project(":nms:v1_18_R1"))
   implementation(project(":nms:v1_18_R2"))
 
   implementation(reflectionLibrary)
