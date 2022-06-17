@@ -15,5 +15,5 @@ public interface AiBackend {
    * @return functional AI.
    */
   @NotNull
-  AiPlayer createPlayer(@NotNull AiPlayer ai);
+  AiPlayer wrapAi(@NotNull AiPlayer ai);
 }

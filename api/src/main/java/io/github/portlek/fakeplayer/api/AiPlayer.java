@@ -1,8 +1,10 @@
 package io.github.portlek.fakeplayer.api;
 
 import java.util.UUID;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.experimental.Accessors;
+import lombok.experimental.FieldDefaults;
 import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 
@@ -20,7 +22,10 @@ public interface AiPlayer extends AiPlayerFunction {
    * @return AI player.
    */
   @NotNull
-  static AiPlayer create(@NotNull final String name, @NotNull final Location location) {
+  static AiPlayer create(
+    @NotNull final String name,
+    @NotNull final Location location
+  ) {
     return AiPlayer.create(name, UUID.randomUUID(), location);
   }
 
@@ -34,17 +39,13 @@ public interface AiPlayer extends AiPlayerFunction {
    * @return AI player.
    */
   @NotNull
-  static AiPlayer create(@NotNull final String name, @NotNull final UUID uniqueId, @NotNull final Location location) {
+  static AiPlayer create(
+    @NotNull final String name,
+    @NotNull final UUID uniqueId,
+    @NotNull final Location location
+  ) {
     return new Impl(name, location, uniqueId);
   }
-
-  /**
-   * obtains the location.
-   *
-   * @return location.
-   */
-  @NotNull
-  Location location();
 
   /**
    * obtains the name.
@@ -75,31 +76,26 @@ public interface AiPlayer extends AiPlayerFunction {
    */
   @Getter
   @Accessors(fluent = true)
+  @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
   final class Impl implements AiPlayer {
 
     /**
      * the name.
      */
     @NotNull
-    private final String name;
+    String name;
 
     /**
      * the spawn point.
      */
     @NotNull
-    private final Location spawnPoint;
+    Location spawnPoint;
 
     /**
      * the unique id.
      */
     @NotNull
-    private final UUID uniqueId;
-
-    /**
-     * the location.
-     */
-    @NotNull
-    private volatile Location location;
+    UUID uniqueId;
 
     /**
      * ctor.
@@ -108,32 +104,19 @@ public interface AiPlayer extends AiPlayerFunction {
      * @param spawnPoint the spawn point.
      * @param uniqueId the unique id.
      */
-    private Impl(@NotNull final String name, @NotNull final Location spawnPoint, @NotNull final UUID uniqueId) {
+    private Impl(
+      @NotNull final String name,
+      @NotNull final Location spawnPoint,
+      @NotNull final UUID uniqueId
+    ) {
       this.name = name;
       this.spawnPoint = spawnPoint;
       this.uniqueId = uniqueId;
-      this.location = spawnPoint;
     }
 
     @Override
-    public void location(@NotNull final Location location) {
-      this.location = location;
-      AiPlayerCoordinator.teleport(this, location);
-    }
-
-    @Override
-    public void remove() {
-      AiPlayerCoordinator.remove(this);
-    }
-
-    @Override
-    public void spawn() {
-      AiPlayerCoordinator.spawn(this);
-    }
-
-    @Override
-    public void toggleVisible() {
-      AiPlayerCoordinator.toggleVisible(this);
+    public void connect() {
+      AiPlayerCoordinator.connect(this);
     }
   }
 }

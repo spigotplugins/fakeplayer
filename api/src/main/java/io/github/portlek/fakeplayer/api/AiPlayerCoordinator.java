@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import lombok.experimental.UtilityClass;
-import org.bukkit.Location;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,51 +31,25 @@ public class AiPlayerCoordinator {
   private AiRegistry registry = AiRegistry.simple();
 
   /**
+   * connects the Ai to the server.
+   *
+   * @param ai the Ai to connect.
+   */
+  void connect(
+    @NotNull final AiPlayer ai
+  ) {
+    final var wrapped = AiPlayerCoordinator.backend().wrapAi(ai);
+    AiPlayerCoordinator.registry.put(wrapped.uniqueId(), wrapped);
+    wrapped.connect();
+  }
+
+  /**
    * obtains the backend.
    *
    * @return backend.
    */
   @NotNull
-  AiBackend backend() {
+  private AiBackend backend() {
     return Objects.requireNonNull(AiPlayerCoordinator.backend, "Backend not initiated!");
-  }
-
-  /**
-   * removes the AI.
-   *
-   * @param ai the AI to remove.
-   */
-  void remove(@NotNull final AiPlayer ai) {
-    AiPlayerCoordinator.registry.remove(ai.uniqueId()).ifPresent(AiPlayerFunction::remove);
-  }
-
-  /**
-   * spawns the AI.
-   *
-   * @param ai the AI to spawn.
-   */
-  void spawn(@NotNull final AiPlayer ai) {
-    final var nms = AiPlayerCoordinator.backend().createPlayer(ai);
-    AiPlayerCoordinator.registry.put(ai);
-    nms.spawn();
-  }
-
-  /**
-   * teleports the AI to the location.
-   *
-   * @param ai the AI to teleport.
-   * @param location the location to teleport.
-   */
-  void teleport(@NotNull final AiPlayer ai, @NotNull final Location location) {
-    AiPlayerCoordinator.registry.get(ai.uniqueId()).ifPresent(p -> p.location(location));
-  }
-
-  /**
-   * toggles visibility of the AI.
-   *
-   * @param ai the AI to toggle.
-   */
-  void toggleVisible(@NotNull final AiPlayer ai) {
-    AiPlayerCoordinator.registry.get(ai.uniqueId()).ifPresent(AiPlayerFunction::toggleVisible);
   }
 }

@@ -5,3 +5,12 @@ description: A Minecraft plugin that allows you to create fake players to increa
 api-version: '1.13'
 authors:
   - portlek
+commands:
+  fakeplayer:
+    description: Main command of the FakePlayer plugin.
+    usage: /<command> create
+    permission: fakeplayer.command.main
+    aliases:
+      - fp
+      - fakep
+      - fplayer
