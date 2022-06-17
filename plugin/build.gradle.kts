@@ -17,7 +17,7 @@ dependencies {
   implementation("com.github.Revxrsal.Lamp:brigadier:3.0.7") {
     exclude("com.mojang")
   }
-  implementation("com.github.Revxrsal.Lamp:bukkit:3.0.4") {
+  implementation("com.github.Revxrsal.Lamp:bukkit:3.0.7") {
     exclude("com.mojang")
   }
 
