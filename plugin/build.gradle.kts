@@ -4,6 +4,7 @@ dependencies {
 
   implementation(reflectionLibrary)
   implementation(versionmatchedLibrary)
+  implementation(configurateJacksonLibrary)
 
   compileOnly(paperApiLibrary)
 }

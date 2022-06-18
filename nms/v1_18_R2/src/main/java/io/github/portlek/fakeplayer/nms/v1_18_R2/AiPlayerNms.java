@@ -9,12 +9,12 @@ import com.github.steveice10.packetlib.event.session.SessionListener;
 import com.github.steveice10.packetlib.tcp.TcpClientSession;
 import io.github.portlek.fakeplayer.api.AiPlayer;
 import io.github.portlek.fakeplayer.api.AiPlayerFunction;
+import io.github.portlek.fakeplayer.api.FakePlayerConfig;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Delegate;
 import lombok.experimental.FieldDefaults;
-import org.bukkit.Bukkit;
 import org.jetbrains.annotations.NotNull;
 
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
@@ -28,8 +28,8 @@ final class AiPlayerNms implements AiPlayer {
   @Override
   public void connect() {
     final var client = new TcpClientSession(
-      Bukkit.getServer().getIp(),
-      Bukkit.getServer().getPort(),
+      FakePlayerConfig.instance().host(),
+      FakePlayerConfig.instance().port(),
       new MinecraftProtocol(this.ai.name())
     );
     client.setFlag(MinecraftConstants.SESSION_SERVICE_KEY, new SessionService());
