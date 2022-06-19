@@ -26,7 +26,7 @@ const val bukkitversionVersion = "0.1.4"
 const val bukkitinventoryVersion = "0.1.3"
 
 // renovate: datasource=maven dep=cloud.commandframework:cloud-core
-const val cloudCoreVersion = "1.6.2"
+const val cloudCoreVersion = "1.7.0"
 
 // renovate: datasource=maven dep=me.lucko:commodore
 const val commodoreVersion = "2.0"
