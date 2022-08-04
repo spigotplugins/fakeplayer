@@ -29,7 +29,7 @@ const val bukkitinventoryVersion = "0.2.0"
 const val cloudCoreVersion = "1.7.0"
 
 // renovate: datasource=maven dep=me.lucko:commodore
-const val commodoreVersion = "2.1"
+const val commodoreVersion = "2.2"
 
 // renovate: datasource=maven dep=com.github.cryptomorin:XSeries
 const val xSeriesVersion = "9.0.0"
