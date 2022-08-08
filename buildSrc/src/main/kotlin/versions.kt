@@ -23,7 +23,7 @@ const val reflectionVersion = "0.1.6"
 const val bukkitversionVersion = "0.1.4"
 
 // renovate: datasource=maven dep=tr.com.infumia:bukkitinventory
-const val bukkitinventoryVersion = "0.2.0"
+const val bukkitinventoryVersion = "0.2.1"
 
 // renovate: datasource=maven dep=cloud.commandframework:cloud-core
 const val cloudCoreVersion = "1.7.0"
