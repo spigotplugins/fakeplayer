@@ -32,7 +32,7 @@ const val cloudCoreVersion = "1.7.1"
 const val commodoreVersion = "2.2"
 
 // renovate: datasource=maven dep=com.github.cryptomorin:XSeries
-const val xSeriesVersion = "9.1.0"
+const val xSeriesVersion = "9.2.0"
 
 // renovate: datasource=maven dep=tr.com.infumia:versionmatched
 const val versionmatchedVersion = "0.1.5"
