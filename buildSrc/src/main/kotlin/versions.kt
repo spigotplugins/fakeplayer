@@ -1,5 +1,5 @@
 // renovate: datasource=maven dep=org.projectlombok:lombok
-const val lombokVersion = "1.18.24"
+const val lombokVersion = "1.18.26"
 
 // renovate: datasource=maven dep=org.jetbrains:annotations
 const val annotationsVersion = "24.0.0"
