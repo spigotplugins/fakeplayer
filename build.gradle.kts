@@ -51,13 +51,13 @@ subprojects {
 
     dependencies {
       compileOnly("org.projectlombok:lombok:1.18.26")
-      compileOnly("org.jetbrains:annotations:24.0.0")
+      compileOnly("org.jetbrains:annotations:24.0.1")
 
       annotationProcessor("org.projectlombok:lombok:1.18.26")
-      annotationProcessor("org.jetbrains:annotations:24.0.0")
+      annotationProcessor("org.jetbrains:annotations:24.0.1")
 
       testAnnotationProcessor("org.projectlombok:lombok:1.18.26")
-      testAnnotationProcessor("org.jetbrains:annotations:24.0.0")
+      testAnnotationProcessor("org.jetbrains:annotations:24.0.1")
     }
   }
 

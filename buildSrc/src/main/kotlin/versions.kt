@@ -2,7 +2,7 @@
 const val lombokVersion = "1.18.26"
 
 // renovate: datasource=maven dep=org.jetbrains:annotations
-const val annotationsVersion = "24.0.0"
+const val annotationsVersion = "24.0.1"
 
 // renovate: datasource=maven dep=com.fasterxml.jackson.core:jackson-databind
 const val jacksonDatabindVersion = "2.14.2"
