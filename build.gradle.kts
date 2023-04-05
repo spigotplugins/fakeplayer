@@ -3,7 +3,7 @@ plugins {
   `maven-publish`
   signing
   id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
-  id("com.github.johnrengelman.shadow") version "8.1.0" apply false
+  id("com.github.johnrengelman.shadow") version "8.1.1" apply false
 }
 
 val signRequired = !rootProject.property("dev").toString().toBoolean()
