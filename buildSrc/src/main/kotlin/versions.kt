@@ -5,7 +5,7 @@ const val lombokVersion = "1.18.26"
 const val annotationsVersion = "24.0.1"
 
 // renovate: datasource=maven dep=com.fasterxml.jackson.core:jackson-databind
-const val jacksonDatabindVersion = "2.14.2"
+const val jacksonDatabindVersion = "2.15.0"
 
 // renovate: datasource=maven dep=org.spongepowered:configurate-gson
 const val configurateVersion = "4.2.0-SNAPSHOT"
