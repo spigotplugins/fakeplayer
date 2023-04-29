@@ -41,7 +41,7 @@ This plugin would help to both server owners and plugin developers for benchmark
       - [ ] stop -> Stops the currently running stress test manually.
 - [ ] A simple scripting to manage fake players.
 - [ ] Stress test.
-- [ ] Standalone application for more consistence stress testing.
+- [ ] Standalone application for more consistent stress testing.
 
 ## How to Use
 ### Server Owners
