@@ -45,7 +45,7 @@ publishing {
       artifact(tasks["javadocJar"])
       pom {
         name.set("FakePlayerApi")
-        description.set("A Minecraft plugin that allows you to create fake players to increase your server player amount.")
+        description.set(project.description)
         url.set("https://infumia.com.tr/")
         licenses {
           license {

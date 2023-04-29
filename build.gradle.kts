@@ -22,6 +22,7 @@ subprojects {
   apply<JavaPlugin>()
 
   val projectName = property("project.name").toString()
+  description = "A Minecraft plugin that allows you to create fake players to increase your server player amount."
 
   java {
     sourceCompatibility = JavaVersion.VERSION_1_8

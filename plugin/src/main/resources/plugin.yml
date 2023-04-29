@@ -1,15 +1,15 @@
 ---
-main: io.github.portlek.fakeplayer.FakePlayerPlugin
-name: FakePlayer
-version: "${pluginVersion}"
-description: A Minecraft plugin that allows you to create fake players to increase your server player amount.
+main: "${project.group}.fakeplayer.FakePlayerPlugin"
+name: "${project.name}"
+version: "${project.version}"
+description: "${project.description}"
 api-version: 1.13
 authors:
 - portlek
 commands:
   fakeplayer:
     description: Main command of the FakePlayer plugin.
-    usage: /<command> create
+    usage: /<command> reload
     permission: fakeplayer.command.main
     aliases:
     - fp
