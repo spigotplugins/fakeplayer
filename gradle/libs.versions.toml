@@ -1,0 +1,4 @@
+[libraries]
+annotations = { module = "org.jetbrains:annotations", version = "24.0.1" }
+spigot = { module = "org.spigotmc:spigot-api", version = "1.19.4-R0.1-SNAPSHOT" }
+protocollib = { module = "com.comphenix.protocol:ProtocolLib", version = "5.0.0-SNAPSHOT" }

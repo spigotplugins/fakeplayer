@@ -1,26 +1,14 @@
 dependencies {
   implementation(project(":api"))
-  implementation(project(":nms:v1_18_R2"))
 
-  implementation(reflectionLibrary)
-  implementation(versionmatchedLibrary)
-  implementation(configurateJacksonLibrary)
-
-  compileOnly(paperApiLibrary)
+  compileOnly(libs.spigot)
+  compileOnly(libs.protocollib)
 }
 
 tasks {
-  shadowJar {
-    define()
-    rootProject.findProperty("pluginsFolder")?.let {
-      val path = it.toString()
-      if (path.isNotEmpty() && path.isNotBlank()) {
-        destinationDirectory.set(File(path))
-      }
+  processResources {
+    filesMatching("plugin.yml") {
+      expand(project.properties)
     }
-  }
-
-  build {
-    dependsOn("shadowJar")
   }
 }
