@@ -3,13 +3,9 @@ A Minecraft plugin that allows you to spawn fake players to your game.\
 They increase player count of your server.\
 This plugin would help to both server owners and plugin developers for benchmarking their servers/plugins.
 
-[![idea](https://www.elegantobjects.org/intellij-idea.svg)](https://www.jetbrains.com/idea/)
-
-![master](https://github.com/spigotplugins/fakeplayer/workflows/build/badge.svg)
+[![masterr](https://github.com/spigotplugins/fakeplayer/actions/workflows/snapshot.yml/badge.svg)](https://github.com/spigotplugins/fakeplayer/actions/workflows/snapshot.yml)
 ![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org%2F)
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org)
-
-[![Discord](https://img.shields.io/discord/967385751870390333.svg?label=Discord&logo=Discord&colorB=7289da&style=for-the-badge)](https://discord.gg/jQhquEkb58)
 
 ## Todo
 - [ ] Nms implementations for 1.8 to 1.19 versions.
