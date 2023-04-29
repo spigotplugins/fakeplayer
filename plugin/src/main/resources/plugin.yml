@@ -6,6 +6,8 @@ description: "${project.description}"
 api-version: 1.13
 authors:
 - portlek
+depend:
+  - ProtocolLib
 commands:
   fakeplayer:
     description: Main command of the FakePlayer plugin.
