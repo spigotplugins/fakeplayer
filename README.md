@@ -31,18 +31,18 @@ This plugin would help to both server owners and plugin developers for benchmark
   - [ ] Create a custom configuration file specifically for listing fake players and their settings like tab-format, names etc.
 - [ ] Add commands.
   - [ ] /fakeplayer -> Shows help message.
-    - [ ] "help" -> Shows help message.
-    - [ ] "reload" -> Reloads config and script files.
-    - [ ] "version" -> Shows version also checks for update.
-    - [ ] "add \[name\] \[location\]" -> Creates a fake player to the location.
-    - [ ] "remove \<name\>" -> Removes the fake player.
-    - [ ] "toggle \<name\>" -> Actives/Deactives the fake player.
-    - [ ] "teleport/tp \<name\> \[location\]" -> Teleports the fake player to location.
-    - [ ] "chat \<name\> \<message\>" -> Sends a message by the fake player.
-    - [ ] "menu" -> Opens the management menu for all fake players.
-    - [ ] "stress"
-      - [ ] "start \[mode\] \[count\]" -> Starts a stress test.
-      - [ ] "stop" -> Stops the currently running stress test manually.
+    - [ ] help -> Shows help message.
+    - [ ] reload -> Reloads config and script files.
+    - [ ] version -> Shows version also checks for update.
+    - [ ] add \[name\] \[location\] -> Creates a fake player to the location.
+    - [ ] remove \<name\> -> Removes the fake player.
+    - [ ] toggle \<name\> -> Actives/Deactives the fake player.
+    - [ ] teleport/tp \<name\> \[location\] -> Teleports the fake player to location.
+    - [ ] chat \<name\> \<message\> -> Sends a message by the fake player.
+    - [ ] menu -> Opens the management menu for all fake players.
+    - [ ] stress
+      - [ ] start \[mode\] \[count\] -> Starts a stress test.
+      - [ ] stop -> Stops the currently running stress test manually.
 - [ ] A simple scripting to manage fake players.
 - [ ] Stress test.
 - [ ] Standalone application for more consistent stress testing.
