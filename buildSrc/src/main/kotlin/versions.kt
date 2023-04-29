@@ -1,11 +1,11 @@
 // renovate: datasource=maven dep=org.projectlombok:lombok
-const val lombokVersion = "1.18.24"
+const val lombokVersion = "1.18.26"
 
 // renovate: datasource=maven dep=org.jetbrains:annotations
-const val annotationsVersion = "23.1.0"
+const val annotationsVersion = "24.0.1"
 
 // renovate: datasource=maven dep=com.fasterxml.jackson.core:jackson-databind
-const val jacksonDatabindVersion = "2.14.1"
+const val jacksonDatabindVersion = "2.15.0"
 
 // renovate: datasource=maven dep=org.spongepowered:configurate-gson
 const val configurateVersion = "4.2.0-SNAPSHOT"
@@ -26,13 +26,13 @@ const val bukkitversionVersion = "0.1.4"
 const val bukkitinventoryVersion = "0.2.1"
 
 // renovate: datasource=maven dep=cloud.commandframework:cloud-core
-const val cloudCoreVersion = "1.8.0"
+const val cloudCoreVersion = "1.8.3"
 
 // renovate: datasource=maven dep=me.lucko:commodore
 const val commodoreVersion = "2.2"
 
 // renovate: datasource=maven dep=com.github.cryptomorin:XSeries
-const val xSeriesVersion = "9.2.0"
+const val xSeriesVersion = "9.3.1"
 
 // renovate: datasource=maven dep=tr.com.infumia:versionmatched
 const val versionmatchedVersion = "0.1.5"

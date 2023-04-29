@@ -2,8 +2,8 @@ plugins {
   java
   `maven-publish`
   signing
-  id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
-  id("com.github.johnrengelman.shadow") version "7.1.2" apply false
+  id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
+  id("com.github.johnrengelman.shadow") version "8.1.1" apply false
 }
 
 val signRequired = !rootProject.property("dev").toString().toBoolean()
@@ -50,14 +50,14 @@ subprojects {
     }
 
     dependencies {
-      compileOnly("org.projectlombok:lombok:1.18.24")
-      compileOnly("org.jetbrains:annotations:23.1.0")
+      compileOnly("org.projectlombok:lombok:1.18.26")
+      compileOnly("org.jetbrains:annotations:24.0.1")
 
-      annotationProcessor("org.projectlombok:lombok:1.18.24")
-      annotationProcessor("org.jetbrains:annotations:23.1.0")
+      annotationProcessor("org.projectlombok:lombok:1.18.26")
+      annotationProcessor("org.jetbrains:annotations:24.0.1")
 
-      testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
-      testAnnotationProcessor("org.jetbrains:annotations:23.1.0")
+      testAnnotationProcessor("org.projectlombok:lombok:1.18.26")
+      testAnnotationProcessor("org.jetbrains:annotations:24.0.1")
     }
   }
 
