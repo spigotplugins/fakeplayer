@@ -6,7 +6,7 @@ plugins {
 val signRequired = !rootProject.property("dev").toString().toBoolean()
 
 dependencies {
-  compileOnly(libs.paper)
+  compileOnly(libs.spigot)
 }
 
 tasks {

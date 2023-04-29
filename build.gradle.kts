@@ -23,7 +23,10 @@ subprojects {
 
   val projectName = property("project.name").toString()
 
-  java { toolchain { languageVersion.set(JavaLanguageVersion.of(17)) } }
+  java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+  }
 
   tasks {
     compileJava { options.encoding = Charsets.UTF_8.name() }
@@ -38,7 +41,7 @@ subprojects {
 
   repositories {
     mavenCentral()
-    maven("https://papermc.io/repo/repository/maven-public/")
+    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     maven("https://repo.dmulloy2.net/repository/public/")
     mavenLocal()
   }

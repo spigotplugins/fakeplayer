@@ -1,6 +1,5 @@
 package io.github.portlek.fakeplayer;
 
-import io.github.portlek.fakeplayer.api.AiPlayer;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
