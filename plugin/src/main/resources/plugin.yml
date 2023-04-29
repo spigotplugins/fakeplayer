@@ -1,6 +1,6 @@
 ---
 main: "${project.group}.fakeplayer.FakePlayerPlugin"
-name: "${project.name}"
+name: "${project.projectName}"
 version: "${project.version}"
 description: "${project.description}"
 api-version: 1.13

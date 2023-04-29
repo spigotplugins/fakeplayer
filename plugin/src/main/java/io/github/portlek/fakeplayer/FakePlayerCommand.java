@@ -6,7 +6,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public final class FakePlayerCommand implements TabExecutor {
@@ -23,20 +22,20 @@ public final class FakePlayerCommand implements TabExecutor {
     @NotNull final CommandSender sender,
     @NotNull final Command command,
     @NotNull final String label,
-    @NotNull final String[] args
+    @NotNull final String@NotNull[] args
   ) {
-    if (!(sender instanceof Player) || args.length == 0) {
-      System.out.println("x");
+    if (args.length == 0 || args[0].equalsIgnoreCase("help")) {
+      // TODO: portlek, Send help message to sender.
       return true;
     }
-    if (args[0].equals("reload")) {
+    if (args[0].equalsIgnoreCase("reload")) {
       Bukkit
         .getScheduler()
         .runTaskAsynchronously(
           this.plugin,
           () -> {
             this.plugin.reloadFiles();
-            // TODO Make '&aReload complete.' customizable.
+            // TODO: portlek, Make the message customizable.
             sender.sendMessage("&aReload complete.");
           }
         );
