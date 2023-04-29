@@ -61,7 +61,6 @@ nexusPublishing {
 if (spotlessApply) {
   spotless {
     lineEndings = LineEnding.UNIX
-    isEnforceCheck = false
 
     val prettierConfig =
       mapOf(
