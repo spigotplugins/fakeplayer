@@ -14,7 +14,7 @@ jobs:
     - uses: actions/setup-java@v3
       with:
         distribution: adopt
-        java-version: 17
+        java-version: 8
     - uses: actions/cache@v3
       with:
         path: "~/.gradle/caches"
@@ -38,4 +38,4 @@ jobs:
     - run: |
         [[ "${{ steps.release.outputs.tag_name }}" =~ ^[0-9]+(\.[0-9]+)*$ ]] || exit -1
         chmod +x gradlew
-        ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository -Pversion="${{ steps.release.outputs.tag_name }}-SNAPSHOT" -Pspotless.apply=true -Pdev=false -Psigning.gnupg.keyName="${{ secrets.GPG_SECRET_KEY_ID }}" -Psigning.gnupg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -PsonatypeUsername="${{ secrets.SONATYPE_USERNAME }}" -PsonatypePassword="${{ secrets.SONATYPE_PASSWORD }}"
+        ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository -Pversion="${{ steps.release.outputs.tag_name }}-SNAPSHOT" -Pdev=false -Psigning.gnupg.keyName="${{ secrets.GPG_SECRET_KEY_ID }}" -Psigning.gnupg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -PsonatypeUsername="${{ secrets.SONATYPE_USERNAME }}" -PsonatypePassword="${{ secrets.SONATYPE_PASSWORD }}"

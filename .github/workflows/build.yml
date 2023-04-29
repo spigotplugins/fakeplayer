@@ -13,7 +13,7 @@ jobs:
     - uses: actions/setup-java@v3
       with:
         distribution: adopt
-        java-version: 17
+        java-version: 8
     - uses: actions/cache@v3
       with:
         path: "~/.gradle/caches"
@@ -28,4 +28,4 @@ jobs:
           ${{ runner.os }}-gradlew-
     - run: |
         chmod +x gradlew
-        ./gradlew build -Pspotless.apply=true
+        ./gradlew build
