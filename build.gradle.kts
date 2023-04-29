@@ -1,12 +1,18 @@
+import com.diffplug.gradle.spotless.YamlExtension.JacksonYamlGradleConfig
+import com.diffplug.spotless.LineEnding
+
 plugins {
   java
   `maven-publish`
   signing
+  id("com.diffplug.spotless") version "6.18.0"
   id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
-  id("com.github.johnrengelman.shadow") version "8.1.1" apply false
+  id("io.papermc.paperweight.userdev") version "1.5.5" apply false
 }
 
-val signRequired = !rootProject.property("dev").toString().toBoolean()
+val spotlessApply = property("spotless.apply").toString().toBoolean()
+
+repositories { mavenCentral() }
 
 allprojects {
   group = "io.github.portlek"
@@ -15,147 +21,91 @@ allprojects {
 subprojects {
   apply<JavaPlugin>()
 
-  if (isJar()) {
-    java {
-      toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-      }
+  val projectName = property("project.name").toString()
+
+  java { toolchain { languageVersion.set(JavaLanguageVersion.of(17)) } }
+
+  tasks {
+    compileJava { options.encoding = Charsets.UTF_8.name() }
+
+    jar {
+      archiveBaseName.set(projectName)
+      archiveVersion.set("")
     }
 
-    tasks {
-      compileJava {
-        options.encoding = Charsets.UTF_8.name()
-      }
-
-      jar {
-        define()
-      }
-
-      build {
-        dependsOn(jar)
-      }
-    }
-
-    repositories {
-      mavenCentral()
-      maven(JITPACK)
-      maven(MINECRAFT)
-      maven(SNAPSHOTS)
-      maven(SPONGEPOWERED)
-      maven(PAPERMC)
-      maven(OPENCOLLAB)
-      maven(CODEMC)
-      maven(CODEMC_NMS)
-      mavenLocal()
-    }
-
-    dependencies {
-      compileOnly("org.projectlombok:lombok:1.18.26")
-      compileOnly("org.jetbrains:annotations:24.0.1")
-
-      annotationProcessor("org.projectlombok:lombok:1.18.26")
-      annotationProcessor("org.jetbrains:annotations:24.0.1")
-
-      testAnnotationProcessor("org.projectlombok:lombok:1.18.26")
-      testAnnotationProcessor("org.jetbrains:annotations:24.0.1")
-    }
+    build { dependsOn(jar) }
   }
 
-  if (isPlugin()) {
-    apply {
-      plugin("com.github.johnrengelman.shadow")
-    }
-
-    tasks {
-      processResources {
-        duplicatesStrategy = DuplicatesStrategy.INCLUDE
-        from(project.the<SourceSetContainer>()["main"].resources.srcDirs) {
-          expand("pluginVersion" to project.version)
-          include("plugin.yml")
-        }
-      }
-    }
+  repositories {
+    mavenCentral()
+    maven("https://papermc.io/repo/repository/maven-public/")
+    maven("https://repo.dmulloy2.net/repository/public/")
+    mavenLocal()
   }
 
-  if (isPublishing()) {
-    apply {
-      plugin("maven-publish")
-      plugin("signing")
-    }
-
-    tasks {
-      javadoc {
-        options.encoding = Charsets.UTF_8.name()
-        (options as StandardJavadocDocletOptions).tags("todo")
-      }
-
-      val javadocJar by creating(Jar::class) {
-        dependsOn("javadoc")
-        define(classifier = "javadoc")
-        from(javadoc)
-      }
-
-      val sourcesJar by creating(Jar::class) {
-        dependsOn("classes")
-        define(classifier = "sources")
-        from(sourceSets["main"].allSource)
-      }
-
-      build {
-        dependsOn(sourcesJar)
-        dependsOn(javadocJar)
-      }
-    }
-
-    publishing {
-      publications {
-        val publication = create<MavenPublication>("mavenJava") {
-          groupId = project.group.toString()
-          artifactId = getQualifiedProjectName()
-          version = project.version.toString()
-
-          from(components["java"])
-          artifact(tasks["sourcesJar"])
-          artifact(tasks["javadocJar"])
-          pom {
-            name.set("FakePlayerApi")
-            description.set("A Minecraft plugin that allows you to create fake players to increase your server player amount.")
-            url.set("https://infumia.com.tr/")
-            licenses {
-              license {
-                name.set("MIT License")
-                url.set("https://mit-license.org/license.txt")
-              }
-            }
-            developers {
-              developer {
-                id.set("portlek")
-                name.set("Hasan Demirtaş")
-                email.set("utsukushihito@outlook.com")
-              }
-            }
-            scm {
-              connection.set("scm:git:git://github.com/spigotplugins/fakeplayer.git")
-              developerConnection.set("scm:git:ssh://github.com/spigotplugins/fakeplayer.git")
-              url.set("https://github.com/spigotplugins/fakeplayer")
-            }
-          }
-        }
-
-        signing {
-          isRequired = signRequired
-          if (isRequired) {
-            useGpgCmd()
-            sign(publication)
-          }
-        }
-      }
-    }
+  dependencies {
+    compileOnly(rootProject.libs.lombok)
+    compileOnly(rootProject.libs.annotations)
+    annotationProcessor(rootProject.libs.lombok)
   }
 }
 
 nexusPublishing {
   repositories {
     sonatype()
+  }
+}
+
+if (spotlessApply) {
+  spotless {
+    lineEndings = LineEnding.UNIX
+    isEnforceCheck = false
+
+    val prettierConfig =
+      mapOf(
+        "prettier" to "latest",
+        "prettier-plugin-java" to "latest",
+      )
+
+    format("encoding") {
+      target("*.*")
+      encoding("UTF-8")
+      endWithNewline()
+      trimTrailingWhitespace()
+    }
+
+    yaml {
+      target(
+        "**/src/main/resources/plugin.yml",
+        ".github/**/*.yml",
+      )
+      endWithNewline()
+      trimTrailingWhitespace()
+      val jackson = jackson() as JacksonYamlGradleConfig
+      jackson.yamlFeature("LITERAL_BLOCK_STYLE", true)
+      jackson.yamlFeature("MINIMIZE_QUOTES", true)
+      jackson.yamlFeature("SPLIT_LINES", false)
+    }
+
+    kotlinGradle {
+      target("**/*.gradle.kts")
+      indentWithSpaces(2)
+      endWithNewline()
+      trimTrailingWhitespace()
+      ktlint()
+    }
+
+    java {
+      target("**/src/main/java/io/github/portlek/fakeplayer/**/*.java")
+      importOrder()
+      removeUnusedImports()
+      indentWithSpaces(2)
+      endWithNewline()
+      trimTrailingWhitespace()
+      prettier(prettierConfig)
+        .config(
+          mapOf("parser" to "java", "tabWidth" to 2, "useTabs" to false, "printWidth" to 100),
+        )
+    }
   }
 }
