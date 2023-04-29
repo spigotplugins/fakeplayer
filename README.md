@@ -7,7 +7,7 @@ This plugin would help to both server owners and plugin developers for benchmark
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org)
 
 ## Todo
-- [ ] Nms implementations from 1.8 to 1.19 versions.
+- [ ] Nms implementations.
   - [ ] 1.8.8
   - [ ] 1.9.4
   - [ ] 1.10.2
