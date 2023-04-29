@@ -9,13 +9,10 @@ plugins {
 repositories { mavenCentral() }
 
 allprojects {
-  group = "io.github.portlek"
-}
-
-subprojects {
   apply<JavaPlugin>()
 
   val projectName = property("projectName").toString()
+  group = "io.github.portlek"
   description = "A Minecraft plugin that allows you to create fake players to increase your server player amount."
 
   java {
