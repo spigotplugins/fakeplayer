@@ -28,7 +28,6 @@ subprojects {
 
     jar {
       archiveBaseName.set(projectName)
-      archiveVersion.set("")
     }
 
     build { dependsOn(jar) }
