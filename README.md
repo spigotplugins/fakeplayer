@@ -59,6 +59,13 @@ Planning
 `./gradlew build`
 #### Publish FakePlayerApi to your local maven repository
 `./gradlew publishToMavenLocal`
+#### plugin.yml
+```yaml
+depend:
+- FakePlayer
+softdepend:
+- FakePlayer
+```
 #### Api
 ![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org%2F)
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org)
@@ -78,11 +85,4 @@ compileOnly "io.github.portlek:FakePlayerApi:VERSION"
 
 // Kotlin DSL
 compileOnly("io.github.portlek:FakePlayerApi:VERSION")
-```
-#### plugin.yml
-```yaml
-depend:
-- FakePlayer
-softdepend:
-- FakePlayer
 ```
