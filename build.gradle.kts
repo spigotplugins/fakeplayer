@@ -47,9 +47,7 @@ subprojects {
   }
 
   dependencies {
-    compileOnly(rootProject.libs.lombok)
     compileOnly(rootProject.libs.annotations)
-    annotationProcessor(rootProject.libs.lombok)
   }
 }
 

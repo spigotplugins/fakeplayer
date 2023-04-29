@@ -1,6 +1,6 @@
 ---
 name: Update Snapshot
-on:
+"on":
   push:
     branches:
     - master
