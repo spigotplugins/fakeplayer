@@ -1,38 +1,38 @@
-name-template: '$RESOLVED_VERSION'
-tag-template: '$RESOLVED_VERSION'
-
+---
+name-template: 📈 $RESOLVED_VERSION
+tag-template: $RESOLVED_VERSION
+prerelease: true
 template: |
-  # What's Changed
+  # 📃 Release Notes
 
+  ## 🤷‍♀️ Uncategoried changes
   $CHANGES
 categories:
-  - title: Breaking
-    label: breaking
-  - title: New
-    label: enhancement
-  - title: Bug Fixes
-    label: bug
-  - title: Maintenance
-    label: maintenance
-  - title: Documentation
-    label: documentation
-  - title: Dependency Updates
-    label: dependencies
-
+- title: 🔥 Breaking
+  label: breaking
+- title: 🆕 New
+  label: enhancement
+- title: 🐛 Bug Fixes
+  label: bug
+- title: 🛠️ Maintenance
+  label: maintenance
+- title: 📖 Documentation
+  label: documentation
+- title: 🔄 Dependency Updates
+  label: dependencies
 version-resolver:
   major:
     labels:
-      - breaking
+    - breaking
   minor:
     labels:
-      - enhancement
+    - enhancement
   patch:
     labels:
-      - bug
-      - maintenance
-      - documentation
-      - dependencies
-      - security
-
+    - bug
+    - maintenance
+    - documentation
+    - dependencies
+    - security
 exclude-labels:
-  - skip-changelog
+- skip-changelog
