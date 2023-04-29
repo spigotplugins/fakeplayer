@@ -3,7 +3,6 @@ A Minecraft plugin that allows you to spawn fake players to your game.\
 They increase player count of your server.\
 This plugin would help to both server owners and plugin developers for benchmarking their servers/plugins.
 
-[![masterr](https://github.com/spigotplugins/fakeplayer/actions/workflows/snapshot.yml/badge.svg)](https://github.com/spigotplugins/fakeplayer/actions/workflows/snapshot.yml)
 ![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org%2F)
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org)
 
