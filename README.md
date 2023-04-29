@@ -57,6 +57,7 @@ Planning
 ### Developers
 #### Build the plugin Jar file
 `./gradlew build`
+- You can find the plugin jar file in plugin/build/libs/ folder.
 #### Publish FakePlayerApi to your local maven repository
 `./gradlew publishToMavenLocal`
 #### plugin.yml
