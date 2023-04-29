@@ -84,5 +84,5 @@ compileOnly("io.github.portlek:FakePlayerApi:VERSION")
 depend:
 - FakePlayer
 softdepend:
-  - FakePlayer
+- FakePlayer
 ```
