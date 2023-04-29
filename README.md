@@ -79,3 +79,10 @@ compileOnly "io.github.portlek:FakePlayerApi:VERSION"
 // Kotlin DSL
 compileOnly("io.github.portlek:FakePlayerApi:VERSION")
 ```
+#### plugin.yml
+```yaml
+depend:
+- FakePlayer
+softdepend:
+  - FakePlayer
+```
