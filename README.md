@@ -7,11 +7,19 @@ This plugin would help to both server owners and plugin developers for benchmark
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org)
 
 ## Todo
-- [ ] Nms implementations for 1.8 to 1.19 versions.
-  - [ ] 1.8
+- [ ] Nms implementations from 1.8 to 1.19 versions.
   - [ ] 1.8.8
+  - [ ] 1.9.4
+  - [ ] 1.10.2
+  - [ ] 1.11.2
+  - [ ] 1.12.2
+  - [ ] 1.13.2
+  - [ ] 1.14.4
+  - [ ] 1.15.2
+  - [ ] 1.16.5
+  - [ ] 1.17.1
   - [ ] 1.18.2
-  - [ ] 1.19
+  - [ ] 1.19.4
 - [ ] Configuration
   - [ ] random-names -> Use these names if you don't specify a name when adding fake player.
   - [ ] tab-format -> Specifies the tab format of each fake player if the custom one does not exist.
