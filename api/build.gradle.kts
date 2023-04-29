@@ -4,6 +4,7 @@ plugins {
 }
 
 val signRequired = !rootProject.property("dev").toString().toBoolean()
+val projectName = property("projectName").toString()
 
 dependencies {
   compileOnly(libs.spigot)
@@ -17,12 +18,14 @@ tasks {
 
   val javadocJar by creating(Jar::class) {
     dependsOn("javadoc")
+    archiveBaseName.set(projectName)
     archiveClassifier.set("javadoc")
     from(javadoc)
   }
 
   val sourcesJar by creating(Jar::class) {
     dependsOn("classes")
+    archiveBaseName.set(projectName)
     archiveClassifier.set("sources")
     from(sourceSets["main"].allSource)
   }
@@ -37,7 +40,7 @@ publishing {
   publications {
     val publication = create<MavenPublication>("mavenJava") {
       groupId = project.group.toString()
-      artifactId = property("projectName").toString()
+      artifactId = projectName
       version = project.version.toString()
 
       from(components["java"])
