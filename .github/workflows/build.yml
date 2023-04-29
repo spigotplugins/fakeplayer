@@ -28,4 +28,4 @@ jobs:
           ${{ runner.os }}-gradlew-
     - run: |
         chmod +x gradlew
-        ./gradlew build -Pspotless.apply=true
+        ./gradlew build
