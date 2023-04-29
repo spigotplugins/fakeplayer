@@ -36,7 +36,7 @@ public final class FakePlayerCommand implements TabExecutor {
           this.plugin,
           () -> {
             this.plugin.reloadFiles();
-            // @todo #1:5m Make '&aReload complete.' customizable.
+            // TODO Make '&aReload complete.' customizable.
             sender.sendMessage("&aReload complete.");
           }
         );
