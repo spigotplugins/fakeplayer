@@ -14,7 +14,10 @@ public final class FakePlayerPlugin extends JavaPlugin {
   @Override
   public void onEnable() {
     Objects
-      .requireNonNull(this.getCommand("fakeplayer"), "Invalid plugin.yml file! Please re-download and install the plugin.")
+      .requireNonNull(
+        this.getCommand("fakeplayer"),
+        "Invalid plugin.yml file! Please re-download and install the plugin."
+      )
       .setExecutor(new FakePlayerCommand(this));
   }
 
