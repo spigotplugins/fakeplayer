@@ -3,8 +3,8 @@ A Minecraft plugin that allows you to spawn fake players to your game.\
 They increase player count of your server.\
 This plugin would help to both server owners and plugin developers for benchmarking their servers/plugins.
 
-![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org%2F)
-![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org)
+[![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org%2F)](https://repo1.maven.org/maven2/io/github/portlek/FakePlayerApi/)
+[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org)](https://oss.sonatype.org/service/local/repositories/snapshots/content/io/github/portlek/FakePlayerApi/)
 
 ## Todo
 - [ ] Nms implementations.
@@ -68,8 +68,8 @@ softdepend:
 - FakePlayer
 ```
 #### Api
-![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org%2F)
-![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org)
+[![Sonatype Nexus (Releases)](https://img.shields.io/nexus/r/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org%2F)](https://repo1.maven.org/maven2/io/github/portlek/FakePlayerApi/)
+[![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.github.portlek/FakePlayerApi?label=maven-central&server=https%3A%2F%2Foss.sonatype.org)](https://oss.sonatype.org/service/local/repositories/snapshots/content/io/github/portlek/FakePlayerApi/)
 ##### Maven
 ```xml
 <dependency>
