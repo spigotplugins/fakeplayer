@@ -5,16 +5,5 @@
   "labels": ["dependencies"],
   "schedule": [
     "after 9am"
-  ],
-  "regexManagers": [
-    {
-      "description": "Detect template under buildSrc",
-      "fileMatch": [
-        "(^|/)buildSrc/.*"
-      ],
-      "matchStrings": [
-        "datasource=(?<datasource>.*?) dep=(?<depName>.*?)\n([a-z A-Z]*)Version = \"(?<currentValue>.*?)\"\n"
-      ]
-    }
   ]
 }
