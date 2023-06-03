@@ -21,22 +21,22 @@ This plugin would help to both server owners and plugin developers for benchmark
   - [ ] 1.18.2
   - [ ] 1.19.4
 - [ ] Configuration
-  - [ ] random-names -> Use these names if you don't specify a name when adding fake player.
+  - [*] random-names -> Use these names if you don't specify a name when adding fake player.
   - [ ] tab-format -> Specifies the tab format of each fake player if the custom one does not exist.
-  - [ ] language -> Specifies the plugin's language.
-  - [ ] join-quit-message -> Join/Quit message settings.
-    - [ ] enabled -> Enables it.
-    - [ ] join -> Specifies the join message. (`null` for default)
-    - [ ] quit -> Specifies the quit message. (`null` for default)
+  - [*] language -> Specifies the plugin's language.
+  - [*] join-quit-message -> Join/Quit message settings.
+    - [*] enabled -> Enables it.
+    - [*] join -> Specifies the join message. (`null` for default)
+    - [*] quit -> Specifies the quit message. (`null` for default)
   - [ ] Create a custom configuration file specifically for listing fake players and their settings like tab-format, names etc.
-- [ ] Add commands.
-  - [ ] /fakeplayer -> Shows help message.
-    - [ ] help -> Shows help message.
-    - [ ] reload -> Reloads config and script files.
+- [*] Add commands.
+  - [*] /fakeplayer -> Shows help message.
+    - [*] help -> Shows help message.
+    - [*] reload -> Reloads config and script files.
     - [ ] version -> Shows version also checks for update.
     - [ ] add \[name\] \[location\] -> Creates a fake player to the location.
     - [ ] remove \<name\> -> Removes the fake player.
-    - [ ] toggle \<name\> -> Actives/Deactives the fake player.
+    - [ ] toggle \<name\> -> Actives/Deactivates the fake player.
     - [ ] teleport/tp \<name\> \[location\] -> Teleports the fake player to location.
     - [ ] chat \<name\> \<message\> -> Sends a message by the fake player.
     - [ ] menu -> Opens the management menu for all fake players.

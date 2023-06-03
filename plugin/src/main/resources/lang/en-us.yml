@@ -1,0 +1,15 @@
+Command:
+  Reload: "&aReload complete."
+  Help:
+    - "&a/fakeplayer -> Shows help message."
+    - "&a/fakeplayer help -> Show help message."
+    - "&a/fakeplayer reload -> Reload config."
+    - "&a/fakeplayer version -> Shows version also checks for update."
+    - "&a/fakeplayer add [name] [location] -> Creates a fake player to the location."
+    - "&a/fakeplayer remove <name> -> Removes the fake player."
+    - "&a/fakeplayer toggle <name> -> Actives/Deactivates the fake player."
+    - "&a/fakeplayer teleport/tp <name> -> Teleports the fake player to location."
+    - "&a/fakeplayer chat <name> <message> -> Sends a message by the fake player(supports colors)."
+    - "&a/fakeplayer menu -> Opens the management menu for all fake players."
+    - "&a/fakeplayer stress start [mode] [count] -> Starts a stress test."
+    - "&a/fakeplayer stress stop Stops the currently running stress test manually."

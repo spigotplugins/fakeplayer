@@ -1,0 +1,14 @@
+FakePlayer:
+  random-name:
+    contains-number: true
+    contains-uppercase: true
+    #don't let it less than 5
+    max-length: 10
+  language: "en-us"
+  onlinePlayers: 10
+  defaultSpawnWorld: world
+  gamemode: CREATIVE
+  join-quit-message:
+    enabled: false
+    join: "&e%player% joined the game"
+    quit: "&e%player% quited the game"

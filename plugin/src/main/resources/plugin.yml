@@ -17,3 +17,7 @@ commands:
     - fp
     - fakep
     - fplayer
+permissions:
+  fakeplayer.command.main:
+    description: main permission of FakePlayer commands
+    default: op

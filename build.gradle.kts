@@ -43,7 +43,7 @@ allprojects {
 }
 
 nexusPublishing {
-  repositories {
+  this.repositories {
     sonatype()
   }
 }
