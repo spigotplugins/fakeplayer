@@ -28,12 +28,12 @@ This plugin would help to both server owners and plugin developers for benchmark
     - [*] enabled -> Enables it.
     - [*] join -> Specifies the join message. (`null` for default)
     - [*] quit -> Specifies the quit message. (`null` for default)
-  - [ ] Create a custom configuration file specifically for listing fake players and their settings like tab-format, names etc.
+  - [*] Create a custom configuration file specifically for listing fake players and their settings like tab-format, names etc.
 - [*] Add commands.
   - [*] /fakeplayer -> Shows help message.
     - [*] help -> Shows help message.
     - [*] reload -> Reloads config and script files.
-    - [ ] version -> Shows version also checks for update.
+    - [*] version -> Shows version also checks for update.
     - [ ] add \[name\] \[location\] -> Creates a fake player to the location.
     - [ ] remove \<name\> -> Removes the fake player.
     - [ ] toggle \<name\> -> Actives/Deactivates the fake player.

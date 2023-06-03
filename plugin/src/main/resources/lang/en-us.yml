@@ -13,3 +13,8 @@ Command:
     - "&a/fakeplayer menu -> Opens the management menu for all fake players."
     - "&a/fakeplayer stress start [mode] [count] -> Starts a stress test."
     - "&a/fakeplayer stress stop Stops the currently running stress test manually."
+Version:
+  Info: "&aYou are using version &e%s &aof FakePlayer by portlek."
+  CheckFailed: "&4Check update failed."
+  NewVersion: "&aFound a new version: &e%s"
+  Latest: "&aYou are using the latest version of FakePlayer."

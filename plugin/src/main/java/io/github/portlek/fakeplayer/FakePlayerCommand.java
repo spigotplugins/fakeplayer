@@ -1,6 +1,6 @@
 package io.github.portlek.fakeplayer;
 
-import org.bukkit.Bukkit;
+import io.github.portlek.fakeplayer.utils.FakePlayerUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -30,16 +30,18 @@ public final class FakePlayerCommand implements TabExecutor {
       FakePlayerPlugin.messageHandler.sendMessages(sender, "Command.Help");
       return true;
     }
-    if (args[0].equalsIgnoreCase("reload")) {
-      Bukkit.getScheduler()
-        .runTaskAsynchronously(
-          this.plugin, () -> {
-            this.plugin.reload();
-            FakePlayerPlugin.messageHandler.sendMessage(sender, "Command.Reload");
-          }
-        );
+    if (args.length == 1) {
+      if (args[0].equalsIgnoreCase("reload")) {
+        this.plugin.reload();
+        FakePlayerPlugin.messageHandler.sendMessage(sender, "Command.Reload");
+        return true;
+      } else if (args[0].equalsIgnoreCase("version")) {
+        FakePlayerPlugin.messageHandler.sendMessage(sender, "Version.Info");
+        FakePlayerUtils.checkVersion(sender);
+        return true;
+      }
     }
-    return true;
+    return false;
   }
 
   @NotNull

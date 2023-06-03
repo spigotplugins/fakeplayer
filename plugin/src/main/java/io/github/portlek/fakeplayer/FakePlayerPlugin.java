@@ -13,6 +13,7 @@ public final class FakePlayerPlugin extends JavaPlugin {
   public void onLoad() {
     INSTANCE = this;
     this.saveDefaultConfig();
+    this.saveResource("fakeplayers.yml", false);
     this.reload();
   }
 
@@ -28,6 +29,7 @@ public final class FakePlayerPlugin extends JavaPlugin {
 
   public void reload() {
     this.reloadConfig();
+    this.saveResource("fakeplayers.yml", false);
     messageHandler = new FakePlayerMessageHandler(this);
   }
 }

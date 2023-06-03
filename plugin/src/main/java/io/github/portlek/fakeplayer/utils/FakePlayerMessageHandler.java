@@ -32,8 +32,8 @@ public class FakePlayerMessageHandler {
         return colorize(message.getString(node,"&4Get message '"+node+"' failed, maybe it's not exists."));
     }
 
-    public void sendMessage(CommandSender commandSender, String node){
-        commandSender.sendMessage(get(node));
+    public void sendMessage(CommandSender sender, String node, Object... args) {
+        sender.sendMessage(String.format(get(node), args));
     }
 
     public void sendMessages(CommandSender commandSender, String node){
@@ -53,4 +53,6 @@ public class FakePlayerMessageHandler {
         string = org.bukkit.ChatColor.translateAlternateColorCodes('&', string);
         return string;
     }
+
+
 }

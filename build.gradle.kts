@@ -16,8 +16,8 @@ allprojects {
   description = "A Minecraft plugin that allows you to create fake players to increase your server player amount."
 
   java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
   }
 
   tasks {
