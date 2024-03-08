@@ -35,7 +35,7 @@ jobs:
         chmod +x gradlew
         ./gradlew build -Pversion="${{ github.event.release.tag_name }}"
         ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository -Pversion="${{ github.event.release.tag_name }}" -Pdev=false -Psigning.gnupg.keyName="${{ secrets.GPG_SECRET_KEY_ID }}" -Psigning.gnupg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -PsonatypeUsername="${{ secrets.SONATYPE_USERNAME }}" -PsonatypePassword="${{ secrets.SONATYPE_PASSWORD }}"
-    - uses: softprops/action-gh-release@v1
+    - uses: softprops/action-gh-release@v2
       with:
         files: |
           plugin/build/libs/FakePlayer-${{ github.event.release.tag_name }}.jar
