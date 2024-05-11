@@ -3,7 +3,7 @@ plugins {
   `maven-publish`
   signing
   id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
-  id("io.papermc.paperweight.userdev") version "1.5.5" apply false
+  id("io.papermc.paperweight.userdev") version "1.7.1" apply false
 }
 
 repositories { mavenCentral() }
